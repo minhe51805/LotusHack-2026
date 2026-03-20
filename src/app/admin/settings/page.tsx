@@ -2,34 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Save, RotateCcw, CheckCircle } from "lucide-react";
-
-const DEFAULT_PROMPT = `Bạn là tư vấn viên của ETEST – trung tâm luyện thi Anh ngữ du học uy tín tại Việt Nam (20+ năm, MST: 0310637920, được VNExpress/Tuổi Trẻ đưa tin).
-
-Nhiệm vụ: Tư vấn học sinh THPT/Đại học chọn khóa học phù hợp và mời họ đến văn phòng.
-
-## Khóa học
-IELTS, TOEFL, SAT, ACT, AP, IB, GED, SSAT/ISEE, AMP (viết luận học bổng), Model UN.
-
-## Quy trình (tuần tự, mỗi lượt hỏi tối đa 1 câu)
-1. Chào hỏi, hỏi lớp/năm học
-2. Hỏi kỳ thi mục tiêu → dùng ask_user (single_select)
-3. Hỏi trình độ hiện tại → dùng ask_user (single_select)
-4. Hỏi timeline và mục tiêu du học
-5. Tư vấn khóa học phù hợp, xử lý phản đối
-6. Thu thập tên + SĐT, gọi save_lead, chốt lịch hẹn
-
-## Xử lý lo ngại lừa đảo
-Thừa nhận nỗi lo là hợp lý. Nêu bằng chứng: pháp nhân rõ ràng, 20+ năm, báo chí uy tín, mời tham quan văn phòng miễn phí trước khi đăng ký.
-
-## Tools
-- ask_user: dùng khi câu hỏi có lựa chọn cố định (kỳ thi, trình độ, timeline, v.v.)
-- search_schools: khi hỏi yêu cầu đầu vào của trường cụ thể
-- save_lead: khi đã có tên + SĐT, hoặc khi kết thúc hội thoại
-
-## Nguyên tắc
-- Trả lời tiếng Việt (trừ khi học sinh dùng tiếng Anh)
-- Thân thiện, ngắn gọn — không quá 3 câu mỗi lượt
-- Không hứa điểm số cụ thể, không bịa học phí`;
+import { DEFAULT_USER_PROMPT } from "@/lib/prompt-defaults";
 
 export default function SettingsPage() {
   const [prompt, setPrompt] = useState("");
@@ -68,10 +41,6 @@ export default function SettingsPage() {
     }
   }
 
-  function handleReset() {
-    setPrompt(DEFAULT_PROMPT);
-  }
-
   const isDirty = prompt !== original;
 
   return (
@@ -81,15 +50,15 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-base font-semibold text-gray-900 dark:text-white">
-              Settings
+              Settings & Prompt
             </h1>
             <p className="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">
-              Configure the AI system prompt used in the chat
+              Configure the AI persona and conversation flow
             </p>
           </div>
           <div className="flex items-center gap-2">
             <button
-              onClick={handleReset}
+              onClick={() => setPrompt(DEFAULT_USER_PROMPT)}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-gray-600 dark:text-zinc-400 border border-gray-200 dark:border-zinc-700 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
             >
               <RotateCcw size={12} />
@@ -119,11 +88,16 @@ export default function SettingsPage() {
       {/* Content */}
       <div className="flex-1 overflow-y-auto px-6 py-5">
         <div className="max-w-3xl">
-          <div className="mb-2 flex items-center justify-between">
-            <label className="text-xs font-medium text-gray-700 dark:text-zinc-300">
-              System Prompt
-            </label>
-            <span className="text-xs text-gray-400 dark:text-zinc-500">
+          <div className="flex items-center justify-between mb-1.5">
+            <div>
+              <label className="text-xs font-semibold text-gray-700 dark:text-zinc-300">
+                System Prompt
+              </label>
+              <p className="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">
+                Define the AI persona, tone, and consultation flow.
+              </p>
+            </div>
+            <span className="text-xs text-gray-400 dark:text-zinc-500 shrink-0">
               {prompt.length} chars
             </span>
           </div>
@@ -141,12 +115,8 @@ export default function SettingsPage() {
             />
           )}
 
-          <p className="mt-2 text-xs text-gray-400 dark:text-zinc-500">
-            This prompt is sent to the AI at the start of every conversation. Changes take effect immediately for new messages.
-          </p>
-
           {isDirty && !saved && (
-            <div className="mt-3 flex items-center gap-1.5 text-xs text-amber-600 dark:text-amber-400">
+            <div className="mt-2 flex items-center gap-1.5 text-xs text-amber-600 dark:text-amber-400">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block" />
               Unsaved changes
             </div>
