@@ -1,0 +1,396 @@
+.puramu-custom-contact-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+@media screen and (max-width: 1023px) {
+    .puramu-custom-contact-button {
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+.puramu-custom-contact-button .contact-button-opener {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 0px 32px;
+    background-color: var(--puramu-custom-contact-button-primary-color);
+    color: var(--puramu-custom-contact-button-background-color);
+    border: 2px solid var(--puramu-custom-contact-button-accent-color);
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    pointer-events: auto;
+}
+
+.puramu-custom-contact-button:hover .contact-button-opener {
+    background-color: var(--puramu-custom-contact-button-secondary-color);
+    border-color: var(--puramu-custom-contact-button-accent-color);
+    color: var(--puramu-custom-contact-button-primary-color);
+}
+
+.puramu-custom-contact-button .contact-button-opener-icon {
+    width: 28px;
+    height: 28px;
+    fill: var(--puramu-custom-contact-button-background-color);
+}
+
+@media screen and (min-width: 1024px) {
+    .puramu-custom-contact-button:hover .contact-button-opener-icon {
+        width: 0px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .puramu-custom-contact-button:has(#puramu-custom-contact-button-checkbox:checked) .contact-button-opener-icon {
+        width: 0px;
+    }
+}
+
+.puramu-custom-contact-button .contact-button-opener-icon-close {
+    width: 0px;
+    height: 28px;
+    fill: var(--puramu-custom-contact-button-background-color);
+}
+
+@media screen and (min-width: 1024px) {
+    .puramu-custom-contact-button:hover .contact-button-opener-icon-close {
+        width: 28px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .puramu-custom-contact-button:has(#puramu-custom-contact-button-checkbox:checked) .contact-button-opener-icon-close {
+        width: 28px;
+    }
+}
+
+.puramu-custom-contact-button:hover .contact-button-opener-icon {
+    fill: var(--puramu-custom-contact-button-primary-color);
+}
+
+.puramu-custom-contact-button .contact-button-opener-text {
+    margin-left: 10px;
+}
+
+.puramu-custom-contact-button .contact-button-content {
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--puramu-custom-contact-button-primary-color);
+    border-radius: 20px;
+    padding: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: -20px;
+}
+
+@media screen and (min-width: 1024px) {
+    .puramu-custom-contact-button:hover .contact-button-content {
+        max-height: 100%;
+        opacity: 1;
+        pointer-events: auto;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .puramu-custom-contact-button:has(#puramu-custom-contact-button-checkbox:checked) .contact-button-content {
+        max-height: 100%;
+        opacity: 1;
+        pointer-events: auto;
+        margin-bottom: 15px;
+    }
+}
+
+.puramu-custom-contact-button .contact-button {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 0px 16px;
+    border-radius: 100px;
+    background-color: var(--puramu-custom-contact-button-background-color);
+    color: var(--puramu-custom-contact-button-primary-color);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    margin: 0px;
+    text-transform: unset !important;
+}
+
+.puramu-custom-contact-button .contact-button:hover {
+    background-color: var(--puramu-custom-contact-button-secondary-color);
+    color: var(--puramu-custom-contact-button-accent-color);
+}
+
+.puramu-custom-contact-button .contact-button-text {
+    color: var(--puramu-custom-contact-button-primary-color);
+}
+
+.puramu-custom-contact-button .contact-button:hover .contact-button-text {
+    color: var(--puramu-custom-contact-button-primary-color);
+}
+
+.puramu-custom-contact-button .contact-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.contact-button-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+}
+
+.contact-button-popup.active {
+    display: block;
+}
+
+.contact-button-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.contact-button-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--puramu-custom-contact-button-background-color);
+    padding: 30px 20px;
+    border-radius: 20px;
+    max-width: 90%;
+    width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.contact-button-popup-content>p:first-of-type {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--puramu-custom-contact-button-primary-color);
+    margin: 0 0 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contact-button-popup-content>p:nth-of-type(2) {
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.contact-button-popup-content form {
+    margin: 0px !important;
+}
+
+.contact-button-popup-content form p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contact-button-popup-content form span.wpcf7-form-control-wrap {
+    width: 100%;
+}
+
+.contact-button-popup-content form .wpcf7-spinner {
+    position: absolute;
+}
+
+.contact-button-popup-content form input {
+    border: 0 !important;
+    border-bottom-width: 0px !important;
+    border-bottom-style: none !important;
+    border-bottom-color: currentcolor !important;
+    box-shadow: unset !important;
+    background-color: #f5f5f5;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    height: 36px;
+}
+
+.contact-button-popup-content form textarea {
+    border: 0 !important;
+    border-bottom-width: 0px !important;
+    border-bottom-style: none !important;
+    border-bottom-color: currentcolor !important;
+    box-shadow: unset !important;
+    background-color: #f5f5f5;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    height: 100px;
+    min-height: unset;
+}
+
+.contact-button-popup-content form input:focus {
+    outline: none !important;
+    background-color: #f5f5f5;
+}
+
+.contact-button-popup-content form input[type="submit"] {
+    background-color: var(--puramu-custom-contact-button-primary-color);
+    color: var(--puramu-custom-contact-button-background-color);
+    font-weight: 600;
+    height: 40px;
+    margin: 0px !important;
+    border-radius: 100px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 24px;
+    font-size: 14px;
+}
+
+.contact-button-popup-content form .wpcf7-not-valid-tip {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.contact-button-popup-content form .wpcf7-response-output {
+    font-size: 12px;
+    border: 1px solid var(--puramu-custom-contact-button-secondary-color);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.contact-button-popup-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    margin: 0px;
+}
+
+.contact-button-popup-close svg {
+    fill: #333;
+    width: 28px;
+    height: 28px;
+}
+
+.contact-button-popup-close:hover svg {
+    fill: var(--puramu-custom-contact-button-primary-color);
+}
+
+.contact-button-request-call-back {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--puramu-custom-contact-button-background-color);
+}
+
+.contact-button-request-call-back-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-button-request-call-back-title svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--puramu-custom-contact-button-primary-color);
+}
+
+.contact-button-request-call-back-title p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0px !important;
+}
+
+.contact-button-request-call-back input {
+    border: 0 !important;
+    border-bottom-width: 0px !important;
+    border-bottom-style: none !important;
+    border-bottom-color: currentcolor !important;
+    box-shadow: unset !important;
+    border-bottom: 1px solid var(--puramu-custom-contact-button-primary-color) !important;
+    padding: 0px !important;
+    font-size: 14px !important;
+    height: 36px !important;
+    width: 200px !important;
+}
+
+.contact-button-request-call-back form {
+    margin: 0px !important;
+}
+
+.contact-button-request-call-back input:focus {
+    outline: none !important;
+}
+
+.contact-button-request-call-back input[type="submit"] {
+    margin: 0px !important;
+    font-size: 12px !important;
+    border-radius: 100px !important;
+    background-color: var(--puramu-custom-contact-button-primary-color) !important;
+    color: var(--puramu-custom-contact-button-background-color) !important;
+    font-weight: 600 !important;
+    height: 36px !important;
+}
+
+.contact-button-request-call-back form .wpcf7-spinner {
+    position: absolute !important;
+}
+
+.contact-button-request-call-back form .wpcf7-response-output {
+    margin: 0px;
+    margin-top: 0px;
+    font-size: 12px;
+    max-width: 200px;
+    padding: 5px;
+    border: 1px solid var(--puramu-custom-contact-button-secondary-color);
+    margin-top: 5px;
+}
+
+.contact-button-request-call-back form .wpcf7-not-valid-tip {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* Fix the back to top button for some themes */
+#top-link {
+    bottom: 150px !important;
+    right: 20px !important;
+}
