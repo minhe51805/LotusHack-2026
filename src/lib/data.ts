@@ -1,11 +1,25 @@
 import { getSupabaseClient } from "./supabase";
 import { DEFAULT_USER_PROMPT } from "./prompt-defaults";
 
+export interface Certification {
+  type: string;
+  score: string;
+  date: string;
+}
+
 export interface LeadData {
   full_name?: string;
   phone?: string;
   email?: string;
   grade_or_year?: string;
+  age?: number;
+  current_school?: string;
+  budget_usd?: number;
+  gpa?: string;
+  extracurriculars?: string;
+  certifications?: Certification[];
+  field_of_study?: string;
+  priority_countries?: string[];
   target_exam?: string;
   target_score?: string;
   timeline_months?: number;
@@ -30,6 +44,7 @@ export interface ChatSession {
   updatedAt: string;
   messages: StoredMessage[];
   lead?: LeadData | null;
+  needsSupport?: boolean;
 }
 
 export interface AdminSettings {
@@ -206,6 +221,7 @@ function rowToSession(row: any): ChatSession {
     updatedAt: row.updated_at,
     messages: row.messages ?? [],
     lead: row.lead ?? null,
+    needsSupport: row.needs_support ?? false,
   };
 }
 
@@ -242,6 +258,15 @@ export async function saveSession(session: ChatSession): Promise<void> {
     lead: session.lead ?? null,
     updated_at: session.updatedAt,
   });
+  if (error) throw error;
+}
+
+export async function markSessionNeedsSupport(id: string): Promise<void> {
+  const supabase = await getSupabaseClient();
+  const { error } = await supabase
+    .from("sessions")
+    .update({ needs_support: true, updated_at: new Date().toISOString() })
+    .eq("id", id);
   if (error) throw error;
 }
 

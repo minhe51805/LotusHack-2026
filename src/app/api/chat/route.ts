@@ -112,6 +112,18 @@ const saveLeadTool = tool({
     phone: z.string().optional(),
     email: z.string().optional(),
     grade_or_year: z.string().optional(),
+    age: z.number().optional(),
+    current_school: z.string().optional(),
+    budget_usd: z.number().optional(),
+    gpa: z.string().optional(),
+    extracurriculars: z.string().optional(),
+    certifications: z.array(z.object({
+      type: z.string(),
+      score: z.string(),
+      date: z.string(),
+    })).optional(),
+    field_of_study: z.string().optional(),
+    priority_countries: z.array(z.string()).optional(),
     target_exam: z
       .enum([
         "IELTS",

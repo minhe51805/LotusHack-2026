@@ -22,12 +22,13 @@ interface SessionSummary {
   updatedAt: string;
   messages: { role: string }[];
   lead?: { full_name?: string; target_exam?: string } | null;
+  needsSupport?: boolean;
 }
 
 interface Toast {
   id: number;
   message: string;
-  type: "session" | "lead";
+  type: "session" | "lead" | "support";
 }
 
 function formatTime(iso: string) {
@@ -48,6 +49,7 @@ function rowToSummary(row: any): SessionSummary {
     updatedAt: row.updated_at,
     messages: row.messages ?? [],
     lead: row.lead ?? null,
+    needsSupport: row.needs_support ?? false,
   };
 }
 
@@ -169,6 +171,16 @@ export default function AdminLayout({
             addToast(msg, "lead");
             fireNativeNotif("ETEST Admin – New Lead!", msg);
           }
+
+          // Detect needs_support flip false → true
+          const wasSupport = payload.old?.needs_support;
+          const nowSupport = payload.new?.needs_support;
+          if (!wasSupport && nowSupport) {
+            const name = payload.new?.lead?.full_name ?? "Khách hàng";
+            const msg = `⚡ ${name} cần tư vấn chuyên sâu!`;
+            addToast(msg, "support");
+            fireNativeNotif("INV – Hỗ trợ ngay!", msg);
+          }
         }
       )
       .subscribe();
@@ -209,7 +221,9 @@ export default function AdminLayout({
           <div
             key={t.id}
             className={`flex items-start gap-2 px-3.5 py-2.5 rounded-xl shadow-lg text-sm max-w-xs animate-in slide-in-from-bottom-2 fade-in duration-200 ${
-              t.type === "lead"
+              t.type === "support"
+                ? "bg-red-600 text-white"
+                : t.type === "lead"
                 ? "bg-green-600 text-white"
                 : "bg-zinc-800 text-white dark:bg-zinc-700"
             }`}
@@ -286,7 +300,13 @@ export default function AdminLayout({
               No sessions yet
             </div>
           ) : (
-            sessions.map((s) => {
+            [...sessions]
+              .sort((a, b) => {
+                if (a.needsSupport && !b.needsSupport) return -1;
+                if (!a.needsSupport && b.needsSupport) return 1;
+                return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+              })
+              .map((s) => {
               const isActive = pathname === `/admin/${s.id}`;
               const isLive = liveSessions.has(s.id);
               const msgCount = s.messages?.length ?? 0;
@@ -300,6 +320,8 @@ export default function AdminLayout({
                   className={`block px-4 py-3 border-b border-gray-100 dark:border-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors ${
                     isActive
                       ? "bg-blue-50 dark:bg-blue-950/40 border-l-2 border-l-blue-600"
+                      : s.needsSupport
+                      ? "border-l-2 border-l-red-500 bg-red-50/40 dark:bg-red-950/20"
                       : ""
                   }`}
                 >
@@ -346,6 +368,11 @@ export default function AdminLayout({
                     {s.lead?.full_name && (
                       <span className="text-xs text-green-600 dark:text-green-400">
                         ● Lead
+                      </span>
+                    )}
+                    {s.needsSupport && (
+                      <span className="text-xs bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 px-1.5 py-0.5 rounded font-semibold animate-pulse">
+                        ⚡ Support
                       </span>
                     )}
                   </div>
