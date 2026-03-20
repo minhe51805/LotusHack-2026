@@ -7,13 +7,14 @@ import {
 } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { z } from "zod";
-import { getSettings } from "@/lib/data";
+import { getSettings, getSchools } from "@/lib/data";
+import { buildSystemPrompt } from "@/lib/system-prompt";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY!,
 });
 
-// Client-side tool — no execute. Frontend renders the UI and calls addToolOutput.
+// Client-side tool — frontend renders the UI and calls addToolOutput.
 const askUserTool = tool({
   description:
     "Ask the user a question with predefined options. Use single_select for one answer, multi_select for multiple. Always use this instead of typing out options in plain text.",
@@ -28,49 +29,101 @@ const askUserTool = tool({
   }),
 });
 
-// Server-side tool — placeholder, replace with real data source.
+// Server-side tool — queries real school data from Supabase.
 const searchSchoolsTool = tool({
   description:
-    "Search for a university or study-abroad program and return its admission requirements (IELTS/TOEFL/SAT minimums, GPA, deadlines, tuition).",
+    "Search partner schools and return admission requirements, tuition, visa info, and scholarships. Use when a student asks about a specific school, country, or program.",
   inputSchema: z.object({
-    query: z.string().describe("School name, program, or country to search."),
+    query: z
+      .string()
+      .describe(
+        "School name, country, or program to search (e.g. 'Melbourne', 'Canada', 'Computer Science')."
+      ),
     exam: z
       .enum(["IELTS", "TOEFL", "SAT", "ACT", "any"])
       .optional()
-      .default("any"),
+      .default("any")
+      .describe("Filter schools that accept this exam score."),
   }),
   execute: async ({ query, exam }) => {
-    // TODO: replace with Google Sheets / Notion / Supabase fetch
-    console.log(`[search_schools] query="${query}" exam="${exam}"`);
+    const schools = await getSchools();
+
+    const q = query.toLowerCase();
+
+    let matched = schools.filter(
+      (s) =>
+        s.name.toLowerCase().includes(q) ||
+        s.country.toLowerCase().includes(q) ||
+        s.overview.toLowerCase().includes(q) ||
+        s.programs?.some((p) => p.toLowerCase().includes(q))
+    );
+
+    // Filter by exam requirement
+    if (exam && exam !== "any") {
+      matched = matched.filter((s) => {
+        if (exam === "IELTS") return s.requirements.ielts_min != null;
+        if (exam === "TOEFL") return s.requirements.toefl_min != null;
+        if (exam === "SAT") return s.requirements.sat_min != null;
+        return true;
+      });
+    }
+
+    // Fall back to all schools if nothing matched
+    if (matched.length === 0) matched = schools;
+
     return {
-      results: [
-        {
-          school: "Placeholder University",
-          country: "Australia",
-          program: "Bachelor of Business",
-          ielts_min: 6.5,
-          toefl_min: 80,
-          sat_min: null,
-          gpa_min: "5.0/10",
-          application_deadline: "31/08/2026",
-          tuition_usd_per_year: 22000,
+      results: matched.map((s) => ({
+        school: s.name,
+        country: s.country,
+        overview: s.overview,
+        requirements: {
+          ielts_min: s.requirements.ielts_min ?? null,
+          toefl_min: s.requirements.toefl_min ?? null,
+          sat_min: s.requirements.sat_min ?? null,
+          gpa_min: s.requirements.gpa_min ?? null,
         },
-      ],
-      disclaimer:
-        "Dữ liệu mẫu — cần kết nối nguồn thực từ ETEST. Yêu cầu có thể thay đổi theo năm.",
+        cost: {
+          tuition_usd_per_year: s.cost.tuition_usd_per_year ?? null,
+          living_usd_per_year: s.cost.living_usd_per_year ?? null,
+          notes: s.cost.notes ?? null,
+        },
+        visa: {
+          type: s.visa.type ?? null,
+          processing_days: s.visa.processing_days ?? null,
+          success_rate: s.visa.success_rate ?? null,
+          notes: s.visa.notes ?? null,
+        },
+        scholarship: s.scholarship.available
+          ? { amount: s.scholarship.amount, details: s.scholarship.details }
+          : null,
+        programs: s.programs ?? [],
+      })),
+      total: matched.length,
     };
   },
 });
 
-// Server-side tool — placeholder, replace with real CRM/Sheets write.
+// Server-side tool — saves student profile for office staff.
 const saveLeadTool = tool({
   description:
-    "Save the student profile so office staff can prepare before the visit.",
+    "Save the student profile so office staff can prepare before the visit. Call as soon as name + phone are collected, or at conversation end.",
   inputSchema: z.object({
     full_name: z.string().optional(),
     phone: z.string().optional(),
     email: z.string().optional(),
     grade_or_year: z.string().optional(),
+    age: z.number().optional(),
+    current_school: z.string().optional(),
+    budget_usd: z.number().optional(),
+    gpa: z.string().optional(),
+    extracurriculars: z.string().optional(),
+    certifications: z.array(z.object({
+      type: z.string(),
+      score: z.string(),
+      date: z.string(),
+    })).optional(),
+    field_of_study: z.string().optional(),
+    priority_countries: z.array(z.string()).optional(),
     target_exam: z
       .enum([
         "IELTS",
@@ -105,10 +158,6 @@ const saveLeadTool = tool({
     notes: z.string().optional(),
   }),
   execute: async (lead) => {
-    // TODO: replace with real write:
-    //   Google Sheets: sheets.spreadsheets.values.append(...)
-    //   Supabase:      supabase.from('leads').insert(lead)
-    //   n8n webhook:   fetch(process.env.N8N_WEBHOOK_URL, { method:'POST', body: JSON.stringify(lead) })
     console.log("[save_lead]", JSON.stringify(lead, null, 2));
     return { success: true };
   },
@@ -118,10 +167,11 @@ export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();
 
   const { systemPrompt } = await getSettings();
+  const fullPrompt = await buildSystemPrompt(systemPrompt);
 
   const result = streamText({
     model: openrouter("google/gemini-3.1-flash-lite-preview"),
-    system: systemPrompt,
+    system: fullPrompt,
     messages: await convertToModelMessages(messages),
     tools: {
       ask_user: askUserTool,
