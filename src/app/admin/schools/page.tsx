@@ -135,9 +135,9 @@ export default function SchoolsPage() {
       {/* Header */}
       <div className="shrink-0 border-b bg-background px-6 py-4 flex items-center justify-between">
         <div>
-          <h1 className="text-base font-semibold">Schools</h1>
+          <h1 className="text-base font-semibold">Trường học</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Filter crawled schools or manage internal school records
+            Lọc trường từ dữ liệu crawl hoặc quản lý hồ sơ trường nội bộ
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -145,13 +145,13 @@ export default function SchoolsPage() {
             href="/data/etest-school-directory.csv"
             className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors"
           >
-            Download CSV
+            Tải CSV
           </Link>
           <button
             onClick={openAdd}
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
           >
-            <PlusIcon size={14} /> Add School
+            <PlusIcon size={14} /> Thêm trường
           </button>
         </div>
       </div>
@@ -161,11 +161,11 @@ export default function SchoolsPage() {
           <TabsList>
             <TabsTrigger value="directory">
               <GlobeIcon size={13} className="mr-1" />
-              Directory Filter
+              Lọc danh mục
             </TabsTrigger>
             <TabsTrigger value="manage">
               <ChevronRightIcon size={13} className="mr-1" />
-              Manage Records
+              Quản lý hồ sơ
             </TabsTrigger>
           </TabsList>
 
@@ -189,7 +189,7 @@ export default function SchoolsPage() {
             ) : items.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-48 text-muted-foreground text-sm gap-2">
                 <GlobeIcon size={32} className="opacity-30" />
-                No schools yet. Click "Add School" to get started.
+                Chưa có trường nào. Nhấn "Thêm trường" để bắt đầu.
               </div>
             ) : (
               <div className="space-y-3">
@@ -206,7 +206,7 @@ export default function SchoolsPage() {
                         </span>
                         {school.scholarship.available && (
                           <span className="text-xs bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-full">
-                            Scholarship
+                            Học bổng
                           </span>
                         )}
                       </div>
@@ -249,11 +249,11 @@ export default function SchoolsPage() {
       {deleteId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <div className="bg-background rounded-xl border shadow-lg p-6 w-80">
-            <p className="font-medium text-sm mb-1">Delete school?</p>
-            <p className="text-xs text-muted-foreground mb-4">This action cannot be undone.</p>
+            <p className="font-medium text-sm mb-1">Xoá trường?</p>
+            <p className="text-xs text-muted-foreground mb-4">Hành động này không thể hoàn tác.</p>
             <div className="flex gap-2 justify-end">
-              <button onClick={() => setDeleteId(null)} className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors">Cancel</button>
-              <button onClick={() => handleDelete(deleteId)} className="px-3 py-1.5 text-sm rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity">Delete</button>
+              <button onClick={() => setDeleteId(null)} className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors">Huỷ</button>
+              <button onClick={() => handleDelete(deleteId)} className="px-3 py-1.5 text-sm rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity">Xoá</button>
             </div>
           </div>
         </div>
@@ -263,45 +263,45 @@ export default function SchoolsPage() {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent className="sm:max-w-2xl flex flex-col gap-0 p-0">
           <SheetHeader className="px-6 py-4 border-b">
-            <SheetTitle>{editing ? "Edit School" : "Add School"}</SheetTitle>
+            <SheetTitle>{editing ? "Chỉnh sửa trường" : "Thêm trường"}</SheetTitle>
           </SheetHeader>
 
           <div className="flex-1 overflow-y-auto p-6">
             <Tabs defaultValue="basic">
               <TabsList className="mb-6">
-                <TabsTrigger value="basic"><BookOpenIcon size={13} className="mr-1" />Basic</TabsTrigger>
-                <TabsTrigger value="cost"><DollarSignIcon size={13} className="mr-1" />Cost</TabsTrigger>
+                <TabsTrigger value="basic"><BookOpenIcon size={13} className="mr-1" />Cơ bản</TabsTrigger>
+                <TabsTrigger value="cost"><DollarSignIcon size={13} className="mr-1" />Chi phí</TabsTrigger>
                 <TabsTrigger value="visa"><PlaneIcon size={13} className="mr-1" />Visa</TabsTrigger>
-                <TabsTrigger value="scholarship"><AwardIcon size={13} className="mr-1" />Scholarship</TabsTrigger>
+                <TabsTrigger value="scholarship"><AwardIcon size={13} className="mr-1" />Học bổng</TabsTrigger>
               </TabsList>
 
               <TabsContent value="basic" className="space-y-4 mt-0">
                 <div className="grid grid-cols-2 gap-4">
-                  <Field label="School Name *">
+                  <Field label="Tên trường *">
                     <input className={input} value={form.name} onChange={e => set("name", e.target.value)} placeholder="University of Melbourne" />
                   </Field>
-                  <Field label="Country *">
+                  <Field label="Quốc gia *">
                     <input className={input} value={form.country} onChange={e => set("country", e.target.value)} placeholder="Australia" />
                   </Field>
                 </div>
-                <Field label="Overview">
-                  <textarea className={textarea} rows={4} value={form.overview} onChange={e => set("overview", e.target.value)} placeholder="Brief description of the university..." />
+                <Field label="Mô tả">
+                  <textarea className={textarea} rows={4} value={form.overview} onChange={e => set("overview", e.target.value)} placeholder="Giới thiệu ngắn về trường..." />
                 </Field>
-                <Field label="Programs (comma-separated)">
+                <Field label="Chương trình (cách nhau bằng dấu phẩy)">
                   <input className={input} value={Array.isArray(form.programs) ? (form.programs as string[]).join(", ") : String(form.programs ?? "")} onChange={e => set("programs", e.target.value)} placeholder="Business, Engineering, Medicine" />
                 </Field>
-                <p className="text-xs font-medium text-muted-foreground pt-2">Entry Requirements</p>
+                <p className="text-xs font-medium text-muted-foreground pt-2">Yêu cầu đầu vào</p>
                 <div className="grid grid-cols-2 gap-4">
-                  <Field label="IELTS minimum">
+                  <Field label="IELTS tối thiểu">
                     <input className={input} type="number" step="0.5" value={form.requirements.ielts_min ?? ""} onChange={e => set("requirements.ielts_min", e.target.value ? Number(e.target.value) : undefined)} placeholder="6.5" />
                   </Field>
-                  <Field label="TOEFL minimum">
+                  <Field label="TOEFL tối thiểu">
                     <input className={input} type="number" value={form.requirements.toefl_min ?? ""} onChange={e => set("requirements.toefl_min", e.target.value ? Number(e.target.value) : undefined)} placeholder="79" />
                   </Field>
-                  <Field label="SAT minimum">
+                  <Field label="SAT tối thiểu">
                     <input className={input} type="number" value={form.requirements.sat_min ?? ""} onChange={e => set("requirements.sat_min", e.target.value ? Number(e.target.value) : undefined)} placeholder="1200" />
                   </Field>
-                  <Field label="GPA minimum">
+                  <Field label="GPA tối thiểu">
                     <input className={input} value={form.requirements.gpa_min ?? ""} onChange={e => set("requirements.gpa_min", e.target.value)} placeholder="7.0/10" />
                   </Field>
                 </div>
@@ -309,32 +309,32 @@ export default function SchoolsPage() {
 
               <TabsContent value="cost" className="space-y-4 mt-0">
                 <div className="grid grid-cols-2 gap-4">
-                  <Field label="Tuition (USD/year)">
+                  <Field label="Học phí (USD/năm)">
                     <input className={input} type="number" value={form.cost.tuition_usd_per_year ?? ""} onChange={e => set("cost.tuition_usd_per_year", e.target.value ? Number(e.target.value) : undefined)} placeholder="38000" />
                   </Field>
-                  <Field label="Living costs (USD/year)">
+                  <Field label="Chi phí sinh hoạt (USD/năm)">
                     <input className={input} type="number" value={form.cost.living_usd_per_year ?? ""} onChange={e => set("cost.living_usd_per_year", e.target.value ? Number(e.target.value) : undefined)} placeholder="18000" />
                   </Field>
                 </div>
-                <Field label="Notes">
-                  <textarea className={textarea} rows={4} value={form.cost.notes ?? ""} onChange={e => set("cost.notes", e.target.value)} placeholder="Additional cost details, payment schedules..." />
+                <Field label="Ghi chú">
+                  <textarea className={textarea} rows={4} value={form.cost.notes ?? ""} onChange={e => set("cost.notes", e.target.value)} placeholder="Chi tiết thêm về chi phí, lịch thanh toán..." />
                 </Field>
               </TabsContent>
 
               <TabsContent value="visa" className="space-y-4 mt-0">
                 <div className="grid grid-cols-2 gap-4">
-                  <Field label="Visa type">
+                  <Field label="Loại visa">
                     <input className={input} value={form.visa.type ?? ""} onChange={e => set("visa.type", e.target.value)} placeholder="Student Visa (Subclass 500)" />
                   </Field>
-                  <Field label="Processing time (days)">
+                  <Field label="Thời gian xử lý (ngày)">
                     <input className={input} type="number" value={form.visa.processing_days ?? ""} onChange={e => set("visa.processing_days", e.target.value ? Number(e.target.value) : undefined)} placeholder="30" />
                   </Field>
-                  <Field label="Approval rate">
+                  <Field label="Tỷ lệ phê duyệt">
                     <input className={input} value={form.visa.success_rate ?? ""} onChange={e => set("visa.success_rate", e.target.value)} placeholder="~95%" />
                   </Field>
                 </div>
-                <Field label="Notes">
-                  <textarea className={textarea} rows={4} value={form.visa.notes ?? ""} onChange={e => set("visa.notes", e.target.value)} placeholder="Required documents, tips..." />
+                <Field label="Ghi chú">
+                  <textarea className={textarea} rows={4} value={form.visa.notes ?? ""} onChange={e => set("visa.notes", e.target.value)} placeholder="Hồ sơ cần thiết, lưu ý..." />
                 </Field>
               </TabsContent>
 
@@ -347,15 +347,15 @@ export default function SchoolsPage() {
                   >
                     <span className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform ${form.scholarship.available ? "translate-x-4" : ""}`} />
                   </button>
-                  <span className="text-sm">{form.scholarship.available ? "Scholarship available" : "No scholarship"}</span>
+                  <span className="text-sm">{form.scholarship.available ? "Có học bổng" : "Không có học bổng"}</span>
                 </div>
                 {form.scholarship.available && (
                   <>
-                    <Field label="Amount / Value">
-                      <input className={input} value={form.scholarship.amount ?? ""} onChange={e => set("scholarship.amount", e.target.value)} placeholder="Up to $30,000/year" />
+                    <Field label="Giá trị">
+                      <input className={input} value={form.scholarship.amount ?? ""} onChange={e => set("scholarship.amount", e.target.value)} placeholder="Lên đến $30,000/năm" />
                     </Field>
-                    <Field label="Details">
-                      <textarea className={textarea} rows={5} value={form.scholarship.details ?? ""} onChange={e => set("scholarship.details", e.target.value)} placeholder="Scholarship name, eligibility criteria, how to apply..." />
+                    <Field label="Chi tiết">
+                      <textarea className={textarea} rows={5} value={form.scholarship.details ?? ""} onChange={e => set("scholarship.details", e.target.value)} placeholder="Tên học bổng, điều kiện, cách nộp hồ sơ..." />
                     </Field>
                   </>
                 )}
@@ -364,9 +364,9 @@ export default function SchoolsPage() {
           </div>
 
           <SheetFooter>
-            <button onClick={() => setOpen(false)} className="px-4 py-2 text-sm rounded-lg border hover:bg-muted transition-colors">Cancel</button>
+            <button onClick={() => setOpen(false)} className="px-4 py-2 text-sm rounded-lg border hover:bg-muted transition-colors">Huỷ</button>
             <button onClick={handleSave} disabled={saving || !form.name.trim()} className="px-4 py-2 text-sm rounded-lg bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40 transition-opacity">
-              {saving ? "Saving…" : editing ? "Save changes" : "Add school"}
+              {saving ? "Đang lưu…" : editing ? "Lưu thay đổi" : "Thêm trường"}
             </button>
           </SheetFooter>
         </SheetContent>

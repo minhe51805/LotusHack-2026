@@ -111,7 +111,7 @@ export default function CoursesPage() {
       <div className="shrink-0 border-b bg-background px-6 py-4 flex items-center justify-between">
         <div>
           <h1 className="text-base font-semibold">Courses</h1>
-          <p className="text-xs text-muted-foreground mt-0.5">Study-abroad prep courses offered by ETEST</p>
+          <p className="text-xs text-muted-foreground mt-0.5">Study-abroad prep courses</p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity">
           <PlusIcon size={14} /> Add Course

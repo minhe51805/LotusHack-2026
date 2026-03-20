@@ -8,8 +8,6 @@ import {
   MessageSquare,
   RefreshCw,
   GlobeIcon,
-  BookOpenIcon,
-  SparklesIcon,
   Bell,
   BellOff,
   X,
@@ -35,9 +33,9 @@ function formatTime(iso: string) {
   const d = new Date(iso);
   const now = new Date();
   const diffMin = Math.floor((now.getTime() - d.getTime()) / 60000);
-  if (diffMin < 60) return `${diffMin}m ago`;
+  if (diffMin < 60) return `${diffMin} phút trước`;
   const diffH = Math.floor(diffMin / 60);
-  if (diffH < 24) return `${diffH}h ago`;
+  if (diffH < 24) return `${diffH} giờ trước`;
   return d.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit" });
 }
 
@@ -75,7 +73,7 @@ export default function AdminLayout({
 
   // ── Load saved notification preference ───────────────────────────────────
   useEffect(() => {
-    const saved = localStorage.getItem("etest-admin-notify") === "true";
+    const saved = localStorage.getItem("admin-notify") === "true";
     setNotificationsOn(saved);
     notificationsRef.current = saved;
   }, []);
@@ -140,8 +138,8 @@ export default function AdminLayout({
           setSessions((prev) => [session, ...prev]);
           markLive(session.id);
           if (notificationsRef.current) {
-            addToast("New chat session started", "session");
-            fireNativeNotif("ETEST Admin", "New chat session started");
+            addToast("Có phiên chat mới", "session");
+            fireNativeNotif("Admin", "Có phiên chat mới");
           }
         }
       )
@@ -165,11 +163,11 @@ export default function AdminLayout({
           const hadLead = payload.old?.lead;
           const newLead = payload.new?.lead;
           if (!hadLead && newLead && notificationsRef.current) {
-            const name = newLead.full_name ?? "Unknown";
+            const name = newLead.full_name ?? "Không rõ";
             const exam = newLead.target_exam ? ` (${newLead.target_exam})` : "";
-            const msg = `New lead: ${name}${exam}`;
+            const msg = `Lead mới: ${name}${exam}`;
             addToast(msg, "lead");
-            fireNativeNotif("ETEST Admin – New Lead!", msg);
+            fireNativeNotif("Admin – Lead mới!", msg);
           }
 
           // Detect needs_support flip false → true
@@ -179,7 +177,7 @@ export default function AdminLayout({
             const name = payload.new?.lead?.full_name ?? "Khách hàng";
             const msg = `⚡ ${name} cần tư vấn chuyên sâu!`;
             addToast(msg, "support");
-            fireNativeNotif("INV – Hỗ trợ ngay!", msg);
+            fireNativeNotif("Hỗ trợ ngay!", msg);
           }
         }
       )
@@ -194,7 +192,7 @@ export default function AdminLayout({
   async function toggleNotifications() {
     if (notificationsOn) {
       setNotificationsOn(false);
-      localStorage.setItem("etest-admin-notify", "false");
+      localStorage.setItem("admin-notify", "false");
       return;
     }
 
@@ -207,8 +205,8 @@ export default function AdminLayout({
     }
 
     setNotificationsOn(true);
-    localStorage.setItem("etest-admin-notify", "true");
-    addToast("Notifications enabled", "session");
+    localStorage.setItem("admin-notify", "true");
+    addToast("Đã bật thông báo", "session");
   }
 
   const isSettings = pathname === "/admin/settings";
@@ -245,16 +243,16 @@ export default function AdminLayout({
         <div className="px-4 py-4 border-b border-gray-200 dark:border-zinc-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-              E
+              A
             </div>
             <span className="font-semibold text-sm text-gray-900 dark:text-white">
-              ETEST Admin
+              Admin
             </span>
           </div>
           <div className="flex items-center gap-1">
             <button
               onClick={toggleNotifications}
-              title={notificationsOn ? "Disable notifications" : "Enable notifications"}
+              title={notificationsOn ? "Tắt thông báo" : "Bật thông báo"}
               className={`p-1.5 rounded-md transition-colors ${
                 notificationsOn
                   ? "text-blue-600 bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-950/60"
@@ -266,7 +264,7 @@ export default function AdminLayout({
             <button
               onClick={fetchSessions}
               className="p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
-              title="Refresh"
+              title="Làm mới"
             >
               <RefreshCw size={14} />
             </button>
@@ -276,7 +274,7 @@ export default function AdminLayout({
         {/* Sessions label */}
         <div className="px-4 pt-4 pb-2 flex items-center justify-between">
           <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider">
-            Sessions ({sessions.length})
+            Phiên ({sessions.length})
           </p>
           {liveSessions.size > 0 && (
             <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
@@ -284,7 +282,7 @@ export default function AdminLayout({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              {liveSessions.size} live
+              {liveSessions.size} trực tiếp
             </span>
           )}
         </div>
@@ -293,11 +291,11 @@ export default function AdminLayout({
         <div className="flex-1 overflow-y-auto">
           {loading ? (
             <div className="px-4 py-8 text-center text-sm text-gray-400 dark:text-zinc-500">
-              Loading...
+              Đang tải...
             </div>
           ) : sessions.length === 0 ? (
             <div className="px-4 py-8 text-center text-sm text-gray-400 dark:text-zinc-500">
-              No sessions yet
+              Chưa có phiên nào
             </div>
           ) : (
             [...sessions]
@@ -356,23 +354,23 @@ export default function AdminLayout({
                       {formatTime(s.updatedAt)}
                     </span>
                   </div>
-                  <div className="mt-1 flex items-center gap-2 ml-4">
+                  <div className="mt-1 flex items-center gap-1.5 flex-wrap">
                     {exam && (
-                      <span className="text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded">
+                      <span className="shrink-0 text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded">
                         {exam}
                       </span>
                     )}
-                    <span className="text-xs text-gray-400 dark:text-zinc-500">
-                      {msgCount} msg{msgCount !== 1 ? "s" : ""}
+                    <span className="text-xs text-gray-400 dark:text-zinc-500 shrink-0">
+                      {msgCount} tin nhắn
                     </span>
                     {s.lead?.full_name && (
-                      <span className="text-xs text-green-600 dark:text-green-400">
-                        ● Lead
+                      <span className="shrink-0 text-xs text-green-600 dark:text-green-400">
+                        ● Khách hàng
                       </span>
                     )}
                     {s.needsSupport && (
-                      <span className="text-xs bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 px-1.5 py-0.5 rounded font-semibold animate-pulse">
-                        ⚡ Support
+                      <span className="shrink-0 text-xs bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 px-1.5 py-0.5 rounded font-semibold animate-pulse">
+                        ⚡ Hỗ trợ
                       </span>
                     )}
                   </div>
@@ -385,12 +383,10 @@ export default function AdminLayout({
         {/* Content nav */}
         <div className="border-t border-gray-200 dark:border-zinc-800 px-3 pt-3 pb-1">
           <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider px-2 mb-2">
-            Content
+            Nội dung
           </p>
           {[
-            { href: "/admin/schools", icon: GlobeIcon, label: "Schools" },
-            { href: "/admin/courses", icon: BookOpenIcon, label: "Courses" },
-            { href: "/admin/services", icon: SparklesIcon, label: "Services" },
+            { href: "/admin/schools", icon: GlobeIcon, label: "Trường học" },
           ].map(({ href, icon: Icon, label }) => {
             const active = pathname === href || pathname.startsWith(href + "/");
             return (
@@ -421,7 +417,7 @@ export default function AdminLayout({
             }`}
           >
             <Settings size={15} />
-            Settings & Prompt
+            Cài đặt & Prompt
           </Link>
           <Link
             href="/"
@@ -429,7 +425,7 @@ export default function AdminLayout({
             target="_blank"
           >
             <MessageSquare size={15} />
-            Open Chat ↗
+            Mở Chat ↗
           </Link>
         </div>
       </aside>

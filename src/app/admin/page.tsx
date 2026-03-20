@@ -8,10 +8,10 @@ export default function AdminPage() {
           <MessageSquare size={24} className="text-gray-400 dark:text-zinc-500" />
         </div>
         <p className="text-sm font-medium text-gray-500 dark:text-zinc-400">
-          Select a session from the sidebar
+          Chọn một phiên từ thanh bên
         </p>
         <p className="mt-1 text-xs text-gray-400 dark:text-zinc-500">
-          or open the chat to start a new one
+          hoặc mở chat để bắt đầu phiên mới
         </p>
       </div>
     </div>

@@ -101,7 +101,7 @@ export default function AdminSchoolDirectory({
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="text-sm font-semibold">ETEST Directory Filter</h2>
+              <h2 className="text-sm font-semibold">School Directory Filter</h2>
               <p className="text-xs text-muted-foreground mt-1">
                 Filter theo Nước, Tỉnh bang/Thành phố, bậc học, học phí, học bổng,
                 ngành học và điều kiện xét tuyển.

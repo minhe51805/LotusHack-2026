@@ -1,0 +1,4236 @@
+{
+  "meta": {
+    "total": 132,
+    "source": "etest-school-directory",
+    "note": "gpa_required.scale=4.0 means US 4.0 scale; scale=10.0 means Vietnamese 10-point scale"
+  },
+  "schools": [
+    {
+      "id": "dai-hoc-houston-university-of-houston-du-hoc-etest",
+      "name": "Trường Đại học Houston",
+      "country": "USA",
+      "location": "Texas/ thành phố Houston",
+      "levels": [
+        "Đại học",
+        "Sau đại học",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "11.888 - 27.926$",
+        "min_usd": 11888,
+        "max_usd": 27926
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 79.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 2030.0
+        }
+      ],
+      "website": "https://www.uh.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-houston-university-of-houston-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/09/truong-dai-hoc-houston.jpg",
+      "excerpt": "Trường Đại học Houston – ngôi trường công lập danh tiếng của bang Texas, nơi hội tụ những sinh viên tài năng trên toàn thế giới. Không chỉ nổi bật với chương trình đào tạo chất lượng cao, học phí hợp lý và nhiều học bổng giá trị, UH còn mang đến môi trường học tập […]"
+    },
+    {
+      "id": "dai-hoc-cornell",
+      "name": "Đại học Cornell",
+      "country": "USA",
+      "location": "Ithaca/ New York",
+      "levels": [],
+      "tuition": {
+        "raw": "52.000 - 55.000$",
+        "min_usd": 52000,
+        "max_usd": 55000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Nông nghiệp và Khoa học đời sống",
+        "Kiến trúc, Nghệ thuật và Quy hoạch",
+        "Nghệ thuật và Khoa học",
+        "Kinh doanh",
+        "Kỹ thuật",
+        "Quản trị Khách sạn",
+        "Pháp luật",
+        "Y khoa",
+        "Dược"
+      ],
+      "gpa_required": {
+        "value": 7.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        }
+      ],
+      "website": "https://www.cornell.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-cornell/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-cornell-2.jpeg",
+      "excerpt": "Đại học Cornell – một trong những trường đại học hàng đầu thế giới được biết đến với chất lượng đào tạo, cơ sở vật chất hiện đại và cộng đồng sinh viên đa dạng. Tọa lạc tại Ithaca, New York, Cornell không chỉ là cái nôi đào tạo nhân tài mà còn đóng góp to […]"
+    },
+    {
+      "id": "vien-cong-nghe-california",
+      "name": "Viện Công nghệ California (Caltech)",
+      "country": "USA",
+      "location": "Pasadena/ California",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "60.864 - 74.763$",
+        "min_usd": 60864,
+        "max_usd": 74763
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.caltech.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/vien-cong-nghe-california/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/vien-cong-nghe-california-caltech.png",
+      "excerpt": "Viện Công nghệ California (Caltech) là một trong những trường Đại học danh giá nhất thế giới, nổi tiếng với các chương trình nghiên cứu xuất sắc trong lĩnh vực khoa học và kỹ thuật. Với tỷ lệ chấp nhận khắt khe, Caltech thu hút những sinh viên ưu tú nhất từ khắp nơi trên thế giới. […]"
+    },
+    {
+      "id": "dai-hoc-nam-uc-university-of-south-australia",
+      "name": "Đại học Nam Úc – University of South Australia (UniSA)",
+      "country": "Australia",
+      "location": "Nam Úc/ Adelaide",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "25.300 - 32.500$",
+        "min_usd": 25300,
+        "max_usd": 32500
+      },
+      "scholarship_available": false,
+      "fields": [
+        "63 khóa học về Marketing, Quản lý Nguồn Nhân lực, Chiến lược Tiếp thị, Luật Doanh nghiệp",
+        "Thời gian học: 3-4 năm (toàn thời gian, bán thời gian, trực tuyến)",
+        "46 khóa học liên quan đến ngành Y",
+        "Đặc biệt, ngành Y tá – Điều dưỡng xếp hạng Top 100 thế giới",
+        "Thực hành lên đến 1.000 giờ tại các phòng khám và bệnh viện trong trường",
+        "Thời gian học: 6 tháng – 5 năm",
+        "17 khóa học về Khoa học Dữ liệu, Thiết kế game, Mạng Máy tính",
+        "10 khóa học được giảng dạy trực tuyến",
+        "Thời gian học: 6 tháng – 4 năm",
+        "8 khóa học liên quan đến ngành Du lịch, Nhà hàng – Khách sạn",
+        "Thời gian học: 1,5 – 5 năm",
+        "11 khóa học MBA chất lượng, xếp hạng Top 10 tại Úc",
+        "Yêu cầu có 3 năm kinh nghiệm và bằng Cử nhân cùng ngành tương ứng"
+      ],
+      "gpa_required": {
+        "value": 6.5,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.0
+        }
+      ],
+      "website": "https://www.unisa.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-nam-uc-university-of-south-australia/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-nam-uc-unisa.jpg",
+      "excerpt": "Đại học Nam Úc (University of South Australia) là điểm đến lý tưởng cho những ai mơ ước học tập trong môi trường hiện đại và năng động bậc nhất thế giới. Với mức học phí hợp lý, chương trình học linh hoạt cùng hàng loạt hỗ trợ đặc biệt dành riêng cho sinh viên quốc tế, […]"
+    },
+    {
+      "id": "dai-hoc-quoc-te-florida-florida-international-university",
+      "name": "Đại học Quốc tế Florida FIU)",
+      "country": "USA",
+      "location": "University Park/ Miami/ Florida",
+      "levels": [
+        "Cao đẳng",
+        "Sau đại học",
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "19.878 - 39.676$",
+        "min_usd": 19878,
+        "max_usd": 39676
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kế toán",
+        "Phát triển nguồn nhân lực",
+        "Nhân chủng học/Xã hội học",
+        "Kiến trúc",
+        "Thiết kế đồ hoạ",
+        "Hoá sinh",
+        "Kỹ thuật Y sinh",
+        "Quản trị kinh doanh",
+        "Kỹ thuật xây dựng",
+        "Kỹ thuật máy tính"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 68.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1060.0
+        }
+      ],
+      "website": "https://www.fiu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-quoc-te-florida-florida-international-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-quoc-te-florida.jpeg",
+      "excerpt": "Đại học Quốc tế Florida (FIU) là một trường Đại học nghiên cứu công lập tọa lạc tại Miami, Florida, Hoa Kỳ. Hiện nay, FIU là trường Đại học lớn nhất ở Nam Florida, lớn thứ hai ở Florida và lớn thứ tư ở Hoa Kỳ về số lượng tuyển sinh. Qua bài viết dưới đây, Du Học […]"
+    },
+    {
+      "id": "hoc-vien-shms-thuy-si",
+      "name": "SHMS Thụy Sĩ",
+      "country": "Switzerland",
+      "location": "Basel",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "31.800$",
+        "min_usd": 31800,
+        "max_usd": 31800
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.shms.com/en/",
+      "detail_url": "https://duhoc-etest.edu.vn/hoc-vien-shms-thuy-si/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/04/shms.jpg",
+      "excerpt": "SHMS (Swiss Hotel Management School) là một trong những trường quản trị khách sạn danh tiếng nhất Thụy Sĩ, nơi đào tạo nên các chuyên gia hàng đầu trong lĩnh vực du lịch, khách sạn và sự kiện. Với chương trình giảng dạy chất lượng cao, SHMS Thụy Sĩ mang đến cho sinh viên cơ hội học tập […]"
+    },
+    {
+      "id": "dai-hoc-quoc-gia-uc-australian-national-university-du-hoc-etest",
+      "name": "Đại học Quốc Gia Úc (ANU)",
+      "country": "Australia",
+      "location": "Canberra/ Thủ đô Úc",
+      "levels": [
+        "Đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "35.000 - 45.000$",
+        "min_usd": 35000,
+        "max_usd": 45000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Arts, Society & Culture (Nghệ thuật, Xã hội & Văn hóa)",
+        "Business & Commerce (Kinh doanh & Thương mại)",
+        "Engineering, Computing & Cybernetics (Kỹ thuật, Máy tính & Điều khiển học)",
+        "Health & Medical Studies (Nghiên cứu Y tế & Sức khỏe)",
+        "Law & Legal Studies (Nghiên cứu Luật & Pháp lý)",
+        "Multidisciplinary (Đa ngành)",
+        "Natural, Physical & Environmental Sciences (Khoa học Tự nhiên, Vật lý & Môi trường)"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.anu.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-quoc-gia-uc-australian-national-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/08/dai-hoc-quoc-gia-uc.jpg",
+      "excerpt": "Du học tại Đại học Quốc gia Úc (ANU) không chỉ là cơ hội tiếp cận nền giáo dục chất lượng cao mà còn là bước khởi đầu cho một tương lai nghề nghiệp rộng mở. Với vị trí tọa lạc tại thủ đô Canberra, ANU tự hào là một trong những trường đại học hàng đầu thế […]"
+    },
+    {
+      "id": "swinburne-university-of-technology-etest",
+      "name": "Trường Đại học Swinburne Úc – Học phí, chương trình học 2026",
+      "country": "Australia",
+      "location": "Victoria/ Melbourne",
+      "levels": [
+        "Dự bị đại học",
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "28.420$",
+        "min_usd": 28420,
+        "max_usd": 28420
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Chương trình Tiếng Anh: Dành cho học sinh chưa đạt yêu cầu về tiếng Anh",
+        "Chương trình Dự bị Đại học: Dành cho học sinh lớp 11 trở lên muốn theo học hệ Đại học tại trường",
+        "Chương trình Đại học: Dành cho học sinh tốt nghiệp cấp 3 trở lên",
+        "Chương trình Sau Đại học: Dành cho sinh viên đã tốt nghiệp chương trình Đại học"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.swinburne.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/swinburne-university-of-technology-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/04/dai-hoc-swinburne-uc.jpg",
+      "excerpt": "Du học Úc luôn là lựa chọn hấp dẫn của nhiều sinh viên quốc tế, đặc biệt là những bạn đang tìm kiếm môi trường học tập chất lượng và cơ hội nghề nghiệp tốt. Trong đó, Đại học Swinburne Úc (Swinburne University of Technology) luôn nằm trong danh sách đề cử các trường đại học tốt […]"
+    },
+    {
+      "id": "dai-hoc-tay-uc-university-of-western-australia-du-hoc-etest",
+      "name": "Trường Đại học Tây Úc (UWA) – Chương trình đào tạo, chi phí",
+      "country": "Australia",
+      "location": "Tây Úc (Western Australia), Crawley",
+      "levels": [
+        "Đại học",
+        "Tiến sĩ",
+        "Cử nhân",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "40.000$",
+        "min_usd": 40000,
+        "max_usd": 40000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.uwa.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-tay-uc-university-of-western-australia-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/09/dai-hoc-tay-uc.jpg",
+      "excerpt": "Đại học Tây Úc (UWA) là một trong những trường đại học hàng đầu tại Úc. Với danh tiếng vượt trội trong các lĩnh vực nghiên cứu và giảng dạy, UWA thu hút hàng ngàn du học sinh từ khắp nơi trên thế giới. Theo dõi bài viết sau đây của Du học ETEST để tìm hiểu lý do […]"
+    },
+    {
+      "id": "dai-hoc-james-cook-uc",
+      "name": "Đại học James Cook Úc – Chương trình đào tạo, học bổng 2026",
+      "country": "Australia",
+      "location": "1 James Cook Drive, Townsville, QLD 4811",
+      "levels": [
+        "Đại học",
+        "Tiến sĩ",
+        "Thạc sĩ",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "28.000$",
+        "min_usd": 28000,
+        "max_usd": 28000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.jcu.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-james-cook-uc/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-james-cook-uc.jpg",
+      "excerpt": "Đại học James Cook Úc là trường công lập hàng đầu, xếp hạng trong top 2% các trường đại học toàn cầu theo Bảng xếp hạng các trường đại học thế giới 2023 và Bảng xếp hạng học thuật Thượng Hải 2022. Trường nổi bật với chất lượng đào tạo xuất sắc và môi trường […]"
+    },
+    {
+      "id": "dai-hoc-lincoln",
+      "name": "Đại học Lincoln",
+      "country": "Vương quốc Anh",
+      "location": "Lincoln",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "16.600 - 20.100$",
+        "min_usd": 16600,
+        "max_usd": 20100
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Trường Nghệ thuật",
+        "Trường Khoa học",
+        "Trường Khoa học Xã hội",
+        "Trường Kinh doanh Quốc tế Lincoln"
+      ],
+      "gpa_required": {
+        "value": 6.5,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.0
+        }
+      ],
+      "website": "https://www.lincoln.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-lincoln/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-lincoln.jpg",
+      "excerpt": "Trong số các trường Đại học tại Anh, Đại học Lincoln là một lựa chọn hoàn hảo cho sinh viên quốc tế, đặc biệt là những người tìm kiếm một môi trường học tập năng động và chi phí phải chăng. Qua bài viết sau, hãy cùng Du Học ETEST khám phá những điểm đặc biệt của trường, từ chương […]"
+    },
+    {
+      "id": "dai-hoc-wollongong",
+      "name": "Đại học Wollongong",
+      "country": "Australia",
+      "location": "New South Wales/ Wollongong",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "16.848 - 40.272$",
+        "min_usd": 16848,
+        "max_usd": 40272
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 7.25,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        }
+      ],
+      "website": "https://www.uow.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-wollongong/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-wollongong.jpg",
+      "excerpt": "Đại học Wollongong (University of Wollongong, UOW) là trường Đại học nghiên cứu công lập tọa lạc tại thành phố biển Wollongong, New South Wales, Úc, cách Sydney khoảng 80 km về phía nam. Tính đến năm 2023, trường có hơn 33,000 sinh viên đăng ký, trong đó có hơn 12,300 sinh viên quốc tế. Qua […]"
+    },
+    {
+      "id": "dai-hoc-illinois-chicago-university-of-illinois-chicago-du-hoc-etest",
+      "name": "Đại học Illinois tại Chicago",
+      "country": "USA",
+      "location": "Illinois/ Chicago",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "18.000 - 33.000$",
+        "min_usd": 18000,
+        "max_usd": 33000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.uic.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-illinois-chicago-university-of-illinois-chicago-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-illinois-tai-chicago.jpg",
+      "excerpt": "Đại học Illinois tại Chicago (University of Illinois at Chicago – UIC) tọa lạc ngay trung tâm thành phố Chicago sôi động, là ngôi trường nghiên cứu công lập hàng đầu với hơn 33.000 sinh viên. Đại học Illinois Chicago là một phần không thể thiếu trong hệ thống giáo dục, công nghệ và văn hóa […]"
+    },
+    {
+      "id": "du-hoc-canada-university-of-british-columbia-ngoi-truong-top-dau-trong-nuoc-va-the-gioi",
+      "name": "Đại học British Columbia",
+      "country": "Canada",
+      "location": "British Columbia/ Vancouver, Kelowna",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "42.000 - 58.000$",
+        "min_usd": 42000,
+        "max_usd": 58000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa học Sức khỏe: Y khoa, Dược, Điều dưỡng, Nha khoa, Y tế công cộng",
+        "Nghệ thuật & Thiết kế: Kiến trúc, Nghệ thuật thị giác, Âm nhạc, Sân khấu, Phim ảnh, Văn học"
+      ],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        }
+      ],
+      "website": "https://www.ubc.ca/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-canada-university-of-british-columbia-ngoi-truong-top-dau-trong-nuoc-va-the-gioi/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/06/dai-hoc-british-columbia.jpg",
+      "excerpt": "Đại học British Columbia: Thông tin chi phí, học bổng 2025 Khám phá Đại học British Columbia Canada, nơi đào tạo uy tín toàn cầu. Thông tin chi phí và học bổng 2025 được tổng hợp đầy đủ. Đại học British Columbia (UBC) – biểu tượng giáo dục hàng đầu của Canada – luôn nằm […]"
+    },
+    {
+      "id": "dai-hoc-toronto-university-of-toronto-du-hoc-etest",
+      "name": "Đại học Toronto",
+      "country": "Canada",
+      "location": "Ontario/ Toronto",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "63.570$",
+        "min_usd": 63570,
+        "max_usd": 63570
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.utoronto.ca",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-toronto-university-of-toronto-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/09/dai-hoc-toronto.jpg",
+      "excerpt": "Nếu bạn đang tìm kiếm một ngôi trường hội tụ cả chất lượng học thuật hàng đầu và môi trường quốc tế năng động, Đại học Toronto chắc chắn là cái tên không thể bỏ qua. Nằm giữa trung tâm tài chính – văn hóa của Canada, ngôi trường này luôn nằm trong top đầu […]"
+    },
+    {
+      "id": "dai-hoc-alberta-university-of-alberta-du-hoc-etest",
+      "name": "Đại học Alberta",
+      "country": "Canada",
+      "location": "Alberta / Edmonton",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "31.000 - 36.000$",
+        "min_usd": 31000,
+        "max_usd": 36000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 83.0
+        }
+      ],
+      "website": "https://www.ualberta.ca/en",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-alberta-university-of-alberta-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/09/dai-hoc-alberta-canada.jpg",
+      "excerpt": "Du học tại Đại học Alberta Canada là ước mơ của nhiều sinh viên quốc tế nhờ chất lượng đào tạo xuất sắc, cơ hội nghiên cứu rộng mở và chính sách học bổng hấp dẫn. Năm 2025, trường tiếp tục nằm trong Top 5 đại học hàng đầu Canada với hàng trăm chương trình […]"
+    },
+    {
+      "id": "dai-hoc-northwestern",
+      "name": "Đại học Northwestern",
+      "country": "USA",
+      "location": "Illinois/ Evanston",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "68.322$",
+        "min_usd": 68322,
+        "max_usd": 68322
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.northwestern.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-northwestern/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-northwestern.jpg",
+      "excerpt": "Đại học Northwestern là một trong những trường Đại học tư thục danh tiếng hàng đầu tại Hoa Kỳ, nằm tại Evanston, bang Illinois, cách trung tâm Chicago chỉ khoảng 20 km. Trường có khuôn viên rộng 231 mẫu Anh nằm bên bờ hồ Michigan và tổng số sinh viên Đại học là 8,846 (mùa […]"
+    },
+    {
+      "id": "hoc-vien-cesar-ritz-college",
+      "name": "Học viện César Ritz College",
+      "country": "Switzerland",
+      "location": "Valais/ Brig-Glis",
+      "levels": [
+        "Cử nhân",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "61.900 - 194.000$",
+        "min_usd": 61900,
+        "max_usd": 194000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.cesarritzcolleges.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/hoc-vien-cesar-ritz-college/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/07/hoc-vien-Cesar-Ritz-College-1.jpeg",
+      "excerpt": "Học viện César Ritz College – ngôi trường danh giá tại Thụy Sĩ là điểm đến lý tưởng dành cho học sinh, sinh viên và những ai mong muốn phát triển sự nghiệp trong lĩnh vực quản trị khách sạn, du lịch. Với chương trình học chuẩn quốc tế, bằng cấp liên kết cùng các trường […]"
+    },
+    {
+      "id": "truong-quan-ly-khach-san-va-quan-tri-kinh-doanh-bhms",
+      "name": "Trường Quản lý Khách sạn và Quản trị Kinh doanh BHMS – Học tại Thụy Sĩ chuẩn quốc tế",
+      "country": "Switzerland",
+      "location": "Lucerne (có campus mới tại Zurich từ 2025)",
+      "levels": [
+        "Cử nhân",
+        "Thạc sĩ",
+        "Diploma",
+        "MBA"
+      ],
+      "tuition": {
+        "raw": "20.000 - 41.500$",
+        "min_usd": 20000,
+        "max_usd": 41500
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Quản lý Khách sạn & Nhà hàng Quốc tế",
+        "Quản trị Kinh doanh Toàn cầu",
+        "Nghệ thuật Ẩm thực & Làm bánh",
+        "Digital Marketing & Hospitality Innovation",
+        "Doanh nhân, Tài chính và Quản trị Dự án"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.0
+        }
+      ],
+      "website": "https://www.bhms.ch/",
+      "detail_url": "https://duhoc-etest.edu.vn/truong-quan-ly-khach-san-va-quan-tri-kinh-doanh-bhms/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/07/Truong-quan-ly-khach-san-va-quan-tri-kinh-doanh-BHMS-1.jpeg",
+      "excerpt": "Trường Quản lý khách sạn và quản trị kinh doanh BHMS là một trong những trường hàng đầu châu Âu về khách sạn, nhà hàng và kinh doanh. Với chương trình tiếng Anh kết hợp thực tập hưởng lương, BHMS giúp sinh viên cạnh tranh vượt trội trên thị trường quốc tế. Tọa lạc tại Lucerne, […]"
+    },
+    {
+      "id": "university-of-abertay-dundee",
+      "name": "University of Abertay Dundee",
+      "country": "Vương quốc Anh",
+      "location": "Dundee/ vùng Đông Scotland",
+      "levels": [
+        "Đại học",
+        "Sau đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "14.589 - 15.000$",
+        "min_usd": 14589,
+        "max_usd": 15000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.abertay.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/university-of-abertay-dundee/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/07/University-of-Abertay-Dundee-1.jpg",
+      "excerpt": "University of Abertay Dundee – ngôi trường đại học danh tiếng tại Scotland, đang ngày càng thu hút sự quan tâm từ cộng đồng du học sinh quốc tế nhờ vào chương trình đào tạo hiện đại, chi phí hợp lý và môi trường học tập sáng tạo. Nếu bạn là học sinh, sinh viên đang […]"
+    },
+    {
+      "id": "dai-hoc-kent",
+      "name": "Đại học Kent",
+      "country": "Vương quốc Anh",
+      "location": "Canterbury và Medway/ miền Đông Nam nước Anh",
+      "levels": [
+        "Đại học",
+        "Thạc sĩ",
+        "Tiến sĩ",
+        "Sau đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "15.000 - 21.000$",
+        "min_usd": 15000,
+        "max_usd": 21000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 90.0
+        }
+      ],
+      "website": "https://www.kent.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-kent/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/07/dai-hoc-ken-1.jpg",
+      "excerpt": "Đại học Kent là một trong những trường đại học danh tiếng tại Anh Quốc, được đánh giá cao về chất lượng đào tạo, môi trường học tập quốc tế và cơ hội nghề nghiệp sau tốt nghiệp. Đại học Kent không chỉ nổi bật bởi chất lượng giảng dạy hàng đầu mà còn bởi môi trường […]"
+    },
+    {
+      "id": "dai-hoc-liverpool",
+      "name": "Đại học Liverpool",
+      "country": "Vương quốc Anh",
+      "location": "Liverpool, vùng Tây Bắc nước Anh",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "8.333 - 39.000$",
+        "min_usd": 8333,
+        "max_usd": 39000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 6.5,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 4.5
+        }
+      ],
+      "website": "https://www.liverpool.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-liverpool/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/07/dai-hoc-liverpool-1.jpg",
+      "excerpt": "Đại học Liverpool sở hữu bề dày lịch sử hơn 140 năm cùng vị thế vững chắc trong nhóm các trường đại học hàng đầu tại Anh. Với hệ thống đào tạo bài bản, môi trường học thuật năng động và cơ hội phát triển toàn cầu, ngôi trường này đang trở thành điểm đến lý tưởng […]"
+    },
+    {
+      "id": "dai-hoc-durham",
+      "name": "Đại học Durham",
+      "country": "Vương quốc Anh",
+      "location": "Durham/ Đông Bắc nước Anh",
+      "levels": [
+        "Đại học",
+        "Sau đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "27.500 - 33.250$",
+        "min_usd": 27500,
+        "max_usd": 33250
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 11.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.5
+        }
+      ],
+      "website": "https://www.dur.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-durham/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/07/dai-hoc-durham-1.jpg",
+      "excerpt": "Đại học Durham là một trong những biểu tượng giáo dục hàng đầu tại Vương quốc Anh, nổi bật với chất lượng đào tạo xuất sắc, môi trường học thuật chuẩn quốc tế và cơ hội phát triển sự nghiệp toàn cầu. Trường luôn nằm trong top 10 đại học uy tín nhất tại Anh, thu hút […]"
+    },
+    {
+      "id": "dai-hoc-exeter",
+      "name": "Đại học Exeter",
+      "country": "Vương quốc Anh",
+      "location": "Exeter/ Devon",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "18.000 - 25.000$",
+        "min_usd": 18000,
+        "max_usd": 25000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 7.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        }
+      ],
+      "website": "https://www.exeter.ac.uk",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-exeter/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/06/dai-hoc-exeter.jpg",
+      "excerpt": "Đại học Exeter là trường đại học nghiên cứu công lập uy tín, thành lập từ năm 1955 tại thành phố Exeter xinh đẹp, thuộc vùng Tây Nam nước Anh. Trường hiện chào đón hơn 30.000 sinh viên đến từ hơn 130 quốc gia, với đa dạng chương trình đào tạo chất lượng cao ở cả […]"
+    },
+    {
+      "id": "university-of-central-lancashire",
+      "name": "University of Central Lancashire",
+      "country": "Vương quốc Anh",
+      "location": "Preston/ Lancashire",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "17.000$",
+        "min_usd": 17000,
+        "max_usd": 17000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kỹ thuật và Công nghệ : Các ngành như Kỹ thuật Cơ khí, Kỹ thuật Máy tính, Tự động hóa và Robot"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.uclan.ac.uk",
+      "detail_url": "https://duhoc-etest.edu.vn/university-of-central-lancashire/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/06/university-of-central-lancashire.jpg",
+      "excerpt": "University of Central Lancashire (UCLan) là trường Đại học công lập danh tiếng tọa lạc tại thành phố Preston, vùng Lancashire, Vương quốc Anh. Được thành lập từ năm 1828, UCLan hiện là nơi học tập của hơn 38.000 sinh viên đến từ hơn 100 quốc gia, với thế mạnh đào tạo trải rộng ở nhiều […]"
+    },
+    {
+      "id": "glasgow-caledonian-university",
+      "name": "Glasgow Caledonian University",
+      "country": "Vương quốc Anh",
+      "location": "Glasgow/ Scotland",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "16.200$",
+        "min_usd": 16200,
+        "max_usd": 16200
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Trường Kinh doanh và Môi trường Glasgow (Glasgow School for Business and Society)",
+        "Trường Khoa học Sức khỏe và Đời sống (School of Health and Life Sciences)",
+        "Kỹ thuật Điện & Điện tử (M.Sc.)",
+        "Kỹ thuật Cơ khí (M.Sc.)",
+        "Công nghệ Dữ liệu lớn (Big Data Technologies – M.Sc.)",
+        "Thực hành Chuyên nghiệp Ứng dụng MBA",
+        "Ngân hàng Quốc tế, Tài chính và Quản lý Rủi ro (M.Sc.)"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        }
+      ],
+      "website": "https://www.gcu.ac.uk",
+      "detail_url": "https://duhoc-etest.edu.vn/glasgow-caledonian-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/06/glasgow-caledonian-university.jpg",
+      "excerpt": "Glasgow Caledonian University (GCU) là trường Đại học hiện đại và nổi bật nhất tại Scotland, tọa lạc ngay trung tâm thành phố Glasgow. Hiện nay, GCU có hơn 20.000 sinh viên đang theo học, trong đó có khoảng 3.000 sinh viên quốc tế đến từ hơn 100 quốc gia khác nhau. Trong bài viết dưới […]"
+    },
+    {
+      "id": "dai-hoc-bolton",
+      "name": "Đại học Bolton",
+      "country": "Vương quốc Anh",
+      "location": "Bolton/ Greater Manchester",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "15.950$",
+        "min_usd": 15950,
+        "max_usd": 15950
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kinh doanh và Quản lý",
+        "Kỹ thuật và Công nghệ",
+        "Khoa học Máy tính",
+        "Nghệ thuật Sáng tạo",
+        "Y tế và Chăm sóc Xã hội",
+        "Giáo dục và Đào tạo Giáo viên",
+        "Luật",
+        "Tâm lý học",
+        "Khoa học Thể thao",
+        "Cử nhân Khoa học (B.Sc) Quản lý Kinh doanh – chuyên ngành Tài chính",
+        "Cử nhân Luật (LLB)",
+        "Cử nhân Nghệ thuật (B.A) ngành Kế toán",
+        "Thạc sĩ Khoa học (M.Sc) Kế toán và Quản lý Tài chính",
+        "Cử nhân Khoa học (B.Sc) Sinh học Y học (Medical Biology)",
+        "Cử nhân Nghệ thuật (B.A) Hoạt hình và Minh họa (Animation and Illustration)",
+        "Khóa đào tạo giáo viên (PGCE)",
+        "Khóa học phát triển chuyên môn liên tục (CPD)",
+        "Các khóa học ngắn hạn và chứng chỉ nghề nghiệp"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.bolton.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-bolton/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/06/dai-hoc-bolton.jpg",
+      "excerpt": "Đại học Bolton là trường Đại học công lập nằm tại thành phố Bolton, vùng Greater Manchester, Vương quốc Anh. Trường nổi bật với chất lượng giảng dạy thực tiễn, cơ sở vật chất hiện đại, thu hút hơn 11.000 sinh viên tế đến từ hơn 70 quốc gia. Qua bài viết dưới đây, Du Học ETEST sẽ […]"
+    },
+    {
+      "id": "keele-university",
+      "name": "Đại học Keele",
+      "country": "Vương quốc Anh",
+      "location": "Staffordshire",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "15.500 - 25.000$",
+        "min_usd": 15500,
+        "max_usd": 25000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.keele.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/keele-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/06/keele-university.jpg",
+      "excerpt": "Nếu bạn đang ấp ủ giấc mơ du học tại Anh thì Đại học Keele chắc chắn là cái tên không thể bỏ qua! Nằm ở vùng Staffordshire xinh đẹp, ngôi trường nổi bật bởi môi trường học tập thân thiện, các khóa học đa dạng và chính sách hỗ trợ tài chính hấp dẫn cho sinh […]"
+    },
+    {
+      "id": "dai-hoc-leeds",
+      "name": "Đại học Leeds",
+      "country": "Vương quốc Anh",
+      "location": "Leeds/ England",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "18.000 - 25.000$",
+        "min_usd": 18000,
+        "max_usd": 25000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Arts, Humanities and Cultures",
+        "Biological Sciences",
+        "Business",
+        "Education, Social Science and Law",
+        "Engineering",
+        "Environment",
+        "Medicine and Health",
+        "Mathematics and Physical Sciences"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.leeds.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-leeds/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/06/dai-hoc-leeds.jpg",
+      "excerpt": "Đại học Leeds là một trong những trường Đại học hàng đầu tại Vương quốc Anh, nổi tiếng với chất lượng giáo dục và nghiên cứu xuất sắc. Trường được thành lập vào năm 1904 và hiện đang thu hút hàng nghìn sinh viên từ khắp nơi trên thế giới. Trong bài viết dưới đây, Du Học […]"
+    },
+    {
+      "id": "canterbury-christ-church-university",
+      "name": "Canterbury Christ Church University",
+      "country": "Vương quốc Anh",
+      "location": "Kent/ Canterbury",
+      "levels": [],
+      "tuition": {
+        "raw": "17.800$",
+        "min_usd": 17800,
+        "max_usd": 17800
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa Nghệ thuật và Nhân văn",
+        "Khoa Kinh doanh và Quản lý",
+        "Khoa Giáo dục",
+        "Khoa Sức khỏe và Chăm sóc Xã hội",
+        "Khoa Khoa học Xã hội và Ứng dụng"
+      ],
+      "gpa_required": {
+        "value": 4.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.0
+        }
+      ],
+      "website": "https://www.canterbury.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/canterbury-christ-church-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/canterbury-christ-church-university.jpg",
+      "excerpt": "Canterbury Christ Church University là một trong những cơ sở giáo dục Đại học nổi bật tại Vương quốc Anh, được thành lập vào năm 1962. Trường không chỉ đảm bảo về chất lượng giảng dạy và nghiên cứu mà còn nổi tiếng về môi trường học tập thân thiện và công tác hỗ trợ kịp […]"
+    },
+    {
+      "id": "dai-hoc-heriot-watt",
+      "name": "Đại học Heriot-Watt",
+      "country": "Vương quốc Anh",
+      "location": "Edinburgh/ Scotland/ United Kingdom",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "14.640$",
+        "min_usd": 14640,
+        "max_usd": 14640
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Cử nhân Quản trị Kinh doanh (BBA)",
+        "Cử nhân khoa học Khoa học sinh học (Sức khỏe con người)",
+        "Cử nhân Hóa học",
+        "ThS Tiếp thị quốc tế",
+        "MBA điều hành",
+        "ThS. Khoa học dữ liệu ứng dụng",
+        "ThS Kế toán"
+      ],
+      "gpa_required": {
+        "value": 5.5,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.5
+        }
+      ],
+      "website": "https://www.hw.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-heriot-watt/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-heriot-watt.jpg",
+      "excerpt": "Đại học Heriot-Watt là một trong những cơ sở giáo dục công lập được xây dựng năm 1821 ở Edinburgh, Scotland, là một trong những học viện đầu tiên có mặt trên thế giới và được cấp phép bằng đại học theo điều lệ hoàng gia vào năm 1966. Để có cái nhìn khách quan hơn […]"
+    },
+    {
+      "id": "dai-hoc-bristol",
+      "name": "Đại học Bristol",
+      "country": "Vương quốc Anh",
+      "location": "Bristol/ England",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "22.700 - 33.600$",
+        "min_usd": 22700,
+        "max_usd": 33600
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.bristol.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-bristol/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-bristol.jpg",
+      "excerpt": "Đại học Bristol là một trong những trường Đại học danh tiếng tại Vương quốc Anh, được xếp hạng cao trong nhiều bảng xếp hạng giáo dục toàn cầu. Với nền tảng nghiên cứu mạnh mẽ, chương trình giảng dạy hiện đại và môi trường học thuật quốc tế, Bristol thu hút hàng nghìn sinh viên quốc […]"
+    },
+    {
+      "id": "dai-hoc-edinburgh",
+      "name": "Đại học Edinburgh",
+      "country": "Vương quốc Anh",
+      "location": "Edinburgh/ Scotland",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "23.000 - 40.000$",
+        "min_usd": 23000,
+        "max_usd": 40000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.ed.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-edinburgh/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-edinburgh.jpg",
+      "excerpt": "Nằm tại thủ đô Edinburgh xinh đẹp của Scotland, Đại học Edinburgh được xếp hạng cao trong các bảng xếp hạng đại học toàn cầu. Với hơn 45.000 sinh viên đến từ hơn 150 quốc gia, trường là điểm đến lý tưởng cho những ai mong muốn du học Anh và trải nghiệm môi trường học thuật quốc tế […]"
+    },
+    {
+      "id": "brunel-university",
+      "name": "Brunel University",
+      "country": "Vương quốc Anh",
+      "location": "London",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "15.000 - 25.000$",
+        "min_usd": 15000,
+        "max_usd": 25000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Khoa học Tự nhiên",
+        "Cơ khí, Điện tử và Cơ khí Điện tử",
+        "Khoa học Xã hội và Nghệ thuật",
+        "Kinh doanh, Quản lý, Kinh tế và Tài chính",
+        "Công nghệ Thông tin và Tin học",
+        "Thiết kế",
+        "Luật Quốc tế",
+        "Khoa học Sinh học"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.brunel.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/brunel-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/brunel-university.jpg",
+      "excerpt": "Brunel University London là một trong những trường Đại học công lập danh tiếng tại Anh, được biết đến với cơ sở vật chất hiện đại, định hướng nghiên cứu ứng dụng và môi trường học tập quốc tế. Qua bài viết dưới đây, Du Học ETEST sẽ giúp bạn khám phá những điểm nổi bật của Brunel […]"
+    },
+    {
+      "id": "university-of-aberdeen",
+      "name": "University of Aberdeen",
+      "country": "Vương quốc Anh",
+      "location": "Aberdeen/ Scotland",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "16.000 - 30.000$",
+        "min_usd": 16000,
+        "max_usd": 30000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 4.5
+        }
+      ],
+      "website": "https://www.abdn.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/university-of-aberdeen/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/university-of-aberdeen.jpg",
+      "excerpt": "University of Aberdeen là một trong những trường đại học lâu đời và uy tín hàng đầu tại Vương quốc Anh, thu hút hàng nghìn sinh viên quốc tế mỗi năm. Với chất lượng đào tạo đạt chuẩn toàn cầu, cơ sở vật chất hiện đại cùng nhiều chương trình học đa dạng, trường mang đến […]"
+    },
+    {
+      "id": "dai-hoc-coventry",
+      "name": "Đại học Coventry",
+      "country": "Vương quốc Anh",
+      "location": "Coventry",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "14.000 - 22.000$",
+        "min_usd": 14000,
+        "max_usd": 22000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 4.5
+        }
+      ],
+      "website": "https://www.coventry.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-coventry/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-coventry.jpg",
+      "excerpt": "Đại học Coventry là một trong những lựa chọn hàng đầu cho sinh viên quốc tế khi du học Anh nhờ chất lượng đào tạo uy tín và môi trường học tập hiện đại. Bài viết dưới đây sẽ cung cấp thông tin chi tiết của trường đại học Coventry về điều kiện đầu vào, học […]"
+    },
+    {
+      "id": "dai-hoc-birmingham",
+      "name": "Đại học Birmingham",
+      "country": "Vương quốc Anh",
+      "location": "Birmingham",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "21.000 - 46.320$",
+        "min_usd": 21000,
+        "max_usd": 46320
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kinh doanh Quốc tế (International Business)",
+        "Kế toán và Tài chính (Accounting and Finance)",
+        "Kỹ thuật Hóa học (Chemical Engineering)",
+        "Khoa học Máy tính (Computer Science)",
+        "Luật (Law)",
+        "Lịch sử và Văn hóa (History and Cultures)",
+        "Nghiên cứu Y khoa (Medical Sciences)",
+        "Nha khoa (Dentistry)",
+        "Xã hội học (Sociology)",
+        "Kinh tế học (Economics)"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.birmingham.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-birmingham/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-birmingham.jpg",
+      "excerpt": "Đại học Birmingham là một trong những trường đại học danh tiếng tại Anh, nổi bật với chương trình đào tạo chất lượng, cơ sở vật chất hiện đại và môi trường học tập quốc tế. Nếu bạn đang tìm hiểu về cơ hội du học tại Anh, đừng bỏ qua những thông tin cập nhật mới nhất […]"
+    },
+    {
+      "id": "anglia-ruskin-university",
+      "name": "Anglia Ruskin University",
+      "country": "Vương quốc Anh",
+      "location": "Cambridge/ Chelmsford​",
+      "levels": [
+        "Đại học",
+        "Sau đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "14.300 - 17.200$",
+        "min_usd": 14300,
+        "max_usd": 17200
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.aru.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/anglia-ruskin-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/Anglia-Ruskin-University.jpg",
+      "excerpt": "Bạn đang tìm kiếm một trường đại học tại Anh có chất lượng giảng dạy uy tín, chi phí hợp lý và nhiều hỗ trợ tài chính cho sinh viên quốc tế? Anglia Ruskin University chính là sự lựa chọn đáng cân nhắc trong năm 2025. Với nhiều ngành học hấp dẫn và học bổng thiết thực, ARU sẽ […]"
+    },
+    {
+      "id": "dai-hoc-london",
+      "name": "Đại học London",
+      "country": "Vương quốc Anh",
+      "location": "London",
+      "levels": [
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "12.500 - 15.310$",
+        "min_usd": 12500,
+        "max_usd": 15310
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Quản trị Kinh doanh",
+        "Tài chính và Ngân hàng",
+        "Marketing",
+        "Kinh tế học",
+        "Tâm lý học",
+        "Quan hệ Quốc tế",
+        "Ngôn ngữ học",
+        "Truyền thông và Văn hóa",
+        "Giới tính và Xã hội",
+        "Khoa học Máy tính",
+        "Kỹ thuật phần mềm",
+        "Kỹ thuật Hàng hải",
+        "Kỹ thuật Dầu khí",
+        "Kỹ thuật Thực phẩm",
+        "Luật",
+        "Chính trị học",
+        "Quản trị công",
+        "Y học",
+        "Dinh dưỡng và Sức khỏe cộng đồng",
+        "Khoa học sinh học"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        }
+      ],
+      "website": "https://www.london.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-london/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-london.jpg",
+      "excerpt": "Đại học London luôn nằm trong danh sách những trường đại học hàng đầu tại Vương quốc Anh, thu hút hàng nghìn sinh viên quốc tế mỗi năm. Năm 2025, trường có nhiều cập nhật quan trọng về chương trình đào tạo, yêu cầu tuyển sinh, học phí và các gói học bổng hỗ trợ sinh […]"
+    },
+    {
+      "id": "dai-hoc-cambridge",
+      "name": "Đại học Cambridge – Chương trình học, học phí, học bổng 2025",
+      "country": "Vương quốc Anh",
+      "location": "Cambridge",
+      "levels": [
+        "Đại học",
+        "Thạc sĩ",
+        "Tiến sĩ",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "9.535 - 67.000$",
+        "min_usd": 9535,
+        "max_usd": 67000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 110.0
+        }
+      ],
+      "website": "https://www.undergraduate.study.cam.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-cambridge/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-Cambridge.jpg",
+      "excerpt": "Mỗi năm, hàng ngàn sinh viên từ khắp nơi trên thế giới nỗ lực không ngừng để giành một suất học tại Đại học Cambridge – nơi quy tụ tinh hoa học thuật và đổi mới toàn cầu. Với những cập nhật mới nhất cho năm 2025, liệu cơ hội nào đang mở ra cho bạn? Hãy […]"
+    },
+    {
+      "id": "dai-hoc-bedfordshire",
+      "name": "Đại học Bedfordshire",
+      "country": "Vương quốc Anh",
+      "location": "Luton/ Bedford",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "14.500$",
+        "min_usd": 14500,
+        "max_usd": 14500
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 12.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 72.0
+        }
+      ],
+      "website": "https://www.beds.ac.uk",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-bedfordshire/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-bedfordshire.png",
+      "excerpt": "Đại học Bedfordshire với hơn 22.000 sinh viên đến từ hơn 100 quốc gia, ngôi trường này không chỉ là nơi tiếp cận tri thức toàn cầu mà còn là bệ phóng cho hành trình hội nhập quốc tế thực thụ. Không cần phải chạy theo những ngôi trường danh giá với học phí đắt đỏ, […]"
+    },
+    {
+      "id": "dai-hoc-aston",
+      "name": "Đại học Aston",
+      "country": "Vương quốc Anh",
+      "location": "Birmingham",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "16.300 - 21.250$",
+        "min_usd": 16300,
+        "max_usd": 21250
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 2.6,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        }
+      ],
+      "website": "https://www.aston.ac.uk",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-aston/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/Dai-hoc-aston-1.jpg",
+      "excerpt": "Nhắc đến những trường đại học Anh uy tín bậc nhất với chương trình đào tạo gắn liền thực tiễn thì không thể bỏ qua Đại học Aston – nơi đã và đang đào tạo nên hàng ngàn sinh viên xuất sắc trên toàn cầu. Với thế mạnh về ngành Kinh doanh, Kỹ thuật, Y sinh […]"
+    },
+    {
+      "id": "dai-hoc-huddersfield",
+      "name": "Đại học Huddersfield",
+      "country": "Vương quốc Anh",
+      "location": "Huddersfield",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "17.600$",
+        "min_usd": 17600,
+        "max_usd": 17600
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 6.5,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 79.0
+        }
+      ],
+      "website": "https://www.hud.ac.uk",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-huddersfield/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-Huddersfield-1.jpg",
+      "excerpt": "Với chương trình đào tạo chất lượng, cơ sở vật chất hiện đại và môi trường học tập quốc tế, Đại học Huddersfield là một trong những lựa chọn hàng đầu dành cho những ai muốn du học tại Anh. Trường nổi bật với các khóa học linh hoạt, chương trình thực tập hấp dẫn, và cơ hội […]"
+    },
+    {
+      "id": "dai-hoc-gloucestershire",
+      "name": "Đại học Gloucestershire",
+      "country": "Vương quốc Anh",
+      "location": "Gloucestershire",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "17.425$",
+        "min_usd": 17425,
+        "max_usd": 17425
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Cấp độ Cao đẳng: Kinh doanh và Quản lý",
+        "Nghệ thuật và Thiết kế",
+        "Khoa học Xã hội",
+        "Khoa học và Kỹ thuật Giáo dục và Phát triển Cộng đồng",
+        "Chương trình Đại học: Kinh doanh Quốc tế",
+        "Nghệ thuật Sân khấu và Điện ảnh",
+        "Khoa học Dữ liệu và An toàn Thông tin",
+        "Y học và Chăm sóc Sức khỏe",
+        "Quản lý Thể thao và Sự kiện",
+        "Du lịch, Nhà hàng và Khách sạn",
+        "Thiết kế Đồ họa và Truyền thông",
+        "Chương trình Sau đại học: MBA – Quản trị Kinh doanh",
+        "MA – Nghệ thuật và Thiết kế",
+        "PhD – Nghiên cứu Y học",
+        "MSc – Nghiên cứu Xã hội",
+        "MSc – Khoa học Dữ liệu và An toàn Thông tin",
+        "MSc – Quản lý Sự kiện",
+        "Các chương trình đào tạo chuyên sâu và hướng nghiệp: MBBS – Cử nhân Y học và Chăm sóc Sức khỏe",
+        "Cử nhân Quản lý Thể thao và Sự kiện",
+        "Cử nhân Du lịch và Khách sạn",
+        "Cử nhân Nghệ thuật Sân khấu và Điện ảnh",
+        "Công nghệ Thông tin và Quản trị Mạng",
+        "Quản lý Doanh nghiệp và Tiếp thị",
+        "Khóa học tiếng Anh và dự bị học thuật: Tiếng Anh học thuật dành cho nghiên cứu",
+        "Tiếng Anh giao tiếp kết hợp khám phá văn hóa Anh",
+        "Tiếng Anh và Phương pháp giảng dạy"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.glos.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-gloucestershire/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-Gloucestershire-1.jpg",
+      "excerpt": "Nếu bạn đang tìm kiếm một cơ hội học tập tại một trường đại học uy tín ở Anh, Đại học Gloucestershire chính là một lựa chọn không thể bỏ qua. Với môi trường học tập hiện đại, hỗ trợ sinh viên quốc tế tận tình và tọa lạc tại vùng Gloucestershire xinh đẹp, ngôi trường […]"
+    },
+    {
+      "id": "dai-hoc-glasgow",
+      "name": "Đại học Glasgow",
+      "country": "Vương quốc Anh",
+      "location": "Glasgow/ Scotland",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "19.604 - 26.489$",
+        "min_usd": 19604,
+        "max_usd": 26489
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Khoa học xã hội và nhân văn: Kinh tế, Tâm lý học, Ngôn ngữ học, Lịch sử, Văn học Anh;",
+        "Y khoa và sức khỏe: Y học, Nha khoa, Điều dưỡng, Khoa học sức khỏe;",
+        "Kinh doanh và quản lý: Tài chính, Kế toán, Quản trị kinh doanh",
+        "Khoa học dữ liệu và trí tuệ nhân tạo;",
+        "Quản trị kinh doanh (MBA), Tài chính quốc tế;",
+        "Y tế công cộng, Khoa học thần kinh;",
+        "Luật quốc tế và Quan hệ quốc tế"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.gla.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-glasgow/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/05/dai-hoc-Glasgow.jpg",
+      "excerpt": "Đại học Glasgow – một trong những trường đại học lâu đời và uy tín nhất Vương quốc Anh – chính là điểm đến lý tưởng dành cho bạn. Với nền giáo dục đẳng cấp quốc tế, chương trình đào tạo đa dạng và cơ hội nghề nghiệp rộng mở sau tốt nghiệp, Glasgow luôn nằm […]"
+    },
+    {
+      "id": "dai-hoc-lincoln-my",
+      "name": "Đại học Lincoln, Mỹ",
+      "country": "USA",
+      "location": "Nebraska/ Lincoln",
+      "levels": [
+        "Cao đẳng",
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "15.600$",
+        "min_usd": 15600,
+        "max_usd": 15600
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.lincoln.ac.uk/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-lincoln-my/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-lincoln-my.jpg",
+      "excerpt": "Đại học Lincoln Mỹ là một trong những trường Đại học lâu đời và danh tiếng tại Hoa Kỳ, nổi bật với các chương trình đào tạo chất lượng cao và môi trường học tập đa dạng, năng động. Với bề dày thành tích đáng tự hào, trường đã trở thành điểm đến mơ ước của […]"
+    },
+    {
+      "id": "university-of-adelaide",
+      "name": "Đại học Adelaide Úc – Đại học nghiên cứu hàng đầu với học bổng hấp dẫn",
+      "country": "Australia",
+      "location": "Adelaide SA 5005",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "8.768$",
+        "min_usd": 8768,
+        "max_usd": 8768
+      },
+      "scholarship_available": true,
+      "fields": [
+        "GPA lớp 12 từ 8.0/10",
+        "IELTS từ 6.5",
+        "GPA Đại học từ 6.5/10",
+        "Bằng tốt nghiệp Thạc sĩ trong lĩnh vực liên quan",
+        "GPA Thạc sĩ từ 6.5/10IELTS 6.5"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.adelaide.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/university-of-adelaide/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/04/dai-hoc-adelaide-uc.jpg",
+      "excerpt": "Đại học Adelaide Úc thành viên danh giá của nhóm G8, là một trong những trường đại học hàng đầu tại Úc, nổi bật với chất lượng giáo dục và nghiên cứu xuất sắc. Luôn nằm trong top 1% các trường đại học tốt nhất thế giới, trường mang đến cho sinh viên môi trường học […]"
+    },
+    {
+      "id": "hoc-vien-cong-nghe-massachusetts-mit",
+      "name": "Học viện Công nghệ Massachusetts (MIT)",
+      "country": "USA",
+      "location": "Massachusetts/ Cambridge",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "53.790$",
+        "min_usd": 53790,
+        "max_usd": 53790
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 4.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 90.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1525.0
+        }
+      ],
+      "website": "https://www.mit.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/hoc-vien-cong-nghe-massachusetts-mit/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/hoc-vien-cong-nghe-massachusetts-6.png",
+      "excerpt": "Học viện Công nghệ Massachusetts (MIT) luôn dẫn đầu trong các bảng xếp hạng giáo dục, đặc biệt nổi bật ở các lĩnh vực khoa học, công nghệ, kỹ thuật và kinh doanh tại Hoa Kỳ. Trường đã đào tạo ra hàng nghìn nhà khoa học, kỹ sư, doanh nhân xuất sắc – trong đó có […]"
+    },
+    {
+      "id": "dai-hoc-san-francisco-california",
+      "name": "Đại học San Francisco tại California",
+      "country": "USA",
+      "location": "San Francisco/ California",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "60.492$",
+        "min_usd": 60492,
+        "max_usd": 60492
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 61.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1310.0
+        }
+      ],
+      "website": "https://www.usfca.edu",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-san-francisco-california/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-san-francisco.jpg",
+      "excerpt": "Đại học San Francisco (USF) là trường Đại học danh tiếng tại California, nổi bật với chất lượng giảng dạy xuất sắc, môi trường học đa văn hóa và cơ sở vật chất hiện đại. Qua bài viết sau, Du Học ETEST sẽ cung cấp thông tin về các chương trình học, học phí, học bổng, cơ sở […]"
+    },
+    {
+      "id": "dai-hoc-washington",
+      "name": "Đại học Washington",
+      "country": "USA",
+      "location": "Washington/ Seattle",
+      "levels": [
+        "Cao đẳng",
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "34.143$",
+        "min_usd": 34143,
+        "max_usd": 34143
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kỹ thuật: Xếp hạng #24 trong các trường kỹ thuật tốt nhất, với Kỹ thuật Máy tính xếp hạng #9",
+        "Kinh doanh: Trường Kinh doanh Michael G. Foster xếp hạng #22 toàn quốc",
+        "Kiến trúc và Quy hoạch Đô thị",
+        "Nghệ thuật và Khoa học",
+        "Sư phạm",
+        "Kỹ thuật",
+        "Khoa học Thủy sản và Đại dương học",
+        "Kinh doanh",
+        "Nha khoa",
+        "Nghiên cứu Quốc tế",
+        "Luật",
+        "Y khoa",
+        "Điều dưỡng",
+        "Dược",
+        "Hành chính Công",
+        "Y tế Công cộng và Y học Cộng đồng",
+        "Công tác Xã hội"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.washington.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-washington/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-washington.jpg",
+      "excerpt": "Đại học Washington (University of Washington – UW) là một trong những trường Đại học công lập hàng đầu tại Hoa Kỳ, được thành lập vào năm 1861. Trường tọa lạc tại thành phố Seattle, bang Washington, với hai cơ sở chi nhánh tại Bothell và Tacoma. Qua bài viết sau, hãy cùng Du Học ETEST tìm hiểu […]"
+    },
+    {
+      "id": "dai-hoc-stanford",
+      "name": "Đại học Stanford",
+      "country": "USA",
+      "location": "California/ Stanford",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "65.910$",
+        "min_usd": 65910,
+        "max_usd": 65910
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 4.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "SAT",
+          "min_score": 2019.0
+        }
+      ],
+      "website": "https://www.stanford.edu",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-stanford/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-stanford.jpg",
+      "excerpt": "Đại học Stanford (Stanford University), nằm ở Vịnh San Francisco, California, là một trong những trường đại học danh tiếng hàng đầu trên thế giới. Tấm bằng Stanford là cánh cửa mở ra cơ hội nghề nghiệp rộng lớn cho mọi sinh viên. Trong bài viết này, Du Học ETEST sẽ cùng bạn tìm hiểu thông tin chi […]"
+    },
+    {
+      "id": "dai-hoc-newcastle",
+      "name": "Đại học Newcastle, Úc – Thông tin du học và học bổng 2025",
+      "country": "Australia",
+      "location": "Newcastle, New South Wales",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "30.000 - 42.000$",
+        "min_usd": 30000,
+        "max_usd": 42000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kế toán và Tài chính",
+        "Kiến trúc và Xây dựng",
+        "Kinh doanh và Khởi nghiệp",
+        "Dịch vụ Công cộng",
+        "Công nghệ Thông tin, Toán học và Khoa học Máy tính",
+        "Truyền thông và Sáng tạo",
+        "Giáo dục",
+        "Kỹ thuật",
+        "Y tế và Chăm sóc Sức khỏe",
+        "Luật",
+        "Khoa học và Môi trường",
+        "Khoa học Xã hội"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 5.5
+        }
+      ],
+      "website": "https://www.newcastle.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-newcastle/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-newcastle.jpg",
+      "excerpt": "Đại học Newcastle (University of Newcastle) là một trong những trường đại học danh tiếng tại Úc, được thành lập vào năm 1965. Trường nổi bật với chất lượng giảng dạy xuất sắc và tập trung vào nghiên cứu chuyên sâu, đặc biệt khi nằm trong top các trường có tỷ lệ tiến sĩ cao nhất […]"
+    },
+    {
+      "id": "dai-hoc-canberra-university-of-canberra-uc",
+      "name": "Đại học Canberra – Học phí, học bổng, ngành học nổi bật 2025",
+      "country": "Australia",
+      "location": "Canberra",
+      "levels": [
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "25.000 - 40.000$",
+        "min_usd": 25000,
+        "max_usd": 40000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kinh tế và tài chính: Kế toán & tài chính, Kinh doanh & quản trị"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.canberra.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-canberra-university-of-canberra-uc/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-canberra-uc.jpg",
+      "excerpt": "Đại học Canberra (UC) là một trường công lập nổi bật tại thành phố Canberra, Úc, được xếp hạng trong top 1% các trường đại học hàng đầu thế giới theo THE – Times Higher Education. Với chương trình đào tạo chất lượng và cơ sở vật chất hiện đại, UC thu hút không chỉ sinh […]"
+    },
+    {
+      "id": "dai-hoc-south-florida-usf-university-of-south-florida",
+      "name": "Đại học Nam Florida (University of South Florida)",
+      "country": "USA",
+      "location": "Florida",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "17.324$",
+        "min_usd": 17324,
+        "max_usd": 17324
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Các ngành nghề y tế và các chương trình liên quan",
+        "Dịch vụ hỗ trợ kinh doanh, quản lý, tiếp thị và liên quan",
+        "Khoa học sinh học và y sinh",
+        "Khoa học xã hội",
+        "Tâm lý",
+        "Kỹ thuật",
+        "Khoa học máy tính và thông tin và dịch vụ hỗ trợ",
+        "Giáo dục",
+        "Nghệ thuật và Khoa học Tự do, Nghiên cứu Tổng quát và Nhân văn"
+      ],
+      "gpa_required": {
+        "value": 7.5,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 79.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1160.0
+        }
+      ],
+      "website": "https://www.usf.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-south-florida-usf-university-of-south-florida/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/11/dai-hoc-nam-florida.jpg",
+      "excerpt": "Đại học Nam Florida (University of South Florida – USF) là một trong những trường Đại học công lập hàng đầu tại bang Florida, Hoa Kỳ. Với môi trường học tập hiện đại, đa văn hóa cùng các chương trình đào tạo chất lượng cao, USF đã trở thành điểm đến lý tưởng cho hàng ngàn sinh […]"
+    },
+    {
+      "id": "dai-hoc-new-south-wales-university-of-new-south-wales-du-hoc-etest",
+      "name": "Đại học New South Wales Úc (UNSW)",
+      "country": "Australia",
+      "location": "Sydney, New South Wales",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "45.450$",
+        "min_usd": 45450,
+        "max_usd": 45450
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.unsw.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-new-south-wales-university-of-new-south-wales-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-new-south-wales.jpg",
+      "excerpt": "Đại học New South Wales (UNSW) là một trong những ngôi trường danh giá hàng đầu tại Úc, nổi bật với chất lượng giảng dạy, nghiên cứu tiên tiến và mạng lưới sinh viên quốc tế đa dạng. Với sứ mệnh đào tạo thế hệ lãnh đạo tương lai, UNSW mang đến môi trường học tập đẳng […]"
+    },
+    {
+      "id": "dai-hoc-gonzaga-gonzaga-university-du-hoc-etest",
+      "name": "Đại học Gonzaga – Ngôi trường chất lượng hàng đầu tại Mỹ",
+      "country": "USA",
+      "location": "Spokane/Washington",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "52.830$",
+        "min_usd": 52830,
+        "max_usd": 52830
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Chương trình Lãnh đạo đích thực",
+        "Phân tích kinh doanh",
+        "Quản trị rủi ro Pháp lý",
+        "Chăm sóc sức khỏe",
+        "Kế hoạch bảo vệ khí hậu",
+        "An ninh mạng",
+        "Phân tích dữ liệu",
+        "Khoa học dữ liệu",
+        "Tư duy thiết kế",
+        "Tiếp thị kỹ thuật số",
+        "Ngôn ngữ Anh",
+        "Quản lý chăm sóc sức khỏe",
+        "Quản lý sản phẩm",
+        "Quản lý dự án",
+        "Lãnh đạo phục vụ",
+        "Kỹ thuật phần mềm",
+        "Thiết kế UX/UI"
+      ],
+      "gpa_required": {
+        "value": 3.2,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 80.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 80.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1150.0
+        }
+      ],
+      "website": "https://global.gonzaga.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-gonzaga-gonzaga-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/02/dai-hoc-gonzaga.jpg",
+      "excerpt": "Đại học Gonzaga là một trong những trường đại học hàng đầu tại Mỹ, nổi bật với chương trình đào tạo chất lượng cao và môi trường học tập hiện đại. Với bề dày lịch sử và danh tiếng vững chắc, Gonzaga thu hút hàng ngàn sinh viên quốc tế mỗi năm nhờ vào sự tận […]"
+    },
+    {
+      "id": "trung-hoc-village-the-village-school-du-hoc-etest",
+      "name": "The Village School",
+      "country": "USA",
+      "location": "Texas/Houston",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "30.500 - 80.540$",
+        "min_usd": 30500,
+        "max_usd": 80540
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.nordangliaeducation.com/village-houston",
+      "detail_url": "https://duhoc-etest.edu.vn/trung-hoc-village-the-village-school-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/06/the-village-school.jpg",
+      "excerpt": "The Village School ở Houston, Texas, là trường tư thục hàng đầu tại Mỹ với chương trình giảng dạy hiện đại. Nhờ hợp tác với MIT và Học viện Juilliard, trường mang đến môi trường học tập toàn diện, giúp học sinh sẵn sàng bước vào các đại học hàng đầu thế giới. Cùng Du học ETEST khám […]"
+    },
+    {
+      "id": "dai-hoc-yale-yale-university-ivy-league-du-hoc-etest",
+      "name": "Đại học Yale",
+      "country": "USA",
+      "location": "New Haven/ Connecticut",
+      "levels": [
+        "Sau đại học",
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "87.150$",
+        "min_usd": 87150,
+        "max_usd": 87150
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Chương trình trao đổi ngắn hạn quốc tế Fox",
+        "Chương trình liên kết Mỹ Latinh tại trường Luật Đại học Yale",
+        "Chương trình Thạc sĩ Quản lý cấp cao",
+        "Chương trình trao đổi quốc tế trường Y Đại học Yale",
+        "Chương trình Khoa học không biên giới",
+        "Chương trình trao đổi ngắn hạn và học bổng sinh viên tại Đại học Yale",
+        "Chương trình Trao đổi sinh viên hợp tác Yale UCL",
+        "Chương trình thăm sinh viên quốc tế Yale",
+        "Chương trình Nghiên cứu chung Yale-Weizmann Institute",
+        "Khoa đại cương",
+        "Khoa nghệ thuật và khoa học",
+        "Khoa Luật",
+        "Khoa Quản lý",
+        "Khoa Dược",
+        "Khoa Kiến trúc",
+        "Khoa Kịch nghệ",
+        "Khoa Kỹ thuật",
+        "Khoa Khoa học ứng dụng",
+        "Khoa Lâm nghiệp và Môi trường",
+        "Khoa Âm nhạc"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.yale.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-yale-yale-university-ivy-league-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/09/dai-hoc-yale.jpg",
+      "excerpt": "Đại học Yale tọa lạc tại New Haven, Connecticut, nổi tiếng với các chương trình kịch nghệ và âm nhạc xuất sắc. Với tỷ lệ sinh viên trên giảng viên là 6:1, Yale tạo điều kiện cho sinh viên tiếp cận và tương tác chặt chẽ với đội ngũ giảng viên giàu kinh nghiệm. Trường cũng […]"
+    },
+    {
+      "id": "du-hoc-my-university-of-massachusetts-at-amherst-ngoi-truong-noi-tieng-trong-cong-dong-du-hoc-sinh-viet",
+      "name": "Đại học Massachusetts Amherst",
+      "country": "USA",
+      "location": "Amherst/Massachusetts",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "42.082$",
+        "min_usd": 42082,
+        "max_usd": 42082
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.umass.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-university-of-massachusetts-at-amherst-ngoi-truong-noi-tieng-trong-cong-dong-du-hoc-sinh-viet/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/dai-hoc-massachusetts-amherst.jpg",
+      "excerpt": "Đại học Massachusetts Amherst (UMass Amherst) là một trong những trường đại học công lập hàng đầu tại Hoa Kỳ, nổi bật với chất lượng đào tạo xuất sắc, cơ sở vật chất hiện đại và môi trường học tập đa văn hóa đang ngày càng trở thành lựa chọn lý tưởng của nhiều du […]"
+    },
+    {
+      "id": "dai-hoc-texas-austin-university-of-texas-at-austin-du-hoc-etest",
+      "name": "Đại học Texas tại Austin",
+      "country": "USA",
+      "location": "Texas/ Austin",
+      "levels": [
+        "Cao đẳng",
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "11.678 - 42.778$",
+        "min_usd": 11678,
+        "max_usd": 42778
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://onestop.utexas.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-texas-austin-university-of-texas-at-austin-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/dai-hoc-texas-austin.jpeg",
+      "excerpt": "Đại học Texas tại Austin (University of Texas at Austin) là trường công lập được thành lập vào năm 1883 và là một trong những trường Đại học lớn nhất Hoa Kỳ. Qua bài viết sau, hãy cùng Du Học ETEST tìm hiểu tất tần tật về Đại học Texas Austin, từ tỷ lệ trúng tuyển, điều kiện […]"
+    },
+    {
+      "id": "dai-hoc-california",
+      "name": "Đại học California",
+      "country": "USA",
+      "location": "California/ Oakland",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "13.000 - 33.000$",
+        "min_usd": 13000,
+        "max_usd": 33000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Khoa học Máy tính (Computer Science)",
+        "Kỹ thuật Hóa học (Chemical Engineering)",
+        "Kỹ thuật Điện (Electrical Engineering)",
+        "Kỹ thuật Hàng không Vũ trụ (Aerospace Engineering)",
+        "Kỹ thuật Sinh học (Biomedical Engineering)"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.universityofcalifornia.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-california/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-california-logo.jpg",
+      "excerpt": "Du học tại bang California là cơ hội tiếp cận một nền giáo dục chuẩn quốc tế trong môi trường đa văn hóa. Các trường đại học California sẽ là bước đệm vững chắc cho sự nghiệp sau khi tốt nghiệp dành cho sinh viên quốc tế. Bài viết sau Du học ETEST sẽ cung cấp thông tin […]"
+    },
+    {
+      "id": "du-hoc-my-university-of-california-san-diego-ngoi-truong-cong-top-dau-khoi-uc",
+      "name": "Đại học San Diego",
+      "country": "USA",
+      "location": "California/ San Diego",
+      "levels": [
+        "Cao đẳng",
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "3.086 - 5.126$",
+        "min_usd": 3086,
+        "max_usd": 5126
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.sdsu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-university-of-california-san-diego-ngoi-truong-cong-top-dau-khoi-uc/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/08/dai-hoc-san-diego.jpg",
+      "excerpt": "Đại học Bang San Diego (San Diego State University – SDSU) là trường Đại học nghiên cứu công lập tọa lạc tại thành phố San Diego, miền Nam California. Được thành lập vào năm 1897, SDSU là trường đại học lâu đời nhất và lớn nhất tại San Diego, đồng thời đứng thứ ba về quy […]"
+    },
+    {
+      "id": "dai-hoc-princeton-princeton-university-du-hoc-etest",
+      "name": "Đại học Princeton",
+      "country": "USA",
+      "location": "Princeton/ New Jersey",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "62.400$",
+        "min_usd": 62400,
+        "max_usd": 62400
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kỹ thuật",
+        "Khoa học xã hội",
+        "Khoa học sinh học – y sinh",
+        "Hành chính công",
+        "Lịch sử",
+        "Khoa học dịch vụ xã hội"
+      ],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1460.0
+        }
+      ],
+      "website": "https://www.princeton.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-princeton-princeton-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/08/dai-hoc-princeton.jpg",
+      "excerpt": "Đại học Princeton (Princeton University) là trường tư thục, được thành lập năm 1746 và là một trong những trường Đại học lâu đời nhất nước Mỹ. Theo đánh giá của Best Colleges năm 2022, Princeton được xếp hạng #1 trong các Đại học Quốc gia tại Hoa Kỳ. Với phương châm: “Princeton in the Nation’s Service and the […]"
+    },
+    {
+      "id": "dai-hoc-pennsylvania",
+      "name": "Đại học Pennsylvania",
+      "country": "USA",
+      "location": "Pennsylvania/ Philadelphia",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "68.686$",
+        "min_usd": 68686,
+        "max_usd": 68686
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.upenn.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-pennsylvania/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-pennsylvania.jpg",
+      "excerpt": "Khi nhắc đến những trường Đại học danh giá bậc nhất thế giới, Đại học Pennsylvania (University of Pennsylvania) luôn được xướng tên với vị thế nổi bật trong hệ thống Ivy League. Ngôi trường là cái nôi đào tạo ra những nhà lãnh đạo, doanh nhân và nhà khoa học hàng đầu thế giới. Với triết lý […]"
+    },
+    {
+      "id": "dai-hoc-new-york",
+      "name": "Đại học New York University",
+      "country": "USA",
+      "location": "New York",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "62.250 - 219.500$",
+        "min_usd": 62250,
+        "max_usd": 219500
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.stern.nyu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-new-york/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-new-york.jpg",
+      "excerpt": "Đại học New York (New York University – NYU) là biểu tượng giáo dục toàn cầu và là một trong những trường Đại học tư thục danh tiếng nhất tại Mỹ. Với lịch sử gần 200 năm, NYU không chỉ ghi dấu ấn tại thành phố New York hoa lệ mà còn mở rộng ảnh hưởng […]"
+    },
+    {
+      "id": "dai-hoc-maryland",
+      "name": "Đại học Maryland",
+      "country": "USA",
+      "location": "College Park/ Maryland",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "36.903$",
+        "min_usd": 36903,
+        "max_usd": 36903
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.umd.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-maryland/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-maryland.jpeg",
+      "excerpt": "Đại học Maryland là một trong những trường Đại học công lập hàng đầu tại Hoa Kỳ, trường luôn là lựa chọn lý tưởng cho du học sinh quốc tế trong đó có nhiều sinh viên tại Việt Nam. Qua bài viết sau, hãy cùng Du Học ETEST tìm hiểu chi tiết về điều kiện nhập học, học […]"
+    },
+    {
+      "id": "dai-hoc-johns-hopkins-johns-hopkins-university-du-hoc-etest",
+      "name": "Đại học Johns Hopkins",
+      "country": "USA",
+      "location": "Maryland/ Baltimore",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "58.720$",
+        "min_usd": 58720,
+        "max_usd": 58720
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "SAT",
+          "min_score": 710.0
+        }
+      ],
+      "website": "https://www.jhu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-johns-hopkins-johns-hopkins-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-johns-hopkins.jpg",
+      "excerpt": "Đại học Johns Hopkins là một trong những ngôi trường danh tiếng và uy tín nhất trên thế giới, nổi bật với chất lượng đào tạo xuất sắc và những thành tựu xuất sắc trong lĩnh vực học thuật. Trường là điểm đến lý tưởng cho những sinh viên mong muốn phát triển kiến thức và […]"
+    },
+    {
+      "id": "dai-hoc-duke",
+      "name": "Đại học Duke",
+      "country": "USA",
+      "location": "North Carolina/ Durham",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "57.633$",
+        "min_usd": 57633,
+        "max_usd": 57633
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Lịch sử Mỹ thuật",
+        "Sinh học",
+        "Lý sinh",
+        "Khoa học máy tính",
+        "Khoa học Trái đất và Khí hậu",
+        "Kinh tế học",
+        "Tiếng Bồ Đào Nha Brazil và Ngôn ngữ Toàn cầu",
+        "Tâm lý học",
+        "Xã hội học",
+        "Triết học",
+        "Nghiên cứu văn hóa toàn cầu"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://duke.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-duke/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-duke-2.jpg",
+      "excerpt": "Đại học Duke một trong những ngôi trường danh giá bậc nhất tại Hoa Kỳ. Tọa lạc tại Durham, North Carolina, Duke thu hút sinh viên từ khắp nơi với những chương trình học đa dạng, cơ sở vật chất hiện đại và cơ hội học bổng hấp dẫn. Trong bài viết này, Du học ETEST sẽ cung […]"
+    },
+    {
+      "id": "dai-hoc-texas-am-texas-am-university-du-hoc-etest",
+      "name": "Đại học Texas A&M",
+      "country": "USA",
+      "location": "Texas/College Station",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "40.000$",
+        "min_usd": 40000,
+        "max_usd": 40000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kinh doanh: Đào tạo chuyên sâu về Quản trị Kinh doanh, Kế toán, Marketing, Kinh tế học",
+        "Giáo dục: Chương trình giáo dục mầm non, giáo dục đặc biệt, phát triển con người",
+        "Khoa học và Kỹ thuật: Các chuyên ngành Khoa học Máy tính, Kỹ thuật, và Toán học",
+        "Nghệ thuật tự do: Nghệ thuật, Tâm lý học, Khoa học xã hội"
+      ],
+      "gpa_required": {
+        "value": 2.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 4.5
+        }
+      ],
+      "website": "https://www.tamu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-texas-am-texas-am-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-taxas-a-m.jpg",
+      "excerpt": "Đại học Texas A&M (Texas A&M University) là một trong những trường đại học công lập hàng đầu tại Hoa Kỳ. Trường nổi bật với chất lượng đào tạo xuất sắc, cơ sở vật chất hiện đại và cộng đồng sinh viên năng động. Đại học Texas A&M cung cấp chương trình giảng dạy đa dạng, […]"
+    },
+    {
+      "id": "university-of-the-pacific-du-hoc-etest",
+      "name": "University of The Pacific",
+      "country": "USA",
+      "location": "Stockton/California",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "53.200$",
+        "min_usd": 53200,
+        "max_usd": 53200
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.pacific.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/university-of-the-pacific-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/04/university-of-the-pacific.jpg",
+      "excerpt": "University of the Pacific (UOP) là trường Đại học tư thục lâu đời tại California, Hoa Kỳ, nổi bật với hơn 80 chương trình đào tạo và tỷ lệ sinh viên/giảng viên thấp (12:1). Trường cung cấp môi trường học tập chất lượng, cơ hội nghề nghiệp rộng mở và nhiều học bổng hấp dẫn. Để […]"
+    },
+    {
+      "id": "du-hoc-my-fordham-university-noi-giao-nhau-giua-kien-truc-co-dien-va-hien-dai",
+      "name": "Fordham University",
+      "country": "USA",
+      "location": "New York",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "64.470$",
+        "min_usd": 64470,
+        "max_usd": 64470
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.fordham.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-fordham-university-noi-giao-nhau-giua-kien-truc-co-dien-va-hien-dai/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/fordham-university.jpg",
+      "excerpt": "Fordham University là trường đại học nghiên cứu tư thục danh tiếng, được thành lập năm 1841 tại thành phố New York. Trường cung cấp hơn 60 chương trình đào tạo cho khoảng 15.000 sinh viên đến từ hơn 65 quốc gia. Qua bài viết dưới đây, Du Học ETEST sẽ cung cấp cho bạn thông tin chi […]"
+    },
+    {
+      "id": "trung-hoc-windermere-windermere-prep-school-du-hoc-etest",
+      "name": "Trung học Windermere Preparatory School – Tuyển sinh và Học phí 2025",
+      "country": "USA",
+      "location": "Florida",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "27.195$",
+        "min_usd": 27195,
+        "max_usd": 27195
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.nordangliaeducation.com/",
+      "detail_url": "https://duhoc-etest.edu.vn/trung-hoc-windermere-windermere-prep-school-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/Windermere-Preparatory-School.jpg",
+      "excerpt": "Windermere Preparatory School là một trong những trường trung học tư thục hàng đầu tại Florida, Hoa Kỳ, nổi bật với chương trình Tú tài Quốc tế (IB) và môi trường học tập toàn diện. Với cơ sở vật chất hiện đại và phương pháp giảng dạy tiên tiến, trường thu hút học sinh từ khắp […]"
+    },
+    {
+      "id": "dai-hoc-auburn-auburn-university-du-hoc-etest",
+      "name": "Auburn University",
+      "country": "USA",
+      "location": "Auburn/bang Alabama",
+      "levels": [
+        "Đại học",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "34.922$",
+        "min_usd": 34922,
+        "max_usd": 34922
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Quản lý chuỗi cung ứng – Top 10 toàn cầu, chương trình được đánh giá cao về tính ứng dụng thực tiễn",
+        "Thiết kế công nghiệp – Xếp hạng #5 tại Mỹ, đào tạo chuyên sâu về sáng tạo và sản xuất sản phẩm",
+        "Kiến trúc – Nằm trong nhóm #9 toàn quốc, chương trình kết hợp công nghệ và nghệ thuật thiết kế",
+        "Kế toán – Xếp hạng #56, cung cấp kiến thức vững chắc về tài chính doanh nghiệp",
+        "Kinh doanh – Xếp hạng #62, giúp sinh viên nắm vững kỹ năng quản lý, tài chính, tiếp thị"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        }
+      ],
+      "website": "https://www.auburn.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-auburn-auburn-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/Auburn-University.jpg",
+      "excerpt": "\\   Auburn University không chỉ nổi tiếng với chất lượng giáo dục hàng đầu mà còn mang đến nhiều cơ hội học bổng hấp dẫn dành cho sinh viên quốc tế. Bên cạnh đó, trường cũng hợp tác với hàng trăm doanh nghiệp lớn, mở ra nhiều cơ hội việc làm triển vọng ngay sau […]"
+    },
+    {
+      "id": "hoc-vien-trung-hoc-dock-mennonite-dock-mennonite-academy-du-hoc-etest",
+      "name": "Trung học Dock Mennonite Academy",
+      "country": "USA",
+      "location": "Philadelphia",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "11.100 - 19.500$",
+        "min_usd": 11100,
+        "max_usd": 19500
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.dock.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/hoc-vien-trung-hoc-dock-mennonite-dock-mennonite-academy-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/dock-mennonite-academy-1.jpg",
+      "excerpt": "Dock Mennonite Academy là một trong những trường trung học tư thục danh tiếng tại Pennsylvania cung cấp môi trường học tập chất lượng cao và chương trình giáo dục toàn diện. Với truyền thống giảng dạy lâu đời, trường không chỉ chú trọng vào phát triển học thuật mà còn khuyến khích học sinh tham […]"
+    },
+    {
+      "id": "dai-hoc-american-american-university-du-hoc-etest",
+      "name": "Đại học American – Ngôi trường danh tiếng tại Washington D.C",
+      "country": "USA",
+      "location": "Washington, D.C.",
+      "levels": [
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "49.000$",
+        "min_usd": 49000,
+        "max_usd": 49000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.american.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-american-american-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-american.jpg",
+      "excerpt": "Đại học American là một trong những ngôi trường danh tiếng tại Washington D.C. nổi bật với các chương trình đào tạo đa ngành. Với cơ sở vật chất hiện đại và mạng lưới cựu sinh viên mạnh mẽ, trường mở ra nhiều cơ hội phát triển nghề nghiệp cho sinh viên. Cùng Du học ETEST tìm […]"
+    },
+    {
+      "id": "dai-hoc-michigan",
+      "name": "Trường Đại học Michigan",
+      "country": "USA",
+      "location": "Ann Arbor/ Michigan",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "8.768$",
+        "min_usd": 8768,
+        "max_usd": 8768
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://umich.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-michigan/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-michigan.jpg",
+      "excerpt": "Đại học Michigan (University of Michigan) là một trong những trường Đại học hàng đầu tại Hoa Kỳ, nổi bật với chất lượng đào tạo xuất sắc và môi trường học tập sáng tạo. Với các chương trình đào tạo đa dạng từ Cử nhân đến sau Đại học, Đại học Michigan là sự lựa chọn hàng […]"
+    },
+    {
+      "id": "dai-hoc-harvard",
+      "name": "Đại học Harvard",
+      "country": "USA",
+      "location": "Massachusetts/ Cambridge",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "50.000 - 60.000$",
+        "min_usd": 50000,
+        "max_usd": 60000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.harvard.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-harvard/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-harvard.jpg",
+      "excerpt": "Đại học Harvard là một trong những ngôi trường danh giá và lâu đời nhất trên thế giới, luôn vững vàng trong danh sách những viện Đại học hàng đầu với chất lượng giáo dục hàng đầu. Được thành lập vào năm 1636, Harvard không chỉ là nơi đào tạo ra những nhân tài xuất sắc […]"
+    },
+    {
+      "id": "du-hoc-my-fairmont-schools-truong-trung-hoc-bang-california",
+      "name": "Fairmont Private Schools",
+      "country": "USA",
+      "location": "California/Quận Cam",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "23.120$",
+        "min_usd": 23120,
+        "max_usd": 23120
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 10.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "TOEFL",
+          "min_score": 26.0
+        }
+      ],
+      "website": "https://www.northwestern.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-fairmont-schools-truong-trung-hoc-bang-california/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/03/fairmont-private-schools.jpg",
+      "excerpt": "Fairmont Private Schools là hệ thống trường tư thục phi tôn giáo lớn và lâu đời nhất tại Quận Cam, California, Hoa Kỳ. Trường cung cấp chương trình giáo dục từ mầm non đến lớp 12 với các khóa học Nâng cao (AP), Tú tài Quốc tế (IB) và chương trình Khoa học & Kỹ thuật […]"
+    },
+    {
+      "id": "du-hoc-my-dai-hoc-south-carolina-truong-dai-hoc-tai-bang-south-carolina",
+      "name": "University of South Carolina",
+      "country": "USA",
+      "location": "South Carolina/Columbia",
+      "levels": [
+        "Cử nhân",
+        "Tiến sĩ",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "32.000 - 35.000$",
+        "min_usd": 32000,
+        "max_usd": 35000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Trường Nghệ thuật và Khoa học (College of Arts and Sciences)",
+        "Trường Kỹ thuật và Máy tính (College of Engineering and Computing)",
+        "Trường Kinh doanh Darla Moore (Darla Moore School of Business)",
+        "Trường Quản lý Khách sạn, Bán lẻ và Thể thao (College of Hospitality, Retail, and Sport Management)",
+        "Trường Y tế Công cộng Arnold (Arnold School of Public Health)"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "SAT",
+          "min_score": 2025.0
+        }
+      ],
+      "website": "https://sc.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-dai-hoc-south-carolina-truong-dai-hoc-tai-bang-south-carolina/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/03/university-of-south-carolina.jpg",
+      "excerpt": "Ngành kinh doanh luôn là lựa chọn hàng đầu của sinh viên quốc tế khi du học Mỹ, bởi Hoa Kỳ là trung tâm kinh tế – tài chính lớn nhất thế giới và luôn cần nhân tài có chuyên môn cao. Nếu bạn đang tìm kiếm một môi trường học tập chất lượng, University of […]"
+    },
+    {
+      "id": "university-of-mississippi-du-hoc-etest",
+      "name": "University of Mississippi",
+      "country": "USA",
+      "location": "Oxford/Mississippi",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "49.100$",
+        "min_usd": 49100,
+        "max_usd": 49100
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kế toán",
+        "Khoa học Hành vi",
+        "Kỹ thuật Hóa học",
+        "Khoa học Máy tính",
+        "Kinh tế học",
+        "Giáo dục Tiểu học",
+        "Kỹ thuật Cơ khí",
+        "Quản trị Kinh doanh",
+        "Tâm lý học",
+        "Sinh học",
+        "Tài chính",
+        "Marketing",
+        "Truyền thông",
+        "Ngôn ngữ Anh",
+        "Ngôn ngữ Tây Ban Nha",
+        "Nghệ thuật Thị giác",
+        "Khoa học Chính trị",
+        "Xã hội học",
+        "Hóa học",
+        "Vật lý",
+        "Dược",
+        "Điều dưỡng",
+        "Kỹ thuật Xây dựng",
+        "Luật (dự bị)",
+        "Khoa học Môi trường",
+        "Nghiên cứu Quốc tế",
+        "Nhân học",
+        "Âm nhạc",
+        "Thiết kế Đồ họa"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://olemiss.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/university-of-mississippi-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/04/university-of-mississippi.jpg",
+      "excerpt": "University of Mississippi hay Ole Miss, là trường Đại học công lập nổi tiếng tại thành phố Oxford, bang Mississippi, được thành lập từ năm 1848. Với hơn 175 năm lịch sử, trường hiện đào tạo hơn 24.000 sinh viên với nhiều ngành học thế mạnh như Luật, Y khoa và Khoa học xã hội. Qua […]"
+    },
+    {
+      "id": "torrance-high-school-truong-trung-hoc-bang-california-du-hoc-etest",
+      "name": "Torrance Unified School District",
+      "country": "USA",
+      "location": "California/Torrance",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "29.950$",
+        "min_usd": 29950,
+        "max_usd": 29950
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.tusd.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/torrance-high-school-truong-trung-hoc-bang-california-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/torrance-unified-school-district.jpg",
+      "excerpt": "Torrance Unified School District là hệ thống trường Trung học công lập uy tín tại thành phố Torrance, bang California với hơn 34 cơ sở đào tạo và hơn 22.000 học sinh theo học mỗi năm. Trường nổi bật với chất lượng giảng dạy cao, tỷ lệ tốt nghiệp ấn tượng và nhiều chương trình học […]"
+    },
+    {
+      "id": "dai-hoc-kansas-university-of-kansas-du-hoc-etest",
+      "name": "Đại học Kansas",
+      "country": "USA",
+      "location": "Lawrence/Kansas",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "30.650$",
+        "min_usd": 30650,
+        "max_usd": 30650
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 4.0,
+        "scale": 4.0
+      },
+      "certs_required": [],
+      "website": "https://www.ku.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-kansas-university-of-kansas-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-kansas.jpg",
+      "excerpt": "Với hơn 200 ngành học, nhiều suất học bổng hấp dẫn và môi trường học tập tiên tiến, Đại học Kansas hứa hẹn sẽ là điểm đến lý tưởng cho sinh viên Việt Nam muốn chinh phục giấc mơ du học Mỹ. Hãy cùng Du Học ETEST tìm hiểu Đại học Kansas, một trong những trường Đại học công lập […]"
+    },
+    {
+      "id": "truong-trung-hoc-noi-tru-webb-the-webb-schools-du-hoc-etest",
+      "name": "The Webb Schools",
+      "country": "USA",
+      "location": "California",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "59.790 - 84.070$",
+        "min_usd": 59790,
+        "max_usd": 84070
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.webb.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/truong-trung-hoc-noi-tru-webb-the-webb-schools-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/05/the-webb-schools.jpg",
+      "excerpt": "The Webb Schools là một trong những trường trung học nội trú hàng đầu tại Mỹ, nổi bật với chương trình giáo dục xuất sắc, môi trường học tập đa dạng và cơ sở vật chất hiện đại. Trong bài viết này, Du Học ETEST sẽ cung cấp thông tin chi tiết về chương trình đào tạo, yêu […]"
+    },
+    {
+      "id": "3-loi-ich-khi-tro-thanh-sinh-vien-dai-hoc-my-chi-tu-16-tuoi-tai-green-river-college",
+      "name": "Green River College",
+      "country": "USA",
+      "location": "Washington",
+      "levels": [
+        "Cao đẳng"
+      ],
+      "tuition": {
+        "raw": "4.878$",
+        "min_usd": 4878,
+        "max_usd": 4878
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.greenriver.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/3-loi-ich-khi-tro-thanh-sinh-vien-dai-hoc-my-chi-tu-16-tuoi-tai-green-river-college/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/green-river-college.jpg",
+      "excerpt": "Green River College là trường cao đẳng công lập, được thành lập năm 1965, tọa lạc tại thành phố Auburn, bang Washington, Hoa Kỳ. Trường cung cấp môi trường học tập hiện đại, chuyên nghiệp với hơn 11.000 sinh viên, trong đó có hơn 1.400 sinh viên quốc tế đến từ hơn 60 quốc gia. Du […]"
+    },
+    {
+      "id": "du-hoc-my-stevens-institute-of-technology-vien-cong-nghe-stevens-tai-bang-new-jersey",
+      "name": "Trường Stevens Institute of Technology",
+      "country": "USA",
+      "location": "New Jersey/Hoboken",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "30.514$",
+        "min_usd": 30514,
+        "max_usd": 30514
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Trường Hệ thống và Doanh nghiệp (SSE)",
+        "Trường Kỹ thuật và Khoa học Schaefer",
+        "Trường Kinh doanh",
+        "Cao đẳng Nghệ thuật và Chữ"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 80.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 550.0
+        }
+      ],
+      "website": "https://www.stevens.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-stevens-institute-of-technology-vien-cong-nghe-stevens-tai-bang-new-jersey/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/stevens-institute-of-technology.jpg",
+      "excerpt": "Stevens Institute of Technology là một trong những trường Đại học hàng đầu tại Mỹ, nổi bật với các chương trình đào tạo về kỹ thuật, khoa học, kinh doanh và hệ thống. Tại Du Học ETEST, bạn sẽ tìm thấy thông tin đầy đủ về xếp hạng, chương trình đào tạo, điều kiện đầu vào, học […]"
+    },
+    {
+      "id": "vien-cong-nghe-florida-florida-institute-of-technology-du-hoc-etest",
+      "name": "Florida Institute of Technology",
+      "country": "USA",
+      "location": "Melbourne",
+      "levels": [
+        "Đại học",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "44.620$",
+        "min_usd": 44620,
+        "max_usd": 44620
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 2.6,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 60.0
+        }
+      ],
+      "website": "https://www.fit.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/vien-cong-nghe-florida-florida-institute-of-technology-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/08/florida-institute-of-technology-1.jpg",
+      "excerpt": "Florida Institute of Technology (Florida Tech) là trường đại học uy tín ở Mỹ, nổi bật với các chương trình kỹ thuật, khoa học, công nghệ và kinh doanh. Được biết đến với môi trường học tập đa dạng và cơ hội nghiên cứu tiên tiến, mỗi năm trường thu hút hàng chục nghìn sinh viên […]"
+    },
+    {
+      "id": "dai-hoc-arizona-state-arizona-state-university-du-hoc-etest",
+      "name": "Đại học Arizona",
+      "country": "USA",
+      "location": "Arizona",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "42.923 - 65.523$",
+        "min_usd": 42923,
+        "max_usd": 65523
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kinh tế",
+        "Nông nghiệp và Khoa học đời sống",
+        "Kiến trúc và Kế hoạch phát triển khu du lịch",
+        "Giáo dục",
+        "Kỹ thuật",
+        "Y tế",
+        "Điều dưỡng",
+        "Dược",
+        "Khoa học máy tính",
+        "Khoa học xã hội và hành vi"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.arizona.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-arizona-state-arizona-state-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/11/dai-hoc-arizona-1.jpg",
+      "excerpt": "Nhiều năm liền được xếp hạng cao về các chương trình học thuật và nghiên cứu, Đại học Arizona là một trong những trường đại học công lập thu hút đông đảo sinh viên quốc tế mỗi năm tại Mỹ. Trong bài viết này, hãy cùng Du học ETEST tìm hiểu về mức học phí, các cơ hội học […]"
+    },
+    {
+      "id": "grace-brethren-high-school-truong-trung-hoc-bang-california-du-hoc-etest",
+      "name": "Grace Brethren High School",
+      "country": "USA",
+      "location": "California",
+      "levels": [
+        "Dự bị đại học",
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "15.850 - 18.416$",
+        "min_usd": 15850,
+        "max_usd": 18416
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.graceschoolsimi.com",
+      "detail_url": "https://duhoc-etest.edu.vn/grace-brethren-high-school-truong-trung-hoc-bang-california-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/02/grace-brethren-high-school-1.jpg",
+      "excerpt": "Grace Brethren High School là một trong những trường trung học hàng đầu tại Nam California có chất lượng giảng dạy tốt và môi trường học tập thân thiện. Trường đã có ảnh hưởng lớn đối với giáo dục trong khu vực và trên toàn nước Mỹ. Bài viết dưới đây Du học ETEST sẽ giúp bạn hiểu […]"
+    },
+    {
+      "id": "dai-hoc-clark-clark-university-du-hoc-etest",
+      "name": "Clark University",
+      "country": "USA",
+      "location": "Worcester/Massachusetts",
+      "levels": [
+        "Đại học",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "16.321$",
+        "min_usd": 16321,
+        "max_usd": 16321
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Quản trị và Kinh doanh",
+        "Khoa học Máy tính",
+        "Toán học",
+        "Khoa học Vật lý",
+        "Khoa học Xã hội",
+        "Giáo dục",
+        "Kỹ thuật",
+        "Mỹ thuật và Ứng dụng",
+        "Các ngành về y tế",
+        "Khoa học Nhân văn",
+        "Khoa học và Đời sống"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        }
+      ],
+      "website": "http://clarku.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-clark-clark-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/clark-university-2.jpg",
+      "excerpt": "Với bề dày lịch sử hơn 130 năm, Clark University là trường đại học không chỉ nổi tiếng về mặt học thuật mà còn là đơn vị tiên phong trong nghiên cứu và đổi mới giáo dục. Đặc biệt, những suất học bổng giá trị năm 2025 sẽ mở ra cơ hội tuyệt vời cho sinh viên […]"
+    },
+    {
+      "id": "du-hoc-my-saint-john-high-school-truong-trung-hoc-bang-new-york",
+      "name": "Chi phí và học bổng tại trung học Saint John’s High School 2025",
+      "country": "USA",
+      "location": "New York",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "20.430 - 21.475$",
+        "min_usd": 20430,
+        "max_usd": 21475
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa học máy tính",
+        "Tiếng Anh",
+        "Mỹ Thuật",
+        "Toán học",
+        "Giáo dục thể chất",
+        "Nghiên cứu tôn giáo",
+        "Khoa học",
+        "Khoa học xã hội"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.stjohnshigh.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-saint-john-high-school-truong-trung-hoc-bang-new-york/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/noname.jpg",
+      "excerpt": "Trung học Saint John’s High School ngôi trường trung học danh tiếng tọa lạc tại thành phố New York được đánh giá là điểm đến giáo dục tốt bậc nhất nước Mỹ dành cho học sinh quốc tế, đặc biệt là những bạn trẻ Việt Nam ấp ủ giấc mơ du học Mỹ ngay từ bậc THPT. […]"
+    },
+    {
+      "id": "dai-hoc-bang-louisiana-louisiana-state-university-du-hoc-etest",
+      "name": "Đại học Bang Louisiana",
+      "country": "USA",
+      "location": "Louisiana",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "11.954 - 28.631$",
+        "min_usd": 11954,
+        "max_usd": 28631
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 79.0
+        }
+      ],
+      "website": "https://www.lsu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-bang-louisiana-louisiana-state-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/03/dai-hoc-bang-louisiana-8.jpg",
+      "excerpt": "Đại học Bang Louisiana (LSU) là một trong những trường đại học công lập hàng đầu tại Mỹ, nổi tiếng với các chương trình đào tạo chất lượng cao và nhiều cơ hội học bổng hấp dẫn. Năm 2025, LSU tiếp tục cung cấp nhiều suất học bổng giá trị, giúp sinh viên quốc tế giảm […]"
+    },
+    {
+      "id": "dai-hoc-columbia",
+      "name": "Đại học Columbia – Quy mô, chương trình đào tạo và học phí 2025",
+      "country": "USA",
+      "location": "New York",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "50.000 - 53.000$",
+        "min_usd": 50000,
+        "max_usd": 53000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kinh tế học",
+        "Khoa học máy tính",
+        "Hóa học",
+        "Kiến trúc",
+        "Sinh học",
+        "Nhân chủng học",
+        "Khoa học kinh tế – chính trị",
+        "Tiếng Anh",
+        "Kinh tế tài chính",
+        "Xã hội học",
+        "Y tế công cộng",
+        "Âm nhạc"
+      ],
+      "gpa_required": {
+        "value": 7.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 70.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1500.0
+        }
+      ],
+      "website": "https://www.columbia.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-columbia/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/02/dai-hoc-columbia-2.jpg",
+      "excerpt": "Đại học Columbia được xem là một trong những biểu tượng của giáo dục đại học tại Mỹ và thế giới. Với một cộng đồng sinh viên năng động và đội ngũ giảng viên danh tiếng, Columbia vẫn không ngừng đóng góp vào sự phát triển của nền giáo dục toàn cầu. Hãy cùng Du học ETEST tìm […]"
+    },
+    {
+      "id": "dai-hoc-california-irvine",
+      "name": "Đại học California tại Irvine",
+      "country": "USA",
+      "location": "California/ Irvine",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "47.600$",
+        "min_usd": 47600,
+        "max_usd": 47600
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Y tế công cộng",
+        "Kinh tế, Kinh doanh, Quản trị kinh doanh",
+        "Sinh học, Công nghệ sinh học",
+        "Tâm lý học",
+        "Khoa học máy tính",
+        "Khoa học Xã hội Nhân Văn",
+        "Chính trị"
+      ],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 80.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1200.0
+        }
+      ],
+      "website": "https://uci.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-california-irvine/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/02/dai-hoc-california-tai-irvine-1.jpg",
+      "excerpt": "Đại học California tại Irvine (UCI) là một trong những cơ sở giáo dục uy tín trong hệ thống Đại học California. Được thành lập vào năm 1965, UCI nhanh chóng khẳng định vị thế của mình nhờ vào chương trình đào tạo chất lượng và môi trường học tập đổi mới. Bài viết này Du học ETEST sẽ cung […]"
+    },
+    {
+      "id": "du-hoc-my-university-of-california-los-angeles-truong-cong-gioi-nhat-hoa-ky",
+      "name": "Đại học California tại Los Angeles",
+      "country": "USA",
+      "location": "Westwood/ bang California/ Los Angeles",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "15.154$",
+        "min_usd": 15154,
+        "max_usd": 15154
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Khoa học xã hội và nhân văn",
+        "Kỹ thuật và khoa học ứng dụng",
+        "Khoa học tự nhiên",
+        "Kinh doanh và kinh tế",
+        "Sức khỏe và y học",
+        "Nghệ thuật và truyền thông"
+      ],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 100.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1300.0
+        }
+      ],
+      "website": "https://www.ucla.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-university-of-california-los-angeles-truong-cong-gioi-nhat-hoa-ky/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/07/dai-hoc-california-tai-los-angeles-2.jpg",
+      "excerpt": "Đại học California tại Los Angeles (UCLA) là một trong những cơ sở giáo dục hàng đầu tại Mỹ. Nằm tại khu vực Westwood, Los Angeles, UCLA không chỉ thu hút sinh viên trong nước mà còn là điểm đến của hàng nghìn sinh viên quốc tế mỗi năm. Trường đã khẳng định vị thế vững chắc […]"
+    },
+    {
+      "id": "du-hoc-my-the-university-of-chicago-vien-dai-hoc-danh-gia-tai-bang-illinois",
+      "name": "Đại học Chicago",
+      "country": "USA",
+      "location": "Chicago/ Illinois",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "61.179$",
+        "min_usd": 61179,
+        "max_usd": 61179
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa Thiên văn học và Vật lý thiên văn",
+        "Khoa Khoa học Máy tính",
+        "Khoa Địa vật lý",
+        "Khoa Toán",
+        "Khoa Tâm lý học",
+        "Khoa Nhân văn",
+        "Khoa Khoa học sinh học",
+        "Khoa Tư tưởng xã hội",
+        "Khoa Xã hội học"
+      ],
+      "gpa_required": {
+        "raw": "4.48/5.0"
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 70.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1510.0
+        }
+      ],
+      "website": "https://www.uchicago.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-the-university-of-chicago-vien-dai-hoc-danh-gia-tai-bang-illinois/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/dai-hoc-chicago-2.jpeg",
+      "excerpt": "Đại học Chicago là một trong những học viện nghiên cứu danh tiếng nhất thế giới. Với truyền thống học thuật lâu đời, cơ sở vật chất hiện đại và một cộng đồng học thuật đa dạng, trường không chỉ cung cấp nền tảng kiến thức vững chắc mà còn tạo điều kiện để sinh viên […]"
+    },
+    {
+      "id": "du-hoc-my-the-newman-school-truong-trung-hoc-tu-thuc-tai-boston",
+      "name": "The Newman School",
+      "country": "USA",
+      "location": "Boston/Massachusetts",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "43.000$",
+        "min_usd": 43000,
+        "max_usd": 43000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.newmanboston.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-the-newman-school-truong-trung-hoc-tu-thuc-tai-boston/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/02/the-new-man-school-1.jpg",
+      "excerpt": "The Newman School – ngôi trường trung học danh tiếng ngay trung tâm Boston, Massachusetts – không chỉ mang đến chương trình học thuật chất lượng mà còn tạo điều kiện để học sinh phát triển toàn diện trong môi trường quốc tế năng động. Với vị trí đắc địa gần các trường đại học hàng […]"
+    },
+    {
+      "id": "dai-hoc-west-florida-university-of-west-florida-du-hoc-etest",
+      "name": "University of West Florida",
+      "country": "USA",
+      "location": "Pensacola/Florida",
+      "levels": [
+        "Đại học",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "30.386$",
+        "min_usd": 30386,
+        "max_usd": 30386
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa Nghệ thuật, Khoa học Xã hội & Nhân văn",
+        "Khoa Kinh doanh – Chương trình MBA với học phí từ $14,000/năm, không yêu cầu GRE",
+        "Khoa Giáo dục & Nghiên cứu chuyên nghiệp",
+        "Khoa Khoa học & Kỹ thuật Hal Marcus",
+        "Khoa Y học & Sức khỏe"
+      ],
+      "gpa_required": {
+        "value": 21.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 75.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1060.0
+        }
+      ],
+      "website": "https://uwf.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-west-florida-university-of-west-florida-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/03/university-of-west-florida-1.jpg",
+      "excerpt": "University of West Florida (UWF) là một trong những cơ sở giáo dục uy tín tại bang Florida, Mỹ với hệ thống chương trình đào tạo đa dạng từ cử nhân đến thạc sĩ. Trường không chỉ chú trọng vào chất lượng giảng dạy mà còn cung cấp những cơ hội nghề nghiệp rộng mở cho […]"
+    },
+    {
+      "id": "trung-hoc-paradise-valley-unified-school-district-du-hoc-etest",
+      "name": "Paradise Valley Unified School District",
+      "country": "USA",
+      "location": "Phoenix/Arizona",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "26.450$",
+        "min_usd": 26450,
+        "max_usd": 26450
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "TOEFL",
+          "min_score": 40.0
+        }
+      ],
+      "website": "https://www.pvschools.net/",
+      "detail_url": "https://duhoc-etest.edu.vn/trung-hoc-paradise-valley-unified-school-district-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/paradise-valley-unified-school-district-1.jpg",
+      "excerpt": "Paradise Valley Unified School District (PVUSD) là một trong những học khu công lập hàng đầu tại Arizona được đánh giá cao về chất lượng giảng dạy và môi trường học tập. Với chương trình đào tạo đa dạng, học khu này thu hút nhiều học sinh quốc tế mỗi năm. Vậy điều kiện xét tuyển, […]"
+    },
+    {
+      "id": "du-hoc-my-boston-university-truong-dai-hoc-tu-hang-dau-o-bang-massachusetts",
+      "name": "Đại học Boston",
+      "country": "USA",
+      "location": "Boston",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "66.670$",
+        "min_usd": 66670,
+        "max_usd": 66670
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Quản trị kinh doanh (MBA)",
+        "Y tế, chăm sóc sức khỏe",
+        "Giáo dục, đào tạo",
+        "Khoa học ứng dụng, khoa học cơ bản",
+        "Khoa học xã hội, truyền thông",
+        "Kinh doanh, quản lý",
+        "Luật",
+        "Nghệ thuật sáng tạo, thiết kế",
+        "Nhân văn"
+      ],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1300.0
+        }
+      ],
+      "website": "https://www.bu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-boston-university-truong-dai-hoc-tu-hang-dau-o-bang-massachusetts/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/dai-hoc-boston-1.jpg",
+      "excerpt": "Đại học Boston (Boston University – BU) là một trong những trường đại học tư thục danh tiếng bậc nhất tại Hoa Kỳ được biết đến với chương trình đào tạo toàn diện, cơ sở vật chất hiện đại và cộng đồng sinh viên quốc tế đa dạng. Tọa lạc tại trung tâm thành phố Boston […]"
+    },
+    {
+      "id": "truong-trung-hoc-phoenix-christian-preparatory-school-du-hoc-etest",
+      "name": "Trung học Phoenix Christian Preparatory School",
+      "country": "USA",
+      "location": "Phoenix/Arizona",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "27.460$",
+        "min_usd": 27460,
+        "max_usd": 27460
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Ngoại ngữ: Tiếng Pháp, Tiếng Tây Ban Nha"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "TOEFL",
+          "min_score": 50.0
+        }
+      ],
+      "website": "https://www.phoenixchristian.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/truong-trung-hoc-phoenix-christian-preparatory-school-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/phoenix-christian-preparatory-school-1.jpg",
+      "excerpt": "Giấc mơ du học Mỹ và cơ hội tiếp cận nền giáo dục chất lượng luôn là mục tiêu của nhiều học sinh Việt Nam. Trong số đó, Phoenix Christian Preparatory School được đánh giá là một trong những ngôi trường uy tín thu hút sự quan tâm của đông đảo phụ huynh và học sinh. Vậy mức học […]"
+    },
+    {
+      "id": "dai-hoc-seattle-pacific-seattle-pacific-university-du-hoc-etest",
+      "name": "Đại học Seattle Pacific",
+      "country": "USA",
+      "location": "Seattle",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "40.407$",
+        "min_usd": 40407,
+        "max_usd": 40407
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 2.5,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        }
+      ],
+      "website": "https://spu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-seattle-pacific-seattle-pacific-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/12/dai-hoc-seattle-pacific-1.jpg",
+      "excerpt": "Đại học Seattle Pacific (SPU) nổi bật là một trong những trường đại học thuộc top đầu tại Mỹ với môi trường học tập thân thiện và các chương trình đào tạo chất lượng. Đối với sinh viên quốc tế, SPU mang đến những cơ hội học bổng hấp dẫn và nhiều ngành học đa dạng […]"
+    },
+    {
+      "id": "truong-trung-hoc-san-domenico-school-du-hoc-etest",
+      "name": "San Domenico School – Trường tư thục hàng đầu tại California",
+      "country": "USA",
+      "location": "California",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "83.450$",
+        "min_usd": 83450,
+        "max_usd": 83450
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.sandomenico.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/truong-trung-hoc-san-domenico-school-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/san-domenico-school-1.jpg",
+      "excerpt": "San Domenico School là một trong những trường tư thục hàng đầu ở California mang đến cho học sinh một môi trường học tập tốt với chương trình giáo dục chất lượng và đội ngũ giáo viên tận tâm. Trường không chỉ chú trọng kiến thức mà còn giúp các em phát triển toàn diện về […]"
+    },
+    {
+      "id": "dai-hoc-bang-pennsylvania-state",
+      "name": "Đại học bang Pennsylvania",
+      "country": "USA",
+      "location": "University Park/ Tiểu bang Pennsylvania",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "37.946$",
+        "min_usd": 37946,
+        "max_usd": 37946
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa học Nông nghiệp : Nghiên cứu công nghệ sinh học, kỹ thuật trồng trọt hiện đại",
+        "Nghệ thuật và Kiến trúc : Đào sâu thiết kế sáng tạo, quy hoạch đô thị",
+        "Kinh doanh : Cung cấp kiến thức về quản lý, tài chính, chiến lược doanh nghiệp",
+        "Truyền thông : Đào tạo về truyền thông đa phương tiện, báo chí, marketing",
+        "Khoa học Trái đất và Khoáng sản : Nghiên cứu địa chất, tài nguyên thiên nhiên",
+        "Giáo dục : Cung cấp chương trình giảng dạy tiên tiến cho các nhà giáo tương lai",
+        "Kỹ thuật : Nhấn mạnh vào tự động hóa, công nghệ chế tạo, năng lượng bền vững",
+        "Sức khỏe và sự phát triển con người : Tập trung dinh dưỡng, chăm sóc sức khỏe, phát triển cộng đồng",
+        "Công nghệ thông tin : Đào tạo chuyên gia công nghệ, lập trình, bảo mật dữ liệu",
+        "Pháp luật : Cung cấp nền tảng về luật pháp, nghiên cứu pháp lý",
+        "Nghệ thuật tự do : Khám phá lĩnh vực văn học, lịch sử, triết học",
+        "Dược : Đào tạo kỹ năng phát triển thuốc, nghiên cứu y dược",
+        "Điều dưỡng : Hướng dẫn chăm sóc bệnh nhân, quản lý sức khỏe",
+        "Khoa học : Tập trung nghiên cứu khoa học cơ bản và ứng dụng thực tiễn"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.psu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-bang-pennsylvania-state/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/02/dai-hoc-bang-pennsylvania-1.jpg",
+      "excerpt": "Đại học Bang Pennsylvania (Pennsylvania State University – PSU) là một trong những biểu tượng giáo dục hàng đầu tại Mỹ. Thành lập từ năm 1855, PSU không chỉ nổi tiếng với bề dày lịch sử mà còn được biết đến với chất lượng giảng dạy xuất sắc và cơ sở vật chất hiện đại. Với […]"
+    },
+    {
+      "id": "dai-hoc-utah-university-of-utah-du-hoc-etest",
+      "name": "Đại học Utah",
+      "country": "USA",
+      "location": "Utah",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "34.900$",
+        "min_usd": 34900,
+        "max_usd": 34900
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Game Development (#3)",
+        "Architecture",
+        "Entrepreneurship (#8)",
+        "Chemistry",
+        "Engineering (#63)",
+        "Biomedical Engineering",
+        "Computer Engineering",
+        "Accounting (#56)"
+      ],
+      "gpa_required": {
+        "value": 3.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 80.0
+        },
+        {
+          "name": "SAT",
+          "min_score": 1050.0
+        }
+      ],
+      "website": "https://www.utah.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-utah-university-of-utah-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-utah-1.jpg",
+      "excerpt": "Với chất lượng đào tạo đạt chuẩn và những cơ hội học bổng hấp dẫn, Đại học Utah là một trong những lựa chọn phổ biến cho sinh viên quốc tế. Tuy nhiên, để chuẩn bị tốt nhất cho hành trình du học Mỹ, việc hiểu rõ về học bổng và chi phí là điều vô cùng quan […]"
+    },
+    {
+      "id": "dai-hoc-bang-michigan-state",
+      "name": "Trường đại học bang Michigan – Xếp hạng, học phí, yêu cầu nhập học 2025",
+      "country": "USA",
+      "location": "East Lansing/ MI, United States/ Michigan",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "25.000 - 50.000$",
+        "min_usd": 25000,
+        "max_usd": 50000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kế toán",
+        "Quảng cáo",
+        "Quản lý kinh doanh nông nghiệp",
+        "Tâm lý học",
+        "Sức khỏe cộng đồng",
+        "Giáo dục trung học cơ sở",
+        "Khoa học chính trị",
+        "Điều dưỡng",
+        "Quản lý kinh doanh ngành thực phẩm",
+        "Tài chính"
+      ],
+      "gpa_required": {
+        "value": 4.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 79.0
+        }
+      ],
+      "website": "https://msu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-bang-michigan-state/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/02/dai-hoc-bang-michigan-1-1.jpg",
+      "excerpt": "Bang Michigan tọa lạc ở khu vực Trung Tây Hoa Kỳ được biết đến với vị trí địa lý chiến lược, khí hậu ôn hòa, cùng với cộng đồng dân cư thân thiện. Riêng giáo dục đại học tại Michigan không chỉ đóng vai trò quan trọng trong việc nâng cao chất lượng nhân lực […]"
+    },
+    {
+      "id": "dai-hoc-adelphi-adelphi-university-du-hoc-etest",
+      "name": "Đại học Adelphi – Học phí và Cơ hội học bổng chi tiết 2025",
+      "country": "USA",
+      "location": "Garden City",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "40.000$",
+        "min_usd": 40000,
+        "max_usd": 40000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa Điều dưỡng và Sức khỏe cộng đồng: Điều dưỡng; Y tế công cộng",
+        "Khoa Công tác xã hội: Chương trình Công tác Xã hội chuyên sâu",
+        "Khoa Tâm lý: Gồm Tư vấn Sức khỏe Tinh thần, Tâm lý học tổng quát, Tâm lý học đường"
+      ],
+      "gpa_required": {
+        "value": 4.0,
+        "scale": 4.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        }
+      ],
+      "website": "https://www.adelphi.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-adelphi-adelphi-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/02/dai-hoc-adelphi-1-1.jpg",
+      "excerpt": "Du học tại Đại học Adelphi mở ra cơ hội học tập chất lượng cao tại Mỹ, với mức học phí hợp lý và nhiều chương trình học bổng hấp dẫn. Trường cung cấp những gói hỗ trợ tài chính giúp sinh viên giảm bớt gánh nặng chi phí học tập và sinh hoạt. Trong bài viết […]"
+    },
+    {
+      "id": "trung-hoc-noi-tru-villanova-preparatory-villanova-preparatory-school-du-hoc-etest",
+      "name": "Villanova Preparatory – Trường Trung học danh tiếng tại Mỹ",
+      "country": "USA",
+      "location": "Ojai/Ventura/California",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "27.500 - 71.000$",
+        "min_usd": 27500,
+        "max_usd": 71000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.villanovaprep.org/",
+      "detail_url": "https://duhoc-etest.edu.vn/trung-hoc-noi-tru-villanova-preparatory-villanova-preparatory-school-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/02/truong-villanova-preparatory-6.jpg",
+      "excerpt": "Villanova Preparatory School là trường trung học danh tiếng tại Mỹ, với chương trình giáo dục chất lượng và môi trường học tập lý tưởng. Với bề dày lịch sử lâu đời, trường Villanova Preparatory chú trọng phát triển kỹ năng và định hướng tương lai cho học sinh. Hãy cùng du học ETEST khám phá những điểm […]"
+    },
+    {
+      "id": "du-hoc-my-university-of-florida-dai-hoc-cong-dung-dau-bang-florida",
+      "name": "Đại học bang Florida",
+      "country": "USA",
+      "location": "Florida/ Tallahassee",
+      "levels": [
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "28.658$",
+        "min_usd": 28658,
+        "max_usd": 28658
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Trường Nghệ thuật và Khoa học",
+        "Trường Kinh doanh",
+        "Trường Truyền thông và Thông tin",
+        "Trường Tội phạm học và Tư pháp Hình sự",
+        "Trường Giáo dục",
+        "Trường Kỹ thuật",
+        "Trường Mỹ thuật",
+        "Trường Khoa học Con người",
+        "Trường Luật",
+        "Trường Y",
+        "Trường Nghệ thuật Điện ảnh",
+        "Trường Âm nhạc",
+        "Trường Điều dưỡng",
+        "Trường Khoa học Xã hội và Chính sách Công",
+        "Trường Công tác Xã hội",
+        "Trường Quản lý Khách sạn Dedman",
+        "Trường Kinh doanh Jim Moran"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.fsu.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-university-of-florida-dai-hoc-cong-dung-dau-bang-florida/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/05/dai-hoc-bang-florida-1.jpg",
+      "excerpt": "Đại học Bang Florida (FSU) là một trong những trường đại học danh tiếng tại Mỹ, thu hút hàng nghìn sinh viên từ khắp nơi trên thế giới. Với chương trình đào tạo đa dạng, chất lượng giảng dạy chất lượng và cơ sở vật chất hiện đại, FSU mang đến môi trường học tập lý tưởng […]"
+    },
+    {
+      "id": "hoc-vien-bach-khoa-worcester",
+      "name": "Học viện Bách khoa Worcester",
+      "country": "USA",
+      "location": "Worcester/ Massachusetts",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "54.640$",
+        "min_usd": 54640,
+        "max_usd": 54640
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Cơ khí (Mechanical Engineering)",
+        "Khoa học máy tính (Computer Science)",
+        "Kỹ thuật sinh học và y sinh (Biomedical Engineering)",
+        "Kỹ thuật điện và điện tử (Electrical & Electronics Engineering)",
+        "Cơ điện tử, robot và kỹ thuật tự động hóa (Mechatronics, Robotics & Automation Engineering)",
+        "Kỹ thuật hóa học (Chemical Engineering)",
+        "Kỹ thuật dân dụng (Civil Engineering)",
+        "Hàng không (Aerospace Engineering)",
+        "Sinh học / Khoa học sinh học (Biology & Life Sciences)",
+        "Kỹ thuật công nghiệp (Industrial Engineering)"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.wpi.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/hoc-vien-bach-khoa-worcester/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/06/hoc-vien-bach-khoa-worcester-5.jpg",
+      "excerpt": "Là một trong những trường đại học kỹ thuật danh tiếng tại Hoa Kỳ. Học viện Bách khoa Worcester (WPI) mang đến hệ thống giáo dục ứng dụng thực tiễn giúp sinh viên trang bị kỹ năng chuyên sâu để sẵn sàng với những cơ hội nghề nghiệp hấp dẫn. Bạn muốn tìm hiểu điều kiện tuyển […]"
+    },
+    {
+      "id": "freedom-preparatory-hoc-vien-trung-hoc-bang-utah-du-hoc-etest",
+      "name": "Freedom Preparatory – Học viện trung học bang Utah",
+      "country": "USA",
+      "location": "Utah/Provo",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "24.450$",
+        "min_usd": 24450,
+        "max_usd": 24450
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 4.0
+        },
+        {
+          "name": "TOEFL",
+          "min_score": 65.0
+        }
+      ],
+      "website": "https://www.freedomprep.net/",
+      "detail_url": "https://duhoc-etest.edu.vn/freedom-preparatory-hoc-vien-trung-hoc-bang-utah-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/04/hoc-vien-freedom-preparatory-4.jpg",
+      "excerpt": "Học viện Freedom Preparatory là một trong những trường đặc quyền hàng đầu tại Utah, Freedom Preparatory mang đến nền giáo dục chất lượng giúp học sinh phát huy tiềm năng của mình. Tại đây sự hợp tác chặt chẽ giữa nhà trường và phụ huynh là chìa khóa để xây dựng một môi trường học tập […]"
+    },
+    {
+      "id": "trung-hoc-cabramatta-cabramatta-high-school-du-hoc-etest",
+      "name": "Trung học Cabramatta",
+      "country": "Australia",
+      "location": "Cabramatta/New South Wales",
+      "levels": [
+        "THPT"
+      ],
+      "tuition": {
+        "raw": "16.600 - 19.000$",
+        "min_usd": 16600,
+        "max_usd": 19000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://cabramatta-h.schools.nsw.gov.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/trung-hoc-cabramatta-cabramatta-high-school-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/04/trung-hoc-cabramatta-cabramatta-high-school-4.jpg",
+      "excerpt": "Trường trung học Cabramatta nổi tiếng với chương trình giảng dạy hiện đại, đội ngũ giáo viên tận tâm và cơ sở vật chất khang trang, tạo điều kiện tốt nhất cho học sinh phát triển toàn diện khi du học Úc. Để biết thêm thông tin chi tiết về Trường Trung học Cabramatta và xây dựng […]"
+    },
+    {
+      "id": "dai-hoc-vanderbilt-vanderbilt-university-du-hoc-etest",
+      "name": "Đại học Vanderbilt",
+      "country": "USA",
+      "location": "Tennessee/Nashville",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "57.974$",
+        "min_usd": 57974,
+        "max_usd": 57974
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kinh tế học (Economics)",
+        "Phương pháp nghiên cứu khoa học xã hội (Social Science Research Methods)",
+        "Toán học (Mathematics)",
+        "Khoa học máy tính (Computer Science)"
+      ],
+      "gpa_required": {
+        "value": 8.7,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 7.0
+        }
+      ],
+      "website": "https://www.vanderbilt.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-vanderbilt-vanderbilt-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/01/dai-hoc-vanderbilt-vanderbilt-university-6.jpg",
+      "excerpt": "Nằm giữa lòng của thành phố Nashville nơi được mệnh danh là “Thủ đô âm nhạc của thế giới”. Đại học Vanderbilt không chỉ là một biểu tượng giáo dục danh giá tại Tennessee mà còn là điểm đến mơ ước của hàng nghìn sinh viên quốc tế mỗi năm. Trường nổi tiếng với chất lượng đào […]"
+    },
+    {
+      "id": "dai-hoc-tulane-tulane-university-du-hoc-etest",
+      "name": "Đại Học Tulane",
+      "country": "USA",
+      "location": "New Orleans, Louisiana",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "68.678$",
+        "min_usd": 68678,
+        "max_usd": 68678
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://tulane.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-tulane-tulane-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/dai-hoc-tulane.jpg",
+      "excerpt": "Nằm tại trung tâm thành phố New Orleans. Đại học Tulane không chỉ nổi bật với các chương trình học đa ngành mà còn thu hút sinh viên toàn cầu bởi các suất học bổng giá trị cùng điều kiện đầu vào linh hoạt. Các thông tin về học bổng, yêu cầu đầu vào và bí quyết […]"
+    },
+    {
+      "id": "dai-hoc-rmit-rmit-university-du-hoc-etest",
+      "name": "Đại học RMIT Úc",
+      "country": "Australia",
+      "location": "Melbourne",
+      "levels": [
+        "Đại học",
+        "Sau đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "24.000$",
+        "min_usd": 24000,
+        "max_usd": 24000
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Kiến trúc",
+        "Kinh doanh",
+        "Mỹ thuật",
+        "Khoa học Y sinh",
+        "Kiến thiết",
+        "Truyền thông",
+        "Thiết kế",
+        "Giáo dục",
+        "Kỹ thuật",
+        "Thời trang",
+        "Thiết kế Game",
+        "Khoa học Sức khỏe",
+        "Công nghệ thông tin",
+        "Luật",
+        "Phương tiện truyền thông",
+        "Bất động sản",
+        "Khoa học",
+        "Khoa học xã hội"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.rmit.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-rmit-rmit-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/09/dai-hoc-rmit-university.jpg",
+      "excerpt": "Úc là điểm đến du học lý tưởng với hệ thống giáo dục đẳng cấp, bằng cấp được công nhận toàn cầu và hơn 250.000 khóa học tại hơn 1.100 cơ sở giáo dục. Trong đó, Đại học RMIT nổi bật như một ngôi trường hàng đầu, mang đến cơ hội học tập và trải nghiệm tuyệt […]"
+    },
+    {
+      "id": "dai-hoc-curtin-curtin-university-du-hoc-etest",
+      "name": "Đại học Curtin University Úc",
+      "country": "Australia",
+      "location": "Kent St, Bentley WA 6102",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "8.768$",
+        "min_usd": 8768,
+        "max_usd": 8768
+      },
+      "scholarship_available": false,
+      "fields": [
+        "Nông nghiệp, Môi trường và Tính bền vững",
+        "Kiến trúc và Xây dựng",
+        "Nghệ thuật và Công nghiệp sáng tạo",
+        "Kinh doanh, Quản lý và Luật",
+        "Văn hóa, Xã hội và Bản địa",
+        "Giáo dục",
+        "Kỹ thuật, Khai thác mỏ và Khảo sát",
+        "Sức khỏe",
+        "Công nghệ thông tin",
+        "Khoa học vật lý, Khoa học địa chất và Toán học"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.curtin.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-curtin-curtin-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/09/dai-hoc-curtin-uc.jpg",
+      "excerpt": "Đại học Curtin Úc với vị trí top 1% trong bảng xếp hạng các trường đại học thế giới năm 2019 (Academic Ranking of World Universities), là một trong những trường đại học Úc danh tiếng và uy tín toàn cầu. Sinh viên theo học tại Curtin không chỉ được đào tạo trong một môi trường học tập […]"
+    },
+    {
+      "id": "truong-dai-hoc-cong-nghe-queensland-qut",
+      "name": "Thông tin đại học QUT Úc",
+      "country": "Australia",
+      "location": "Queensland, Brisbane",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "30.000 - 50.000$",
+        "min_usd": 30000,
+        "max_usd": 50000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.qut.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/truong-dai-hoc-cong-nghe-queensland-qut/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/01/truong-dai-hoc-cong-nghe-queensland-qut.jpg",
+      "excerpt": "Đại học Công nghệ Queensland (QUT) là một trong những trường đại học hàng đầu tại Úc, nổi tiếng với các chương trình đào tạo thực tiễn, gắn liền với nhu cầu của thị trường lao động toàn cầu. Du học ETEST cung cấp cho bạn thông tin chi tiết và mới nhất về các ngành học nổi bật, […]"
+    },
+    {
+      "id": "dai-hoc-southern-queensland",
+      "name": "Đại học Nam Queensland – Thông tin về học phí, học bổng 2025",
+      "country": "Australia",
+      "location": "Queensland, Toowoomba",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "31.000 - 37.600$",
+        "min_usd": 31000,
+        "max_usd": 37600
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.unisq.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-southern-queensland/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2025/01/dai-hoc-southern-queensland.jpg",
+      "excerpt": "Đại học Nam Queensland (USQ) là một trong những trường đại học hàng đầu tại Úc, nổi bật với chất lượng giáo dục và chính sách hỗ trợ sinh viên quốc tế. Năm 2025, USQ cung cấp các chương trình học bổng hấp dẫn như “International Student Support Scholarship” với giá trị lên đến 15% học phí toàn khóa, […]"
+    },
+    {
+      "id": "dai-hoc-sydney-sydney-university-du-hoc-etest",
+      "name": "Đại học Sydney (University of Sydney)",
+      "country": "Australia",
+      "location": "New South Wales, Sydney",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "45.000 - 53.000$",
+        "min_usd": 45000,
+        "max_usd": 53000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": {
+        "value": 8.0,
+        "scale": 10.0
+      },
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        }
+      ],
+      "website": "https://www.sydney.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-sydney-sydney-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/07/dai-hoc-sydney.jpg",
+      "excerpt": "Đại học Sydney, một trong những ngôi trường lâu đời và danh tiếng nhất tại Úc, đã khẳng định vị thế hàng đầu trong lĩnh vực giáo dục quốc tế. Với hơn 160 năm phát triển, trường không chỉ nổi bật về chất lượng giảng dạy mà còn thu hút sinh viên từ khắp nơi […]"
+    },
+    {
+      "id": "dai-hoc-queensland-university-of-queensland-du-hoc-etest",
+      "name": "Đại học Queensland – Học phí, học bổng và cơ hội học tập",
+      "country": "Australia",
+      "location": "Queensland/ Brisbane",
+      "levels": [
+        "Đại học",
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "17.000 - 50.000$",
+        "min_usd": 17000,
+        "max_usd": 50000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.uq.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-queensland-university-of-queensland-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/08/dai-hoc-queensland.jpg",
+      "excerpt": "Đại học Queensland (UQ) là một trong những trường đại học hàng đầu tại Úc, nổi tiếng với chất lượng giảng dạy và nghiên cứu xuất sắc. UQ thu hút hàng nghìn sinh viên quốc tế mỗi năm nhờ vào môi trường học tập năng động, cơ sở vật chất hiện đại và đội ngũ giảng viên […]"
+    },
+    {
+      "id": "dai-hoc-monash-monash-university-du-hoc-etest",
+      "name": "Đại học Monash University – Thông tin về học bổng, học phí mới nhất",
+      "country": "Australia",
+      "location": "Victoria/ Melbourne",
+      "levels": [
+        "Cử nhân"
+      ],
+      "tuition": {
+        "raw": "17.000 - 50.000$",
+        "min_usd": 17000,
+        "max_usd": 50000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Luật : Chương trình đào tạo pháp lý hiện đại, phát triển tư duy phản biện và kỹ năng pháp lý",
+        "Kỹ thuật : Các khóa học tiên tiến, tham gia dự án công nghệ hàng đầu",
+        "Khoa học : Đào tạo chuyên sâu với cơ sở vật chất hiện đại",
+        "Kế toán và Tài chính : Nền tảng vững chắc về tài chính và phân tích",
+        "Mạng và Truyền thông : Chuyên sâu vào sáng tạo và công nghệ số",
+        "Kinh doanh và Lãnh đạo : Phát triển khả năng quản lý và lãnh đạo",
+        "Khoa học Máy tính và Công nghệ Thông tin : Chuẩn bị cho ngành công nghiệp 4.0",
+        "Y học, Điều dưỡng và Khoa học Sức khỏe : Cơ hội nghiên cứu và thực hành trong môi trường hiện đại",
+        "Dược phẩm và Khoa học Dược phẩm : Đào tạo hàng đầu trong ngành Dược và y học"
+      ],
+      "gpa_required": null,
+      "certs_required": [
+        {
+          "name": "IELTS",
+          "min_score": 6.5
+        }
+      ],
+      "website": "https://www.monash.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-monash-monash-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/09/dai-hoc-monash-uc.jpg",
+      "excerpt": "Đại học Monash là một trong những trường đại học danh tiếng hàng đầu thế giới, không chỉ nổi bật với chương trình đào tạo đa dạng mà còn với những chính sách hỗ trợ học phí và học bổng hấp dẫn. Với vị trí trong top các trường đại học uy tín toàn cầu, Monash […]"
+    },
+    {
+      "id": "du-hoc-uc-university-of-melbourne-ngoi-truong-dung-dau-xu-so-kangaroo",
+      "name": "Đại học Melbourne – Học phí, học bổng và ngành học nổi bật",
+      "country": "Australia",
+      "location": "Victoria/ Melbourne",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "35.000 - 45.000$",
+        "min_usd": 35000,
+        "max_usd": 45000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khoa Luật : Đào tạo các ngành học về luật, pháp lý, và các chương trình nghiên cứu về luật học"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.unimelb.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-uc-university-of-melbourne-ngoi-truong-dung-dau-xu-so-kangaroo/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/06/dai-hoc-melbourne-uc.jpg",
+      "excerpt": "Đại học Melbourne, một trong những trường đại học hàng đầu và lâu đời nhất tại Úc, nổi bật với chất lượng giảng dạy xuất sắc và môi trường học tập chuyên nghiệp. Trường thu hút hàng nghìn sinh viên quốc tế mỗi năm nhờ vào cơ hội học hỏi từ các chuyên gia hàng […]"
+    },
+    {
+      "id": "macquarie-university-du-hoc-etest",
+      "name": "Đại học Macquarie Úc",
+      "country": "Australia",
+      "location": "New South Wales/ Sydney",
+      "levels": [
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "39.600$",
+        "min_usd": 39600,
+        "max_usd": 39600
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Khóa tiếng Anh : Khai giảng hàng tháng, đáp ứng nhu cầu nâng cao kỹ năng ngôn ngữ một cách liên tục"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.mq.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/macquarie-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/04/dai-hoc-macquarie-uc.jpg",
+      "excerpt": "Đại học Macquarie là một trong những trường đại học danh tiếng nhất tại Úc, nổi bật với chương trình học đa dạng, môi trường học thuật tiên tiến và cơ hội nghề nghiệp hấp dẫn cho sinh viên quốc tế. Nằm tại Sydney, với cơ sở vật chất hiện đại và đội ngũ giảng viên […]"
+    },
+    {
+      "id": "dai-hoc-cong-nghe-sydney-university-of-technology-sydney-du-hoc-etest",
+      "name": "Đại học Công nghệ Sydney (UTS), Úc – Học phí, học bổng, ngành học nổi bật",
+      "country": "Australia",
+      "location": "New South Wales/ Sydney",
+      "levels": [
+        "Dự bị đại học",
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "32.600$",
+        "min_usd": 32600,
+        "max_usd": 32600
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.uts.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-cong-nghe-sydney-university-of-technology-sydney-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/06/dai-hoc-cong-nghe-uts.jpg",
+      "excerpt": "Trường Đại học Công nghệ Sydney (UTS) luôn đứng đầu danh sách những lựa chọn du học lý tưởng cho sinh viên quốc tế. Nằm tại trung tâm Sydney, trường UTS Úc không chỉ nổi bật với chất lượng giảng dạy xuất sắc mà còn là cánh cửa mở ra vô số cơ hội phát triển nghề […]"
+    },
+    {
+      "id": "dai-hoc-la-trobe-la-trobe-university-du-hoc-etest",
+      "name": "Trường Đại học La Trobe, Úc – Học phí, học bổng và chương trình đào tạo",
+      "country": "Australia",
+      "location": "Victoria/ Melbourne",
+      "levels": [
+        "Cao đẳng",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Các chương trình ngắn hạn",
+        "Đại học"
+      ],
+      "tuition": {
+        "raw": "21.000$",
+        "min_usd": 21000,
+        "max_usd": 21000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Kế toán",
+        "Kinh doanh",
+        "Kinh doanh (Marketing)",
+        "Kinh doanh (Tài chính kế toán)",
+        "Kinh doanh (Dịch vụ tài chính)",
+        "Kinh doanh (Quản trị sự kiện)",
+        "Kinh doanh (Quản trị du lịch)",
+        "Kinh doanh (Quản trị Du lịch Khách sạn)",
+        "Tài chính",
+        "Kinh tế",
+        "Kinh doanh quốc tế",
+        "Quan hệ quốc tế",
+        "Báo chí",
+        "Truyền thông chiến lược",
+        "Y tá",
+        "Thiết kế đồ họa",
+        "Công nghệ Games",
+        "Công nghệ thông tin",
+        "Khoa học máy tính",
+        "Luật",
+        "Công tác xã hội",
+        "Công nghệ sinh học",
+        "Giáo dục (tiểu học, trung học)",
+        "Công nghệ Y sinh",
+        "Dược",
+        "Kỹ sư dân dụng"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.latrobe.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-la-trobe-la-trobe-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2023/03/dai-hoc-latrobe-uc.jpg",
+      "excerpt": "Đại học La Trobe không chỉ nổi tiếng với chất lượng giáo dục hàng đầu mà còn là một cộng đồng học thuật đa văn hóa sôi động. Tại đây, bạn sẽ được trải nghiệm một môi trường học tập lý tưởng, kết nối với những người bạn đến từ khắp nơi trên thế giới và […]"
+    },
+    {
+      "id": "truong-dai-hoc-tay-sydney-western-sydney-university",
+      "name": "Trường Đại học Tây Sydney",
+      "country": "Australia",
+      "location": "New Soth Wales",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ",
+        "Các chương trình ngắn hạn"
+      ],
+      "tuition": {
+        "raw": "25.000$",
+        "min_usd": 25000,
+        "max_usd": 25000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Xếp hạng #200 về ngành Hospitality & Tourism",
+        "Các chương trình được cải tiến liên tục để phù hợp với sự phát triển của công nghệ và kinh tế",
+        "Sinh viên học tại Parramatta campus với cơ sở vật chất hiện đại bậc nhất",
+        "Chương trình kết hợp nhiều ngành như tiếp thị, kỹ thuật, thông tin, và truyền thông",
+        "Ngành khoa học dữ liệu mở ra cơ hội nghề nghiệp rộng mở với tính ứng dụng cao",
+        "Chương trình cân bằng lý thuyết và thực hành, mang lại nền tảng vững chắc cho nghề nghiệp",
+        "Xếp hạng #300 về Public Health (ARWU 2018)",
+        "Các chương trình giúp sinh viên có nền tảng vững chắc trong lĩnh vực y tế",
+        "Xếp hạng #400 về Clinical, Pre-Clinical and Health (THE), #350 về Medicine (QS 2018)",
+        "96% sinh viên có việc làm trong vòng 4 tháng sau tốt nghiệp",
+        "Cơ sở lâm sàng Macarthur mới đặt trong bệnh viện Campbelltown",
+        "Xếp hạng #50 về Ecology, #75 về Agricultural Sciences (QS 2018)",
+        "94% sinh viên ngành môi trường và nông nghiệp có việc làm trong vòng 4 tháng",
+        "Xếp hạng #250 về Arts and Humanities (THE), #200 về Communication (QS 2018)",
+        "Sinh viên có cơ hội học các ngành như phân tích xã hội, ngôn ngữ, tâm lý học",
+        "91% sinh viên có việc làm sau 4 tháng tốt nghiệp",
+        "Sinh viên học các kỹ năng thiết kế bền vững, hiện đại và phù hợp môi trường",
+        "Các chương trình tại Campbelltown và Parramatta campus",
+        "Tập trung đào tạo các kỹ năng chuyên nghiệp, mở rộng cơ hội nghề nghiệp trong nhiều lĩnh vực",
+        "Xếp hạng #1 tại Úc, #4 thế giới",
+        "Cơ sở điều dưỡng hiện đại lớn nhất Australia",
+        "Chương trình giảng dạy kết hợp lý thuyết và thực hành lâm sàng",
+        "Xếp hạng #150 về Psychology (QS 2018)",
+        "Xếp hạng #75 thế giới về Education (THE)",
+        "Xếp hạng #10 tại Úc về Education Faculty (QS 2018)"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.westernsydney.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/truong-dai-hoc-tay-sydney-western-sydney-university/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-tay-sydney-uc.jpg",
+      "excerpt": "Trường Đại học Tây Sydney (Western Sydney University) là điểm đến lý tưởng cho sinh viên quốc tế tìm kiếm một môi trường học tập đẳng cấp và cơ hội phát triển nghề nghiệp rộng mở. Đại học Tây Sydney không chỉ mang đến kiến thức chuyên sâu mà còn chuẩn bị cho sinh viên hành trang […]"
+    },
+    {
+      "id": "dai-hoc-tasmania-uc",
+      "name": "Đại học Tasmania, Úc (UTAS) – Học bổng và chương trình học",
+      "country": "Australia",
+      "location": "Tasmania",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ",
+        "Tiến sĩ",
+        "Các chương trình ngắn hạn"
+      ],
+      "tuition": {
+        "raw": "27.000$",
+        "min_usd": 27000,
+        "max_usd": 27000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.utas.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-tasmania-uc/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-tasmania-uc.jpg",
+      "excerpt": "Đại học Tasmania (UTAS) là lựa chọn lý tưởng cho sinh viên quốc tế muốn trải nghiệm nền giáo dục đẳng cấp tại một trong những khu vực đẹp nhất Úc. Nhiều năm qua, UTAS liên tục nằm trong top các trường đại học hàng đầu quốc tế. Trường không chỉ cung cấp các chương trình học […]"
+    },
+    {
+      "id": "tafe-new-south-wales",
+      "name": "TAFE New South Wales (Tafe NSW) – Học phí, học bổng hấp dẫn 2025",
+      "country": "Australia",
+      "location": "Bang New South Wales",
+      "levels": [
+        "Cao đẳng",
+        "Đào tạo nghề"
+      ],
+      "tuition": {
+        "raw": "15.000$",
+        "min_usd": 15000,
+        "max_usd": 15000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Tiếng Anh tổng quát với ba cấp độ phù hợp với mọi trình độ",
+        "Tiếng Anh học thuật giúp nâng cao kỹ năng ngôn ngữ trong môi trường học thuật"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.tafensw.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/tafe-new-south-wales/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/tafe-new-south-wales.jpg",
+      "excerpt": "TAFE New South Wales (TAFE NSW) là hệ thống giáo dục nghề danh tiếng tại Úc với chương trình học đa dạng và thực tiễn. Sinh viên học tại đây sẽ có cơ hội trải nghiệm môi trường học tập hiện đại, được hỗ trợ bởi các chương trình học bổng hấp dẫn cùng chi phí hợp […]"
+    },
+    {
+      "id": "dai-hoc-victoria-uc",
+      "name": "Trường Đại học Victoria Úc – Học phí, học bổng mới nhất 2025",
+      "country": "Australia",
+      "location": "Ballarat Rd, FootMelbourne, Victoria",
+      "levels": [
+        "Diploma",
+        "Đại học",
+        "Sau đại học",
+        "Thạc sĩ",
+        "Tiến sĩ"
+      ],
+      "tuition": {
+        "raw": "9.000$",
+        "min_usd": 9000,
+        "max_usd": 9000
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.vu.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-victoria-uc/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-victoria-uc.jpg",
+      "excerpt": "Victoria University (VU) tại Úc luôn là lựa chọn hàng đầu cho sinh viên quốc tế với chất lượng đào tạo xuất sắc và cơ hội học bổng đa dạng. Trong năm 2025, VU tiếp tục mang đến mức học phí hợp lý cùng nhiều học bổng hấp dẫn, hỗ trợ sinh viên quốc tế giảm […]"
+    },
+    {
+      "id": "dai-hoc-torrens-uc",
+      "name": "Trường Đại học Torrens Úc – Chương trình học và học phí 2025",
+      "country": "Australia",
+      "location": "Sydney, Blue Mountains, Melbourne, Brisbane, Adelaide và Auckland",
+      "levels": [
+        "Đại học",
+        "Các chương trình ngắn hạn",
+        "Cử nhân",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "22.000$",
+        "min_usd": 22000,
+        "max_usd": 22000
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.torrens.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-torrens-uc/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2024/12/dai-hoc-torrens-uc.jpg",
+      "excerpt": "Được biết đến là một trong những trường phát triển nhanh nhất tại Úc, đại học Torrens thu hút hàng ngàn sinh viên từ nhiều quốc gia, tạo cơ hội để sinh viên quốc tế vươn xa trên con đường sự nghiệp. Cùng Du học ETEST tìm hiểu các chương trình học đa dạng và mức học phí mới […]"
+    },
+    {
+      "id": "dai-hoc-deakin-deakin-university-du-hoc-etest",
+      "name": "Đại học Deakin University, Úc",
+      "country": "Australia",
+      "location": "Victoria / Melbourne",
+      "levels": [
+        "Đại học",
+        "Cử nhân",
+        "Thạc sĩ"
+      ],
+      "tuition": {
+        "raw": "30.000$",
+        "min_usd": 30000,
+        "max_usd": 30000
+      },
+      "scholarship_available": true,
+      "fields": [
+        "Engineering",
+        "Business:",
+        "Education and teaching"
+      ],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://www.deakin.edu.au/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-deakin-deakin-university-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/09/dai-hoc-deakin-uc.jpg",
+      "excerpt": "Đại học Deakin Úc là một trong những trường đại học hàng đầu tại Úc, nổi bật với các chương trình nghiên cứu xuất sắc trong các lĩnh vực công nghệ, kinh doanh và dịch vụ. Là trường công lập lớn nhất tại Úc, Deakin được chính phủ tài trợ và có một danh tiếng vững […]"
+    },
+    {
+      "id": "dai-hoc-dayton-university-of-dayton-du-hoc-etest",
+      "name": "University of Dayton",
+      "country": "USA",
+      "location": "Dayton/Ohio",
+      "levels": [
+        "Đại học",
+        "Sau đại học"
+      ],
+      "tuition": {
+        "raw": "50.840$",
+        "min_usd": 50840,
+        "max_usd": 50840
+      },
+      "scholarship_available": true,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": "https://udayton.edu/",
+      "detail_url": "https://duhoc-etest.edu.vn/dai-hoc-dayton-university-of-dayton-du-hoc-etest/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2022/03/university-of-dayton-1.jpg",
+      "excerpt": "University of Dayton (UD) thuộc top các trường đại học danh tiếng tại Mỹ được biết đến với chương trình đào tạo chất lượng, chính sách hỗ trợ sinh viên toàn diện và cơ hội học bổng hấp dẫn. Nếu bạn đang tìm kiếm một môi trường học tập năng động với mức học phí hợp […]"
+    },
+    {
+      "id": "du-hoc-my-university-of-california-berkeley-truong-cong-voi-thanh-tich-khung",
+      "name": "Đại học UC Berkeley – University of California Berkeley",
+      "country": "USA",
+      "location": null,
+      "levels": [],
+      "tuition": {
+        "raw": null,
+        "min_usd": null,
+        "max_usd": null
+      },
+      "scholarship_available": false,
+      "fields": [],
+      "gpa_required": null,
+      "certs_required": [],
+      "website": null,
+      "detail_url": "https://duhoc-etest.edu.vn/du-hoc-my-university-of-california-berkeley-truong-cong-voi-thanh-tich-khung/",
+      "image_url": "https://duhoc-etest.edu.vn/wp-content/uploads/2021/07/UC_Berkeley-01-02-scaled.jpg",
+      "excerpt": "Là một ngôi trường công TOP đầu nước Mỹ, và cũng là “kỳ phùng địch thủ” tranh ngôi hạng nhất trường công với UCLA, Trường Đại Học California – Berkeley (viết tắt: UC – Berkeley) mang tới nhiều sự trầm trồ bởi bảng thành tích của mình.   Thông tin về Đại học UC-Berkeley – […]"
+    }
+  ]
+}

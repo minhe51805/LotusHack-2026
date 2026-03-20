@@ -5,7 +5,7 @@ import { getSchoolDirectory } from "@/lib/school-directory";
 export const metadata: Metadata = {
   title: "Danh sách trường du học",
   description:
-    "Danh sách trường du học được crawl từ ETEST, có thể lọc theo quốc gia, địa điểm, bậc học, học phí, học bổng, ngành học và điều kiện xét tuyển.",
+    "Danh sách trường du học, có thể lọc theo quốc gia, địa điểm, bậc học, học phí, học bổng, ngành học và điều kiện xét tuyển.",
 };
 
 export default async function SchoolsPage() {

@@ -101,7 +101,7 @@ export default function SchoolDirectory({ items }: SchoolDirectoryProps) {
             </div>
             <div className="space-y-3">
               <h1 className="max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-5xl">
-                Danh sách trường du học đã crawl từ ETEST và chuẩn hóa để lọc nhanh.
+                Danh sách trường du học đã chuẩn hóa để lọc nhanh.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
                 Lọc theo quốc gia, tỉnh bang hoặc thành phố, bậc học, học phí, học bổng,

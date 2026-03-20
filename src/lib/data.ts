@@ -77,6 +77,22 @@ export interface SchoolScholarship {
   details?: string;
 }
 
+export interface SchoolCertRequired {
+  name: string;
+  min_score: number;
+}
+
+export interface SchoolGpaRequired {
+  value: number;
+  scale: number; // 4.0 = US scale, 10.0 = Vietnamese scale
+}
+
+export interface SchoolTuition {
+  raw?: string;
+  min_usd?: number;
+  max_usd?: number;
+}
+
 export interface School {
   id: string;
   name: string;
@@ -87,6 +103,17 @@ export interface School {
   scholarship: SchoolScholarship;
   requirements: SchoolRequirements;
   programs?: string[];
+  // Extended fields from schools_structured.json
+  location?: string;
+  levels?: string[];
+  tuition?: SchoolTuition;
+  fields?: string[];
+  gpa_required?: SchoolGpaRequired | null;
+  certs_required?: SchoolCertRequired[];
+  website?: string;
+  detail_url?: string;
+  image_url?: string;
+  excerpt?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -133,6 +160,16 @@ function rowToSchool(row: any): School {
     scholarship: row.scholarship ?? {},
     requirements: row.requirements ?? {},
     programs: row.programs ?? [],
+    location: row.location ?? "",
+    levels: row.levels ?? [],
+    tuition: row.tuition ?? {},
+    fields: row.fields ?? [],
+    gpa_required: row.gpa_required ?? null,
+    certs_required: row.certs_required ?? [],
+    website: row.website ?? "",
+    detail_url: row.detail_url ?? "",
+    image_url: row.image_url ?? "",
+    excerpt: row.excerpt ?? "",
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
@@ -149,6 +186,16 @@ function schoolToRow(school: School) {
     scholarship: school.scholarship,
     requirements: school.requirements,
     programs: school.programs ?? [],
+    location: school.location ?? "",
+    levels: school.levels ?? [],
+    tuition: school.tuition ?? {},
+    fields: school.fields ?? [],
+    gpa_required: school.gpa_required ?? null,
+    certs_required: school.certs_required ?? [],
+    website: school.website ?? "",
+    detail_url: school.detail_url ?? "",
+    image_url: school.image_url ?? "",
+    excerpt: school.excerpt ?? "",
     updated_at: school.updatedAt,
   };
 }

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { use } from "react";
+import { createClient } from "@/utils/supabase/client";
 import {
   User,
   Calendar,
@@ -88,20 +89,52 @@ export default function SessionPage(props: {
   const { sessionId } = use(props.params);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const sessionIdRef = useRef(sessionId);
+  sessionIdRef.current = sessionId;
+
+  async function fetchSession(id: string) {
+    const r = await fetch(`/api/admin/sessions/${id}`);
+    const data = r.ok ? await r.json() : null;
+    return data as Session | null;
+  }
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/admin/sessions/${sessionId}`)
-      .then((r) => (r.ok ? r.json() : null))
+    fetchSession(sessionId)
       .then((data) => setSession(data))
       .catch(() => setSession(null))
       .finally(() => setLoading(false));
   }, [sessionId]);
 
+  // Real-time updates via Supabase
+  useEffect(() => {
+    const supabase = createClient();
+    const channel = supabase
+      .channel(`session-${sessionId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "sessions",
+          filter: `id=eq.${sessionId}`,
+        },
+        async () => {
+          const updated = await fetchSession(sessionIdRef.current);
+          if (updated) setSession(updated);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [sessionId]);
+
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <p className="text-sm text-gray-400 dark:text-zinc-500">Loading…</p>
+        <p className="text-sm text-gray-400 dark:text-zinc-500">Đang tải…</p>
       </div>
     );
   }
@@ -110,13 +143,13 @@ export default function SessionPage(props: {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-3">
         <p className="text-sm text-gray-500 dark:text-zinc-400">
-          Session not found.
+          Không tìm thấy phiên.
         </p>
         <Link
           href="/admin"
           className="text-xs text-blue-600 hover:underline flex items-center gap-1"
         >
-          <ArrowLeft size={12} /> Back to dashboard
+          <ArrowLeft size={12} /> Quay lại bảng điều khiển
         </Link>
       </div>
     );
@@ -127,9 +160,9 @@ export default function SessionPage(props: {
 
   const metaRows = [
     { icon: Hash, label: "Session ID", value: session.id },
-    { icon: Calendar, label: "Started", value: formatDateTime(session.createdAt) },
-    { icon: Clock, label: "Last active", value: formatDateTime(session.updatedAt) },
-    { icon: BookOpen, label: "Messages", value: String(msgCount) },
+    { icon: Calendar, label: "Bắt đầu", value: formatDateTime(session.createdAt) },
+    { icon: Clock, label: "Hoạt động cuối", value: formatDateTime(session.updatedAt) },
+    { icon: BookOpen, label: "Tin nhắn", value: String(msgCount) },
   ];
 
   const leadRows = lead
@@ -200,7 +233,7 @@ export default function SessionPage(props: {
           {/* Header */}
           <div className="shrink-0 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-5 py-3.5">
             <p className="text-sm font-semibold text-gray-900 dark:text-white">
-              {lead?.full_name ?? "Unknown user"}
+              {lead?.full_name ?? "Khách hàng"}
             </p>
             <p className="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">
               {session.id}
@@ -213,7 +246,7 @@ export default function SessionPage(props: {
             mode="readonly"
             emptyState={
               <p className="text-center text-gray-400 dark:text-zinc-500 text-sm mt-16">
-                No messages in this session.
+                Không có tin nhắn trong phiên này.
               </p>
             }
           />
@@ -224,7 +257,7 @@ export default function SessionPage(props: {
           {/* Session info */}
           <div className="px-4 py-4 border-b border-gray-200 dark:border-zinc-800">
             <p className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-3">
-              Session Info
+              Thông tin phiên
             </p>
             <div className="space-y-2.5">
               {metaRows.map(({ icon: Icon, label, value }) => (
@@ -249,11 +282,11 @@ export default function SessionPage(props: {
               </p>
               {lead ? (
                 <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-1.5 py-0.5 rounded font-medium">
-                  Captured
+                  Đã thu thập
                 </span>
               ) : (
                 <span className="text-xs bg-gray-100 dark:bg-zinc-800 text-gray-500 dark:text-zinc-400 px-1.5 py-0.5 rounded">
-                  Not captured
+                  Chưa có
                 </span>
               )}
             </div>

@@ -1,4 +1,10 @@
 import { Bot, User } from "lucide-react";
+import { SchoolMatchCards, type MatchedSchool } from "./SchoolMatchCards";
+import { Streamdown } from "streamdown";
+import { cjk } from "@streamdown/cjk";
+import { code } from "@streamdown/code";
+
+const streamdownPlugins = { cjk, code };
 
 export interface ChatPart {
   type: string;
@@ -32,7 +38,7 @@ function BotLabel({ time }: { time: string | null }) {
   return (
     <div className="flex items-center gap-1.5 mb-0.5">
       <Bot size={12} className="text-gray-400" />
-      <span className="text-xs text-gray-400 dark:text-zinc-500">ETEST</span>
+      <span className="text-xs text-gray-400 dark:text-zinc-500">AI Tư vấn</span>
       {time && (
         <span className="text-[10px] text-gray-300 dark:text-zinc-600">{time}</span>
       )}
@@ -43,7 +49,7 @@ function BotLabel({ time }: { time: string | null }) {
 function UserLabel({ time }: { time?: string | null }) {
   return (
     <div className="flex items-center gap-1.5 mb-0.5">
-      <span className="text-xs text-gray-400 dark:text-zinc-500">You</span>
+      <span className="text-xs text-gray-400 dark:text-zinc-500">Bạn</span>
       <User size={12} className="text-gray-400" />
       {time && (
         <span className="text-[10px] text-gray-300 dark:text-zinc-600">{time}</span>
@@ -103,8 +109,8 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
             <div key={i} className="flex justify-start">
               <div className="max-w-[80%] flex flex-col items-start gap-1.5">
                 {showLabel && <BotLabel time={timeLabel} />}
-                <div className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm text-sm leading-relaxed whitespace-pre-wrap bg-white dark:bg-zinc-800 text-gray-800 dark:text-zinc-100 shadow-sm border border-gray-100 dark:border-zinc-700">
-                  {part.text}
+                <div className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm text-sm leading-relaxed bg-white dark:bg-zinc-800 text-gray-800 dark:text-zinc-100 shadow-sm border border-gray-100 dark:border-zinc-700 [&_ul]:pl-5 [&_ol]:pl-5 [&_li]:my-0.5">
+                  <Streamdown plugins={streamdownPlugins}>{part.text}</Streamdown>
                 </div>
               </div>
             </div>
@@ -184,7 +190,7 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
           return (
             <div key={i} className="flex justify-start">
               <div className="px-3.5 py-2 rounded-xl text-xs bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 flex items-center gap-1.5">
-                <span className="text-green-500">✓</span> Lead saved
+                <span className="text-green-500">✓</span> Đã lưu khách hàng
               </div>
             </div>
           );
@@ -195,7 +201,54 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
           return (
             <div key={i} className="flex justify-start">
               <div className="px-3.5 py-2 rounded-xl text-xs bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-400 flex items-center gap-1.5">
-                <span>🔍</span> Schools searched
+                <span>🔍</span> Đã tìm kiếm trường
+              </div>
+            </div>
+          );
+        }
+
+        /* ── match_schools (streaming) ──────────────── */
+        if (part.type === "tool-match_schools" && part.state === "input-streaming") {
+          const showLabel = !labelShown;
+          labelShown = true;
+          return (
+            <div key={i} className="flex justify-start w-full">
+              <div className="w-full flex flex-col items-start gap-1.5">
+                {showLabel && <BotLabel time={timeLabel} />}
+                <div className="w-full space-y-2.5">
+                  <div className="flex items-center gap-2 px-0.5">
+                    <span className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wide">
+                      Đang tìm trường phù hợp…
+                    </span>
+                  </div>
+                  {[0, 1, 2].map((j) => (
+                    <div
+                      key={j}
+                      className="rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-24 animate-pulse"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        /* ── match_schools (result) ─────────────────── */
+        if (part.type === "tool-match_schools" && part.state === "output-available") {
+          const output = part.output as {
+            matched?: MatchedSchool[];
+            total_schools?: number;
+          } | null;
+          const showLabel = !labelShown;
+          labelShown = true;
+          return (
+            <div key={i} className="flex justify-start w-full">
+              <div className="w-full flex flex-col items-start gap-1.5">
+                {showLabel && <BotLabel time={timeLabel} />}
+                <SchoolMatchCards
+                  matched={output?.matched ?? []}
+                  total_schools={output?.total_schools ?? 0}
+                />
               </div>
             </div>
           );

@@ -50,10 +50,10 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-base font-semibold text-gray-900 dark:text-white">
-              Settings & Prompt
+              Cài đặt & Prompt
             </h1>
             <p className="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">
-              Configure the AI persona and conversation flow
+              Cấu hình nhân cách AI và luồng hội thoại
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -62,7 +62,7 @@ export default function SettingsPage() {
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-gray-600 dark:text-zinc-400 border border-gray-200 dark:border-zinc-700 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
             >
               <RotateCcw size={12} />
-              Reset to default
+              Đặt lại mặc định
             </button>
             <button
               onClick={handleSave}
@@ -72,12 +72,12 @@ export default function SettingsPage() {
               {saved ? (
                 <>
                   <CheckCircle size={12} />
-                  Saved
+                  Đã lưu
                 </>
               ) : (
                 <>
                   <Save size={12} />
-                  {saving ? "Saving…" : "Save"}
+                  {saving ? "Đang lưu…" : "Lưu"}
                 </>
               )}
             </button>
@@ -94,11 +94,11 @@ export default function SettingsPage() {
                 System Prompt
               </label>
               <p className="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">
-                Define the AI persona, tone, and consultation flow.
+                Xác định nhân cách, giọng điệu và luồng tư vấn của AI.
               </p>
             </div>
             <span className="text-xs text-gray-400 dark:text-zinc-500 shrink-0">
-              {prompt.length} chars
+              {prompt.length} ký tự
             </span>
           </div>
 
@@ -110,7 +110,7 @@ export default function SettingsPage() {
               onChange={(e) => setPrompt(e.target.value)}
               rows={28}
               className="w-full rounded-xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm text-gray-900 dark:text-zinc-100 placeholder-gray-400 px-4 py-3 font-mono leading-relaxed focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-              placeholder="Enter your system prompt here…"
+              placeholder="Nhập system prompt tại đây…"
               spellCheck={false}
             />
           )}
@@ -118,7 +118,7 @@ export default function SettingsPage() {
           {isDirty && !saved && (
             <div className="mt-2 flex items-center gap-1.5 text-xs text-amber-600 dark:text-amber-400">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block" />
-              Unsaved changes
+              Chưa lưu thay đổi
             </div>
           )}
         </div>
