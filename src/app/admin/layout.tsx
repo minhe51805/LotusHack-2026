@@ -2,8 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Settings, MessageSquare, RefreshCw, GlobeIcon, BookOpenIcon, SparklesIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  Settings,
+  MessageSquare,
+  RefreshCw,
+  GlobeIcon,
+  BookOpenIcon,
+  SparklesIcon,
+  Bell,
+  BellOff,
+  X,
+} from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 interface SessionSummary {
   id: string;
@@ -13,16 +24,34 @@ interface SessionSummary {
   lead?: { full_name?: string; target_exam?: string } | null;
 }
 
+interface Toast {
+  id: number;
+  message: string;
+  type: "session" | "lead";
+}
+
 function formatTime(iso: string) {
   const d = new Date(iso);
   const now = new Date();
-  const diffMs = now.getTime() - d.getTime();
-  const diffMin = Math.floor(diffMs / 60000);
+  const diffMin = Math.floor((now.getTime() - d.getTime()) / 60000);
   if (diffMin < 60) return `${diffMin}m ago`;
   const diffH = Math.floor(diffMin / 60);
   if (diffH < 24) return `${diffH}h ago`;
   return d.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit" });
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function rowToSummary(row: any): SessionSummary {
+  return {
+    id: row.id,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+    messages: row.messages ?? [],
+    lead: row.lead ?? null,
+  };
+}
+
+let toastCounter = 0;
 
 export default function AdminLayout({
   children,
@@ -32,7 +61,52 @@ export default function AdminLayout({
   const pathname = usePathname();
   const [sessions, setSessions] = useState<SessionSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [liveSessions, setLiveSessions] = useState<Set<string>>(new Set());
+  const [notificationsOn, setNotificationsOn] = useState(false);
+  const [toasts, setToasts] = useState<Toast[]>([]);
+  const notificationsRef = useRef(false);
 
+  // ── Keep ref in sync with state ──────────────────────────────────────────
+  useEffect(() => {
+    notificationsRef.current = notificationsOn;
+  }, [notificationsOn]);
+
+  // ── Load saved notification preference ───────────────────────────────────
+  useEffect(() => {
+    const saved = localStorage.getItem("etest-admin-notify") === "true";
+    setNotificationsOn(saved);
+    notificationsRef.current = saved;
+  }, []);
+
+  // ── Helpers ───────────────────────────────────────────────────────────────
+  function addToast(message: string, type: Toast["type"]) {
+    const id = ++toastCounter;
+    setToasts((prev) => [...prev, { id, message, type }]);
+    setTimeout(() => removeToast(id), 5000);
+  }
+
+  function removeToast(id: number) {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }
+
+  function fireNativeNotif(title: string, body: string) {
+    if (typeof window !== "undefined" && Notification.permission === "granted") {
+      new Notification(title, { body });
+    }
+  }
+
+  function markLive(id: string) {
+    setLiveSessions((prev) => new Set([...prev, id]));
+    setTimeout(() => {
+      setLiveSessions((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+    }, 5 * 60 * 1000);
+  }
+
+  // ── Initial fetch ─────────────────────────────────────────────────────────
   async function fetchSessions() {
     setLoading(true);
     try {
@@ -50,10 +124,107 @@ export default function AdminLayout({
     fetchSessions();
   }, []);
 
+  // ── Supabase Realtime subscription ────────────────────────────────────────
+  useEffect(() => {
+    const supabase = createClient();
+
+    const channel = supabase
+      .channel("admin-sessions-realtime")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "sessions" },
+        (payload) => {
+          const session = rowToSummary(payload.new);
+          setSessions((prev) => [session, ...prev]);
+          markLive(session.id);
+          if (notificationsRef.current) {
+            addToast("New chat session started", "session");
+            fireNativeNotif("ETEST Admin", "New chat session started");
+          }
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "sessions" },
+        (payload) => {
+          const session = rowToSummary(payload.new);
+          setSessions((prev) =>
+            prev
+              .map((s) => (s.id === session.id ? session : s))
+              .sort(
+                (a, b) =>
+                  new Date(b.updatedAt).getTime() -
+                  new Date(a.updatedAt).getTime()
+              )
+          );
+          markLive(session.id);
+
+          // Detect when a lead is first captured
+          const hadLead = payload.old?.lead;
+          const newLead = payload.new?.lead;
+          if (!hadLead && newLead && notificationsRef.current) {
+            const name = newLead.full_name ?? "Unknown";
+            const exam = newLead.target_exam ? ` (${newLead.target_exam})` : "";
+            const msg = `New lead: ${name}${exam}`;
+            addToast(msg, "lead");
+            fireNativeNotif("ETEST Admin – New Lead!", msg);
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  // ── Notification toggle ───────────────────────────────────────────────────
+  async function toggleNotifications() {
+    if (notificationsOn) {
+      setNotificationsOn(false);
+      localStorage.setItem("etest-admin-notify", "false");
+      return;
+    }
+
+    // Request browser permission if needed
+    if ("Notification" in window && Notification.permission === "default") {
+      const perm = await Notification.requestPermission();
+      if (perm !== "granted") {
+        // Still enable in-app toasts even if browser denied
+      }
+    }
+
+    setNotificationsOn(true);
+    localStorage.setItem("etest-admin-notify", "true");
+    addToast("Notifications enabled", "session");
+  }
+
   const isSettings = pathname === "/admin/settings";
 
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-zinc-950 overflow-hidden">
+      {/* Toast stack */}
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 items-end">
+        {toasts.map((t) => (
+          <div
+            key={t.id}
+            className={`flex items-start gap-2 px-3.5 py-2.5 rounded-xl shadow-lg text-sm max-w-xs animate-in slide-in-from-bottom-2 fade-in duration-200 ${
+              t.type === "lead"
+                ? "bg-green-600 text-white"
+                : "bg-zinc-800 text-white dark:bg-zinc-700"
+            }`}
+          >
+            <span className="flex-1">{t.message}</span>
+            <button
+              onClick={() => removeToast(t.id)}
+              className="shrink-0 opacity-70 hover:opacity-100 mt-0.5"
+            >
+              <X size={13} />
+            </button>
+          </div>
+        ))}
+      </div>
+
       {/* Sidebar */}
       <aside className="w-72 shrink-0 flex flex-col bg-white dark:bg-zinc-900 border-r border-gray-200 dark:border-zinc-800">
         {/* Header */}
@@ -66,20 +237,42 @@ export default function AdminLayout({
               ETEST Admin
             </span>
           </div>
-          <button
-            onClick={fetchSessions}
-            className="p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
-            title="Refresh"
-          >
-            <RefreshCw size={14} />
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={toggleNotifications}
+              title={notificationsOn ? "Disable notifications" : "Enable notifications"}
+              className={`p-1.5 rounded-md transition-colors ${
+                notificationsOn
+                  ? "text-blue-600 bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-950/60"
+                  : "text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800"
+              }`}
+            >
+              {notificationsOn ? <Bell size={14} /> : <BellOff size={14} />}
+            </button>
+            <button
+              onClick={fetchSessions}
+              className="p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+              title="Refresh"
+            >
+              <RefreshCw size={14} />
+            </button>
+          </div>
         </div>
 
         {/* Sessions label */}
-        <div className="px-4 pt-4 pb-2">
+        <div className="px-4 pt-4 pb-2 flex items-center justify-between">
           <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider">
             Sessions ({sessions.length})
           </p>
+          {liveSessions.size > 0 && (
+            <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              {liveSessions.size} live
+            </span>
+          )}
         </div>
 
         {/* Session list */}
@@ -95,6 +288,7 @@ export default function AdminLayout({
           ) : (
             sessions.map((s) => {
               const isActive = pathname === `/admin/${s.id}`;
+              const isLive = liveSessions.has(s.id);
               const msgCount = s.messages?.length ?? 0;
               const name = s.lead?.full_name;
               const exam = s.lead?.target_exam;
@@ -111,14 +305,21 @@ export default function AdminLayout({
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <MessageSquare
-                        size={12}
-                        className={
-                          isActive
-                            ? "text-blue-600 shrink-0"
-                            : "text-gray-400 shrink-0"
-                        }
-                      />
+                      {isLive ? (
+                        <span className="relative flex h-2.5 w-2.5 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+                        </span>
+                      ) : (
+                        <MessageSquare
+                          size={12}
+                          className={
+                            isActive
+                              ? "text-blue-600 shrink-0"
+                              : "text-gray-400 shrink-0"
+                          }
+                        />
+                      )}
                       <p
                         className={`text-xs font-medium truncate ${
                           isActive

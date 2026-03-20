@@ -1,12 +1,7 @@
-import { createClient } from "@supabase/supabase-js";
+import { cookies } from "next/headers";
+import { createClient } from "@/utils/supabase/server";
 
-export function getSupabaseClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) {
-    throw new Error(
-      "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY env vars"
-    );
-  }
-  return createClient(url, key);
+export async function getSupabaseClient() {
+  const cookieStore = await cookies();
+  return createClient(cookieStore);
 }

@@ -147,7 +147,7 @@ export default function SessionPage(props: { params: Promise<{ sessionId: string
   useEffect(() => {
     setLoading(true);
     fetch(`/api/admin/sessions/${sessionId}`)
-      .then((r) => r.json())
+      .then((r) => (r.ok ? r.json() : null))
       .then((data) => setSession(data))
       .catch(() => setSession(null))
       .finally(() => setLoading(false));

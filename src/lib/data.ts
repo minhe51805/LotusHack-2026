@@ -212,7 +212,7 @@ function rowToSession(row: any): ChatSession {
 // ============================================================================
 
 export async function getSessions(): Promise<ChatSession[]> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("sessions")
     .select("*")
@@ -222,7 +222,7 @@ export async function getSessions(): Promise<ChatSession[]> {
 }
 
 export async function getSession(id: string): Promise<ChatSession | null> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("sessions")
     .select("*")
@@ -233,7 +233,7 @@ export async function getSession(id: string): Promise<ChatSession | null> {
 }
 
 export async function saveSession(session: ChatSession): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("sessions").upsert({
     id: session.id,
     messages: session.messages,
@@ -276,7 +276,7 @@ Thừa nhận nỗi lo là hợp lý. Nêu bằng chứng: pháp nhân rõ ràng
 - Không hứa điểm số cụ thể, không bịa học phí`.trim();
 
 export async function getSettings(): Promise<AdminSettings> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("settings")
     .select("system_prompt")
@@ -287,7 +287,7 @@ export async function getSettings(): Promise<AdminSettings> {
 }
 
 export async function saveSettings(settings: AdminSettings): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("settings").upsert({
     id: 1,
     system_prompt: settings.systemPrompt,
@@ -301,7 +301,7 @@ export async function saveSettings(settings: AdminSettings): Promise<void> {
 // ============================================================================
 
 export async function getSchools(): Promise<School[]> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("schools")
     .select("*")
@@ -311,7 +311,7 @@ export async function getSchools(): Promise<School[]> {
 }
 
 export async function getSchool(id: string): Promise<School | null> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("schools")
     .select("*")
@@ -322,13 +322,13 @@ export async function getSchool(id: string): Promise<School | null> {
 }
 
 export async function saveSchool(school: School): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("schools").upsert(schoolToRow(school));
   if (error) throw error;
 }
 
 export async function deleteSchool(id: string): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("schools").delete().eq("id", id);
   if (error) throw error;
 }
@@ -338,7 +338,7 @@ export async function deleteSchool(id: string): Promise<void> {
 // ============================================================================
 
 export async function getCourses(): Promise<Course[]> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("courses")
     .select("*")
@@ -348,7 +348,7 @@ export async function getCourses(): Promise<Course[]> {
 }
 
 export async function getCourse(id: string): Promise<Course | null> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("courses")
     .select("*")
@@ -359,13 +359,13 @@ export async function getCourse(id: string): Promise<Course | null> {
 }
 
 export async function saveCourse(course: Course): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("courses").upsert(courseToRow(course));
   if (error) throw error;
 }
 
 export async function deleteCourse(id: string): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("courses").delete().eq("id", id);
   if (error) throw error;
 }
@@ -375,7 +375,7 @@ export async function deleteCourse(id: string): Promise<void> {
 // ============================================================================
 
 export async function getServices(): Promise<Service[]> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("services")
     .select("*")
@@ -385,7 +385,7 @@ export async function getServices(): Promise<Service[]> {
 }
 
 export async function getService(id: string): Promise<Service | null> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("services")
     .select("*")
@@ -396,7 +396,7 @@ export async function getService(id: string): Promise<Service | null> {
 }
 
 export async function saveService(service: Service): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase
     .from("services")
     .upsert(serviceToRow(service));
@@ -404,7 +404,7 @@ export async function saveService(service: Service): Promise<void> {
 }
 
 export async function deleteService(id: string): Promise<void> {
-  const supabase = getSupabaseClient();
+  const supabase = await getSupabaseClient();
   const { error } = await supabase.from("services").delete().eq("id", id);
   if (error) throw error;
 }
