@@ -1,0 +1,35 @@
+[
+  {
+    "id": "service-1",
+    "name": "Tư vấn du học",
+    "description": "Dịch vụ tư vấn toàn diện về lộ trình du học: chọn trường, ngành học, quốc gia phù hợp với năng lực và tài chính.",
+    "details": "Bao gồm: đánh giá học lực và tài chính, tư vấn chọn trường phù hợp, lập kế hoạch chuẩn bị hồ sơ, hỗ trợ viết essay và personal statement, xin thư giới thiệu, nộp đơn vào trường.",
+    "price_vnd": 0,
+    "duration": "Miễn phí – trọn lộ trình",
+    "isActive": true,
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  },
+  {
+    "id": "service-2",
+    "name": "Hỗ trợ Visa",
+    "description": "Hướng dẫn chuẩn bị hồ sơ xin visa du học cho các quốc gia: Úc, Canada, Mỹ, Anh, New Zealand, Nhật.",
+    "details": "Bao gồm: tư vấn loại visa phù hợp, checklist hồ sơ cần thiết, hỗ trợ viết GTE statement / Statement of Purpose, review hồ sơ trước khi nộp, hướng dẫn phỏng vấn visa (nếu cần).",
+    "price_vnd": 3000000,
+    "duration": "2–4 tuần",
+    "isActive": true,
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  },
+  {
+    "id": "service-3",
+    "name": "Kết nối & Nộp đơn Trường",
+    "description": "Hỗ trợ nộp đơn trực tiếp vào các trường đối tác tại Úc, Canada, Anh, New Zealand.",
+    "details": "Bao gồm: lựa chọn trường phù hợp từ danh sách đối tác, chuẩn bị hồ sơ nộp đơn đầy đủ, theo dõi tiến độ xét hồ sơ, xử lý conditional offer, hỗ trợ sau khi nhận offer letter.",
+    "price_vnd": 0,
+    "duration": "Miễn phí (hoa hồng từ trường)",
+    "isActive": true,
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  }
+]
