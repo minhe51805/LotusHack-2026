@@ -1,0 +1,54 @@
+[
+  {
+    "id": "course-1",
+    "name": "IELTS Intensive",
+    "exam": "IELTS",
+    "description": "Khóa học luyện thi IELTS cấp tốc, tập trung vào cả 4 kỹ năng Listening, Reading, Writing, Speaking. Phù hợp cho học sinh cần đạt band 6.0–7.5 trong thời gian ngắn.",
+    "duration_weeks": 16,
+    "schedule": "Tối 3 buổi/tuần (Thứ 2, 4, 6) hoặc cuối tuần",
+    "price_vnd": 8500000,
+    "level": "Intermediate – Upper Intermediate",
+    "target_score": "IELTS 6.0 – 7.5",
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  },
+  {
+    "id": "course-2",
+    "name": "TOEFL Preparation",
+    "exam": "TOEFL",
+    "description": "Khóa học chuẩn bị TOEFL iBT toàn diện, tập trung vào chiến thuật làm bài và nâng cao điểm các section Reading, Listening, Speaking, Writing. Mục tiêu từ 80–105+.",
+    "duration_weeks": 20,
+    "schedule": "2 buổi/tuần (Thứ 3, 6) hoặc lớp cuối tuần chuyên sâu",
+    "price_vnd": 9500000,
+    "level": "Intermediate – Advanced",
+    "target_score": "TOEFL iBT 80 – 105+",
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  },
+  {
+    "id": "course-3",
+    "name": "SAT Advanced",
+    "exam": "SAT",
+    "description": "Khóa luyện thi SAT chuyên sâu dành cho học sinh THPT có mục tiêu du học Mỹ, Canada. Bao gồm Math, Evidence-Based Reading & Writing, và Essay (optional). Đội ngũ giảng viên có kinh nghiệm thi SAT đạt 1400+.",
+    "duration_weeks": 24,
+    "schedule": "Lớp cuối tuần (Thứ 7 & Chủ nhật), 4 tiết/buổi",
+    "price_vnd": 12000000,
+    "level": "Upper Intermediate – Advanced",
+    "target_score": "SAT 1300 – 1500+",
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  },
+  {
+    "id": "course-4",
+    "name": "AMP – Viết Luận Học Bổng",
+    "exam": "AMP",
+    "description": "Chương trình Academic & Motivation Program – hỗ trợ học sinh viết essay xin học bổng du học, personal statement, và letter of recommendation. Bao gồm kỹ năng brainstorming, storytelling, và chỉnh sửa bản thảo.",
+    "duration_weeks": 8,
+    "schedule": "1 buổi/tuần, 2 tiết/buổi + mentoring 1-1 online",
+    "price_vnd": 6000000,
+    "level": "Intermediate – Advanced",
+    "target_score": "Top 30% scholarship applications",
+    "createdAt": "2026-03-21T07:00:00.000Z",
+    "updatedAt": "2026-03-21T07:00:00.000Z"
+  }
+]
