@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import AdminSchoolDirectory from "@/components/schools/admin-school-directory";
 import {
   Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter,
 } from "@/components/ui/sheet";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import type { School } from "@/lib/data";
+import type { SchoolDirectoryEntry } from "@/lib/school-directory";
 import {
   GlobeIcon, PlusIcon, PencilIcon, Trash2Icon, ChevronRightIcon,
   DollarSignIcon, PlaneIcon, AwardIcon, BookOpenIcon,
@@ -40,6 +43,8 @@ function formatUSD(v?: number) {
 export default function SchoolsPage() {
   const [items, setItems] = useState<School[]>([]);
   const [loading, setLoading] = useState(true);
+  const [directoryItems, setDirectoryItems] = useState<SchoolDirectoryEntry[]>([]);
+  const [directoryLoading, setDirectoryLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [editing, setEditing] = useState<School | null>(null);
   const [form, setForm] = useState<typeof EMPTY>(EMPTY);
@@ -53,7 +58,17 @@ export default function SchoolsPage() {
     setLoading(false);
   }
 
-  useEffect(() => { load(); }, []);
+  async function loadDirectory() {
+    setDirectoryLoading(true);
+    const res = await fetch("/api/admin/school-directory");
+    setDirectoryItems(await res.json());
+    setDirectoryLoading(false);
+  }
+
+  useEffect(() => {
+    load();
+    loadDirectory();
+  }, []);
 
   function openAdd() {
     setEditing(null);
@@ -122,78 +137,112 @@ export default function SchoolsPage() {
         <div>
           <h1 className="text-base font-semibold">Schools</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Manage partner universities and study-abroad destinations
+            Filter crawled schools or manage internal school records
           </p>
         </div>
-        <button
-          onClick={openAdd}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
-        >
-          <PlusIcon size={14} /> Add School
-        </button>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/data/etest-school-directory.csv"
+            className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors"
+          >
+            Download CSV
+          </Link>
+          <button
+            onClick={openAdd}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+          >
+            <PlusIcon size={14} /> Add School
+          </button>
+        </div>
       </div>
 
-      {/* List */}
       <div className="flex-1 overflow-y-auto p-6">
-        {loading ? (
-          <div className="space-y-3">
-            {[1,2,3].map(i => <div key={i} className="h-24 rounded-xl bg-muted animate-pulse" />)}
-          </div>
-        ) : items.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-48 text-muted-foreground text-sm gap-2">
-            <GlobeIcon size={32} className="opacity-30" />
-            No schools yet. Click "Add School" to get started.
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {items.map((school) => (
-              <div key={school.id} className="rounded-xl border bg-card p-4 flex gap-4 items-start group">
-                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950/40 flex items-center justify-center shrink-0">
-                  <GlobeIcon size={18} className="text-blue-600 dark:text-blue-400" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <p className="font-medium text-sm">{school.name}</p>
-                    <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">
-                      {school.country}
-                    </span>
-                    {school.scholarship.available && (
-                      <span className="text-xs bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-full">
-                        Scholarship
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{school.overview}</p>
-                  <div className="flex flex-wrap gap-3 mt-2">
-                    {school.cost.tuition_usd_per_year && (
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <DollarSignIcon size={11} /> {formatUSD(school.cost.tuition_usd_per_year)}/yr
-                      </span>
-                    )}
-                    {school.visa.type && (
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <PlaneIcon size={11} /> {school.visa.type}
-                      </span>
-                    )}
-                    {school.requirements.ielts_min && (
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <BookOpenIcon size={11} /> IELTS {school.requirements.ielts_min}+
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(school)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
-                    <PencilIcon size={14} className="text-muted-foreground" />
-                  </button>
-                  <button onClick={() => setDeleteId(school.id)} className="p-1.5 rounded-md hover:bg-destructive/10 transition-colors">
-                    <Trash2Icon size={14} className="text-destructive" />
-                  </button>
-                </div>
+        <Tabs defaultValue="directory" className="space-y-6">
+          <TabsList>
+            <TabsTrigger value="directory">
+              <GlobeIcon size={13} className="mr-1" />
+              Directory Filter
+            </TabsTrigger>
+            <TabsTrigger value="manage">
+              <ChevronRightIcon size={13} className="mr-1" />
+              Manage Records
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="directory" className="mt-0">
+            {directoryLoading ? (
+              <div className="space-y-3">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="h-32 rounded-xl bg-muted animate-pulse" />
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+            ) : (
+              <AdminSchoolDirectory items={directoryItems} />
+            )}
+          </TabsContent>
+
+          <TabsContent value="manage" className="mt-0">
+            {loading ? (
+              <div className="space-y-3">
+                {[1,2,3].map(i => <div key={i} className="h-24 rounded-xl bg-muted animate-pulse" />)}
+              </div>
+            ) : items.length === 0 ? (
+              <div className="flex flex-col items-center justify-center h-48 text-muted-foreground text-sm gap-2">
+                <GlobeIcon size={32} className="opacity-30" />
+                No schools yet. Click "Add School" to get started.
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {items.map((school) => (
+                  <div key={school.id} className="rounded-xl border bg-card p-4 flex gap-4 items-start group">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950/40 flex items-center justify-center shrink-0">
+                      <GlobeIcon size={18} className="text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <p className="font-medium text-sm">{school.name}</p>
+                        <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">
+                          {school.country}
+                        </span>
+                        {school.scholarship.available && (
+                          <span className="text-xs bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-full">
+                            Scholarship
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{school.overview}</p>
+                      <div className="flex flex-wrap gap-3 mt-2">
+                        {school.cost.tuition_usd_per_year && (
+                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                            <DollarSignIcon size={11} /> {formatUSD(school.cost.tuition_usd_per_year)}/yr
+                          </span>
+                        )}
+                        {school.visa.type && (
+                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                            <PlaneIcon size={11} /> {school.visa.type}
+                          </span>
+                        )}
+                        {school.requirements.ielts_min && (
+                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                            <BookOpenIcon size={11} /> IELTS {school.requirements.ielts_min}+
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button onClick={() => openEdit(school)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
+                        <PencilIcon size={14} className="text-muted-foreground" />
+                      </button>
+                      <button onClick={() => setDeleteId(school.id)} className="p-1.5 rounded-md hover:bg-destructive/10 transition-colors">
+                        <Trash2Icon size={14} className="text-destructive" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </div>
 
       {/* Delete confirm */}
