@@ -116,7 +116,7 @@ export default function Chat() {
                     }
 
                     if (state === "input-available") {
-                      const { question, type, options } = part.input;
+                      const { question, type, options } = part.input as any;
                       const isMulti = type === "multi_select";
                       const currentSelected = selected[toolCallId] ?? [];
 

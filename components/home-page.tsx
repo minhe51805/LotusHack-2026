@@ -26,8 +26,17 @@ type ProgramShowcaseCard = {
   external?: boolean;
 };
 
+export type HomeArticle = {
+  title: string;
+  path: string;
+  description: string;
+  excerpt?: string;
+  featuredImage?: string;
+  updatedAt?: string;
+};
+
 interface HomePageProps {
-  latestPosts: EtestRouteRecord[];
+  latestPosts: HomeArticle[];
   programCards?: ProgramShowcaseCard[];
 }
 

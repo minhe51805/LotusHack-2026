@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { EtestRouteRecord } from "../lib/source-site";
+import type { HomeArticle } from "./home-page";
 
 type Slide = {
   badge: string;
@@ -13,7 +13,7 @@ type Slide = {
 };
 
 interface HeroBannerProps {
-  latestPosts: EtestRouteRecord[];
+  latestPosts: HomeArticle[];
 }
 
 export function HeroBanner({ latestPosts }: HeroBannerProps) {

@@ -13,11 +13,10 @@ import {
   Settings2,
   Sparkles,
   Users2,
-} from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from "lucide-react";  
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Input } from "../components/ui/input";
 import {
   adminActivityFeed,
   adminContentQueue,
@@ -26,8 +25,8 @@ import {
   adminMetrics,
   adminNavigation,
   getAdminSection,
-} from "@/lib/admin-dashboard";
-import { cn } from "@/lib/utils";
+} from "../lib/admin-dashboard";
+import { cn } from "../lib/utils";
 
 type AdminDashboardProps = {
   slug?: string[];

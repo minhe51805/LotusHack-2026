@@ -127,7 +127,7 @@ function HeaderNavLink({ item }: { item: HeaderNavItem }) {
     <div className="group relative">
       <Link
         href={item.href}
-        className="relative flex h-10 items-center justify-center gap-1 whitespace-nowrap border-b-[3px] border-transparent px-1 text-[12.5px] font-bold leading-none uppercase tracking-[0] text-black transition-colors hover:border-[#9c1619] hover:text-[#9c1619] group-hover:border-[#9c1619] group-hover:text-[#9c1619]"
+        className="relative flex h-10 items-center justify-center gap-1 whitespace-nowrap px-1 text-[12.5px] font-bold leading-none uppercase tracking-[0] text-black transition-colors hover:text-[#9c1619] group-hover:text-[#9c1619] after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:bg-transparent hover:after:bg-[#9c1619] group-hover:after:bg-[#9c1619]"
         rel={item.external ? "noreferrer" : undefined}
         target={item.external ? "_blank" : undefined}
       >
@@ -170,7 +170,7 @@ export function SiteHeader({ chrome }: SiteHeaderProps) {
       style={{ fontFamily: 'var(--font-sans), "Open Sans", sans-serif' }}
     >
       <div className="mx-auto flex h-[120px] w-full max-w-[1600px] items-center px-8">
-        <Link href="/" aria-label={brandName} className="mr-8 flex shrink-0 items-center">
+        <Link href="/" aria-label={brandName} className="mr-4 lg:mr-8 flex shrink-0 items-center">
           <img
             src={HOME_LOGO}
             alt={brandName}
@@ -180,10 +180,10 @@ export function SiteHeader({ chrome }: SiteHeaderProps) {
           />
         </Link>
 
-        <div className="ml-auto flex min-w-0 items-center gap-6 pt-8">
-          <nav className="flex min-w-0 items-center self-center overflow-visible">
+        <div className="ml-auto flex min-w-0 items-center gap-4 xl:gap-6">
+          <nav className="flex min-w-0 items-center overflow-visible">
             <ul
-              className="m-0 flex list-none flex-nowrap items-center gap-6 p-0 xl:gap-6 2xl:gap-6"
+              className="m-0 flex list-none flex-nowrap items-center gap-2 lg:gap-4 xl:gap-6 p-0"
               style={{ listStyle: "none" }}
             >
               {headerNavigation.map((item) => (
@@ -198,7 +198,7 @@ export function SiteHeader({ chrome }: SiteHeaderProps) {
             </ul>
           </nav>
 
-          <div className="flex h-10 shrink-0 items-center gap-4 p self-center">
+          <div className="flex h-10 shrink-0 items-center gap-4">
             <Link
               href="/en/"
               className="inline-flex h-10 min-w-[94px] items-center justify-center gap-2 border border-[#d9d9d9] bg-white px-4 text-[14px] font-semibold text-[#222] transition hover:bg-[#fafafa]"
@@ -211,7 +211,7 @@ export function SiteHeader({ chrome }: SiteHeaderProps) {
             <a
               href="#search"
               aria-label="Tìm kiếm"
-              className="inline-flex size-[34px] items-center justify-center self-center rounded-full text-white transition hover:bg-[#7f1215]"
+              className="inline-flex size-[34px] items-center justify-center rounded-full text-white transition hover:bg-[#7f1215]"
               style={{ backgroundColor: "#9c1619" }}
             >
               <Search className="size-[16px]" strokeWidth={2.6} />
