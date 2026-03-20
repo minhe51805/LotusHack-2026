@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Settings, MessageSquare, RefreshCw } from "lucide-react";
+import { Settings, MessageSquare, RefreshCw, GlobeIcon, BookOpenIcon, SparklesIcon } from "lucide-react";
 
 interface SessionSummary {
   id: string;
@@ -152,6 +152,34 @@ export default function AdminLayout({
               );
             })
           )}
+        </div>
+
+        {/* Content nav */}
+        <div className="border-t border-gray-200 dark:border-zinc-800 px-3 pt-3 pb-1">
+          <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider px-2 mb-2">
+            Content
+          </p>
+          {[
+            { href: "/admin/schools", icon: GlobeIcon, label: "Schools" },
+            { href: "/admin/courses", icon: BookOpenIcon, label: "Courses" },
+            { href: "/admin/services", icon: SparklesIcon, label: "Services" },
+          ].map(({ href, icon: Icon, label }) => {
+            const active = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+                  active
+                    ? "bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white"
+                    : "text-gray-600 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white"
+                }`}
+              >
+                <Icon size={15} />
+                {label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Footer */}
