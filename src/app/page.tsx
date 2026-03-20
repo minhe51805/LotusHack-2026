@@ -5,16 +5,40 @@ import {
   DefaultChatTransport,
   lastAssistantMessageIsCompleteWithToolCalls,
 } from "ai";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Chat() {
   const [input, setInput] = useState("");
   const [selected, setSelected] = useState<Record<string, string[]>>({});
+  const [sessionId] = useState(() => {
+    if (typeof window === "undefined") return "";
+    const existing = sessionStorage.getItem("chatSessionId");
+    if (existing) return existing;
+    const newId = crypto.randomUUID();
+    sessionStorage.setItem("chatSessionId", newId);
+    return newId;
+  });
 
   const { messages, sendMessage, addToolOutput, status } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
     sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
   });
+
+  const prevStatus = useRef(status);
+  useEffect(() => {
+    const wasStreaming =
+      prevStatus.current === "streaming" ||
+      prevStatus.current === "submitted";
+    const isNowReady = status === "ready";
+    if (wasStreaming && isNowReady && messages.length > 0 && sessionId) {
+      fetch("/api/admin/sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, messages }),
+      }).catch(() => {});
+    }
+    prevStatus.current = status;
+  }, [status, messages, sessionId]);
 
   const isLoading = status === "streaming" || status === "submitted";
 
@@ -116,7 +140,7 @@ export default function Chat() {
                     }
 
                     if (state === "input-available") {
-                      const { question, type, options } = part.input;
+                      const { question, type, options } = part.input as { question: string; type: string; options: string[] };
                       const isMulti = type === "multi_select";
                       const currentSelected = selected[toolCallId] ?? [];
 
