@@ -1,0 +1,55 @@
+{
+  "id": "seed-session-2",
+  "createdAt": "2026-03-21T09:15:00.000Z",
+  "updatedAt": "2026-03-21T09:22:00.000Z",
+  "messages": [
+    {
+      "id": "m1",
+      "role": "assistant",
+      "parts": [{ "type": "text", "text": "Xin chào! Mình là tư vấn viên của ETEST. Bạn hiện đang học lớp mấy hoặc năm mấy đại học ạ?" }]
+    },
+    {
+      "id": "m2",
+      "role": "user",
+      "parts": [{ "type": "text", "text": "Năm 2 đại học" }]
+    },
+    {
+      "id": "m3",
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "tool-ask_user",
+          "toolCallId": "tc1",
+          "state": "output-available",
+          "input": {
+            "question": "Bạn muốn thi kỳ thi nào?",
+            "type": "single_select",
+            "options": ["IELTS", "TOEFL", "SAT", "ACT", "Chưa biết"]
+          },
+          "output": "TOEFL"
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "role": "user",
+      "parts": [{ "type": "text", "text": "TOEFL" }]
+    },
+    {
+      "id": "m5",
+      "role": "assistant",
+      "parts": [{ "type": "text", "text": "TOEFL là lựa chọn tốt cho việc du học Mỹ và Canada! Bạn đang nhắm đến điểm TOEFL bao nhiêu và dự kiến thi trong bao lâu nữa?" }]
+    },
+    {
+      "id": "m6",
+      "role": "user",
+      "parts": [{ "type": "text", "text": "Mình cần 90+ để nộp trường ở Mỹ. Khoảng 6 tháng nữa" }]
+    },
+    {
+      "id": "m7",
+      "role": "assistant",
+      "parts": [{ "type": "text", "text": "6 tháng để đạt 90+ là hoàn toàn khả thi nếu bắt đầu ngay! ETEST có khóa TOEFL chuyên sâu với lộ trình 16-20 tuần. Bạn có thể đến văn phòng để làm bài test đầu vào miễn phí không ạ?" }]
+    }
+  ],
+  "lead": null
+}
