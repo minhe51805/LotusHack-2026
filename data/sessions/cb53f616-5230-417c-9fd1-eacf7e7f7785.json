@@ -1,20 +1,20 @@
 {
   "id": "cb53f616-5230-417c-9fd1-eacf7e7f7785",
   "createdAt": "2026-03-20T19:17:27.953Z",
-  "updatedAt": "2026-03-20T19:18:14.901Z",
+  "updatedAt": "2026-03-20T19:45:16.115Z",
   "messages": [
     {
       "parts": [
         {
           "type": "text",
-          "text": "xin chào"
+          "text": "hi 123"
         }
       ],
-      "id": "HH9oqgUNMfY2ovsB",
+      "id": "d3IfHNHOeMjqmkGC",
       "role": "user"
     },
     {
-      "id": "rg0zOKZCOO3wu8md",
+      "id": "YPW3Lefmtfje9dE4",
       "role": "assistant",
       "parts": [
         {
@@ -22,7 +22,7 @@
         },
         {
           "type": "text",
-          "text": "Chào bạn, mình là tư vấn viên từ ETEST. Rất vui được hỗ trợ bạn trên hành trình du học!\n\nĐể mình có thể tư vấn định hướng chính xác nhất, không biết hiện tại bạn đang học lớp mấy hoặc năm mấy đại học rồi ạ?",
+          "text": "Chào bạn, mình là tư vấn viên từ ETEST. Rất vui được hỗ trợ bạn trên hành trình du học!\n\nĐể mình có thể tư vấn lộ trình tốt nhất, không biết hiện tại bạn đang là học sinh lớp mấy hoặc năm mấy đại học nhỉ?",
           "state": "done"
         },
         {
@@ -33,7 +33,7 @@
               "reasoning_details": [
                 {
                   "type": "reasoning.encrypted",
-                  "data": "AY89a1+m1lhBncafrpZL8woH6FW4KZ0HnxxxufOKe8SDfjVmcL8cu7Ln3mrbDNyPavg=",
+                  "data": "AY89a185aHR4unj++QfvIAc5Oqsw82loZkC+JR+moWCns7g2eIREzr3xZAgpXWnEZSU=",
                   "format": "google-gemini-v1",
                   "index": 0
                 }
@@ -48,14 +48,14 @@
       "parts": [
         {
           "type": "text",
-          "text": "lớp 9"
+          "text": "9"
         }
       ],
-      "id": "AQr6aMtkyfuyvbpm",
+      "id": "wrAcaP2TYbi7ElVB",
       "role": "user"
     },
     {
-      "id": "pt2oJ6OpGbb6TKn9",
+      "id": "LThH7vIccvsNOiIS",
       "role": "assistant",
       "parts": [
         {
@@ -63,7 +63,7 @@
         },
         {
           "type": "text",
-          "text": "Chào bạn, lớp 9 là thời điểm vàng để bắt đầu chuẩn bị cho hành trình du học đấy.\n\nĐể bắt kịp lộ trình, bạn đã có dự định tập trung cho kỳ thi chứng chỉ quốc tế nào chưa?\n\n",
+          "text": "Chào bạn, học sinh lớp 9 là thời điểm vàng để chuẩn bị cho hành trình du học đấy!\n\nĐể mình tư vấn khóa học phù hợp nhất cho mục tiêu của bạn, không biết bạn đã dự định ôn luyện cho kỳ thi chuẩn hóa nào chưa?\n\n",
           "state": "done"
         },
         {
@@ -74,8 +74,8 @@
               "reasoning_details": [
                 {
                   "type": "reasoning.encrypted",
-                  "data": "AY89a18YkdO9k5knG0CrvFmcAmTzruLa8bjZ3BOMxuBs6+YlsL2GD7SEF92kShE9IuI=",
-                  "id": "tool_ask_user_N72DBjc1dhf9Gmqniex8",
+                  "data": "AY89a1/uDbxQSQbshEFrIbQZttrxTfqmWDIB+YtOUw0Dj4Uz7qyjGcTNB0n70bpckyM=",
+                  "id": "tool_ask_user_bx0BNzA64dyuRTt4QLsC",
                   "format": "google-gemini-v1",
                   "index": 0
                 }
@@ -86,114 +86,36 @@
         },
         {
           "type": "tool-ask_user",
-          "toolCallId": "tool_ask_user_N72DBjc1dhf9Gmqniex8",
-          "state": "output-available",
+          "toolCallId": "tool_ask_user_bx0BNzA64dyuRTt4QLsC",
+          "state": "input-available",
           "input": {
-            "question": "Bạn đang hướng đến kỳ thi mục tiêu nào?",
+            "question": "Bạn đang quan tâm đến kỳ thi nào dưới đây?",
             "type": "single_select",
             "options": [
               "IELTS",
               "TOEFL",
               "SAT",
               "ACT",
+              "AP",
+              "IB",
+              "GED",
               "SSAT/ISEE",
-              "Chưa biết/Cần tư vấn thêm"
+              "Chưa xác định"
             ]
           },
-          "output": "IELTS",
           "callProviderMetadata": {
             "openrouter": {
               "reasoning_details": [
                 {
                   "type": "reasoning.encrypted",
-                  "data": "AY89a18YkdO9k5knG0CrvFmcAmTzruLa8bjZ3BOMxuBs6+YlsL2GD7SEF92kShE9IuI=",
-                  "id": "tool_ask_user_N72DBjc1dhf9Gmqniex8",
+                  "data": "AY89a1/uDbxQSQbshEFrIbQZttrxTfqmWDIB+YtOUw0Dj4Uz7qyjGcTNB0n70bpckyM=",
+                  "id": "tool_ask_user_bx0BNzA64dyuRTt4QLsC",
                   "format": "google-gemini-v1",
                   "index": 0
                 }
               ]
             }
           }
-        },
-        {
-          "type": "step-start"
-        },
-        {
-          "type": "text",
-          "text": "IELTS là lựa chọn rất nền tảng và hữu ích cho tương lai của bạn.\n\nĐể mình tư vấn lộ trình sát nhất, bạn thấy trình độ hiện tại của mình đang ở mức nào?\n\n",
-          "state": "done"
-        },
-        {
-          "type": "reasoning",
-          "text": "[REDACTED]",
-          "providerMetadata": {
-            "openrouter": {
-              "reasoning_details": [
-                {
-                  "type": "reasoning.encrypted",
-                  "data": "AY89a19qSXlhE8coy1bGeZ5Ggl9iSot1ZK1/vpTojO5DmO1vMoe9ItRuZwrtAn48MJs=",
-                  "id": "tool_ask_user_Fp5D6qBWZl1HOWbmoiE7",
-                  "format": "google-gemini-v1",
-                  "index": 0
-                }
-              ]
-            }
-          },
-          "state": "done"
-        },
-        {
-          "type": "tool-ask_user",
-          "toolCallId": "tool_ask_user_Fp5D6qBWZl1HOWbmoiE7",
-          "state": "output-available",
-          "input": {
-            "question": "Trình độ hiện tại của bạn như thế nào?",
-            "type": "single_select",
-            "options": [
-              "Mới bắt đầu/Cần lấy lại căn bản",
-              "Đã có kiến thức nền tảng",
-              "Đã tự học và muốn ôn luyện nâng cao",
-              "Đã từng thi/có bằng IELTS"
-            ]
-          },
-          "output": "Đã có kiến thức nền tảng",
-          "callProviderMetadata": {
-            "openrouter": {
-              "reasoning_details": [
-                {
-                  "type": "reasoning.encrypted",
-                  "data": "AY89a19qSXlhE8coy1bGeZ5Ggl9iSot1ZK1/vpTojO5DmO1vMoe9ItRuZwrtAn48MJs=",
-                  "id": "tool_ask_user_Fp5D6qBWZl1HOWbmoiE7",
-                  "format": "google-gemini-v1",
-                  "index": 0
-                }
-              ]
-            }
-          }
-        },
-        {
-          "type": "step-start"
-        },
-        {
-          "type": "text",
-          "text": "Rất tốt, việc có nền tảng sẽ giúp bạn rút ngắn lộ trình ôn luyện. Không biết mục tiêu du học của bạn là vào cấp 3 hay đại học, và bạn dự định hoàn thành các chứng chỉ này trong khoảng bao lâu?",
-          "state": "done"
-        },
-        {
-          "type": "reasoning",
-          "text": "[REDACTED]",
-          "providerMetadata": {
-            "openrouter": {
-              "reasoning_details": [
-                {
-                  "type": "reasoning.encrypted",
-                  "data": "AY89a19ZxjuQvLdVFUBePtjKgpzcy3+W8S6lfddkudeJUDjCPAruQpgGz1datgbCOIs=",
-                  "format": "google-gemini-v1",
-                  "index": 0
-                }
-              ]
-            }
-          },
-          "state": "done"
         }
       ]
     }
