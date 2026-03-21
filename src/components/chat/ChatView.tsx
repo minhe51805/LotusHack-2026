@@ -82,9 +82,17 @@ export function ChatView({
       >
         <div className="px-4 py-5 space-y-4">
           {messages.length === 0 && emptyState}
-          {messages.map((msg) => (
-            <ChatBubble key={msg.id} message={msg} mode={mode} />
-          ))}
+          {messages
+            .filter((msg) => {
+              if (mode !== "live" || msg.role !== "user") return true;
+              // Hide the auto-generated profile form submission
+              const parts = msg.parts as { type: string; text?: string }[];
+              const text = parts.find((p) => p.type === "text")?.text ?? "";
+              return !text.startsWith("[Hồ sơ của tôi]");
+            })
+            .map((msg) => (
+              <ChatBubble key={msg.id} message={msg} mode={mode} />
+            ))}
           <div ref={bottomRef} />
         </div>
       </div>

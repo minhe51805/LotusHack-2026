@@ -195,8 +195,17 @@ export default function SchoolsPage() {
               <div className="space-y-3">
                 {items.map((school) => (
                   <div key={school.id} className="rounded-xl border bg-card p-4 flex gap-4 items-start group">
-                    <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950/40 flex items-center justify-center shrink-0">
-                      <GlobeIcon size={18} className="text-blue-600 dark:text-blue-400" />
+                    <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-blue-100 dark:bg-blue-950/40 flex items-center justify-center">
+                      {school.image_url ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={school.image_url}
+                          alt={school.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <GlobeIcon size={18} className="text-blue-600 dark:text-blue-400" />
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">

@@ -17,6 +17,8 @@ import {
   Globe,
   DollarSign,
   Award,
+  PanelRightClose,
+  PanelRightOpen,
 } from "lucide-react";
 import Link from "next/link";
 import { ChatView } from "@/components/chat/ChatView";
@@ -89,6 +91,7 @@ export default function SessionPage(props: {
   const { sessionId } = use(props.params);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [panelOpen, setPanelOpen] = useState(true);
   const sessionIdRef = useRef(sessionId);
   sessionIdRef.current = sessionId;
 
@@ -231,13 +234,22 @@ export default function SessionPage(props: {
         {/* ── Chat panel ─────────────────────────────────────── */}
         <div className="flex-1 flex flex-col overflow-hidden bg-gray-50 dark:bg-zinc-950">
           {/* Header */}
-          <div className="shrink-0 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-5 py-3.5">
-            <p className="text-sm font-semibold text-gray-900 dark:text-white">
-              {lead?.full_name ?? "Khách hàng"}
-            </p>
-            <p className="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5">
-              {session.id}
-            </p>
+          <div className="shrink-0 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-5 py-3.5 flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                {lead?.full_name ?? "Khách hàng"}
+              </p>
+              <p className="text-xs text-gray-400 dark:text-zinc-500 font-mono mt-0.5 truncate">
+                {session.id}
+              </p>
+            </div>
+            <button
+              onClick={() => setPanelOpen((v) => !v)}
+              title={panelOpen ? "Ẩn thông tin" : "Hiện thông tin"}
+              className="shrink-0 p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              {panelOpen ? <PanelRightClose size={16} /> : <PanelRightOpen size={16} />}
+            </button>
           </div>
 
           {/* Messages — shared ChatView in readonly mode */}
@@ -253,7 +265,11 @@ export default function SessionPage(props: {
         </div>
 
         {/* ── Metadata panel ─────────────────────────────────── */}
-        <aside className="w-72 shrink-0 flex flex-col border-l border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-y-auto">
+        <aside
+          className={`shrink-0 flex flex-col border-l border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-y-auto overflow-x-hidden transition-all duration-300 ease-in-out ${
+            panelOpen ? "w-72 opacity-100" : "w-0 opacity-0 border-l-0"
+          }`}
+        >
           {/* Session info */}
           <div className="px-4 py-4 border-b border-gray-200 dark:border-zinc-800">
             <p className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-3">
