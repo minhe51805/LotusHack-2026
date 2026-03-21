@@ -13,6 +13,8 @@ type ZaloWebhookMessage = NonNullable<
 >;
 
 export async function GET() {
+  console.info("[zalo:webhook] GET health check");
+
   return NextResponse.json({
     ok: true,
     route: "/api/zalo/webhook",
@@ -23,6 +25,7 @@ export async function POST(request: Request) {
   const expectedSecret = process.env.ZALO_WEBHOOK_SECRET;
 
   if (!expectedSecret) {
+    console.error("[zalo:webhook] Missing ZALO_WEBHOOK_SECRET");
     return NextResponse.json(
       { error: "Webhook secret is not configured" },
       { status: 500 }
@@ -31,6 +34,9 @@ export async function POST(request: Request) {
 
   const providedSecret = request.headers.get("x-bot-api-secret-token");
   if (providedSecret !== expectedSecret) {
+    console.warn("[zalo:webhook] Unauthorized request", {
+      hasProvidedSecret: Boolean(providedSecret),
+    });
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
 
@@ -43,6 +49,7 @@ export async function POST(request: Request) {
       ? (JSON.parse(rawBody) as ZaloBotWebhookPayload)
       : ({} as ZaloBotWebhookPayload);
   } catch {
+    console.warn("[zalo:webhook] Invalid JSON payload");
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
@@ -61,8 +68,19 @@ export async function POST(request: Request) {
   const userText = message?.text?.trim();
 
   if (eventName !== "message.text.received" || !chatId || !userText) {
+    console.info("[zalo:webhook] Ignored event", {
+      eventName: eventName ?? null,
+      chatId: chatId ?? null,
+      hasUserText: Boolean(userText),
+    });
     return NextResponse.json({ ok: true, ignored: true });
   }
+
+  console.info("[zalo:webhook] Incoming message", {
+    eventName,
+    chatId,
+    textLength: userText.length,
+  });
 
   let replyText: string;
   let nextSession;
@@ -82,14 +100,27 @@ export async function POST(request: Request) {
     });
     void sendResult;
   } catch (error) {
-    void error;
+    console.error("[zalo:webhook] Failed to process message", {
+      chatId,
+      error: error instanceof Error ? error.message : String(error),
+    });
     return NextResponse.json(
       { error: "Failed to process webhook" },
       { status: 500 }
     );
   }
 
-  void saveZaloConversation(nextSession).catch(() => {});
+  void saveZaloConversation(nextSession).catch((error) => {
+    console.error("[zalo:webhook] Failed to save session", {
+      chatId,
+      error: error instanceof Error ? error.message : String(error),
+    });
+  });
+
+  console.info("[zalo:webhook] Reply sent", {
+    chatId,
+    replyLength: replyText.length,
+  });
 
   return NextResponse.json({ ok: true });
 }
