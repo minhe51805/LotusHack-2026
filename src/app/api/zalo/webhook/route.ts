@@ -36,6 +36,8 @@ export async function POST(request: Request) {
   if (providedSecret !== expectedSecret) {
     console.warn("[zalo:webhook] Unauthorized request", {
       hasProvidedSecret: Boolean(providedSecret),
+      providedSecretLength: providedSecret?.length ?? 0,
+      expectedSecretLength: expectedSecret.length,
     });
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
@@ -64,14 +66,22 @@ export async function POST(request: Request) {
   const message =
     (eventContainer as { message?: ZaloWebhookMessage }).message ??
     (payload as { message?: ZaloWebhookMessage }).message;
-  const chatId = message?.chat?.id?.trim();
-  const userText = message?.text?.trim();
+  const chatId = message?.chat?.id?.trim() ?? message?.from?.id?.trim();
+  const userText = message?.text?.trim() ?? message?.caption?.trim();
 
   if (eventName !== "message.text.received" || !chatId || !userText) {
     console.info("[zalo:webhook] Ignored event", {
       eventName: eventName ?? null,
       chatId: chatId ?? null,
       hasUserText: Boolean(userText),
+      hasMessageObject: Boolean(message),
+      hasChatObject: Boolean(message?.chat),
+      fromId: message?.from?.id ?? null,
+      topLevelKeys: Object.keys(payload ?? {}),
+      resultKeys:
+        payload.result && typeof payload.result === "object"
+          ? Object.keys(payload.result)
+          : [],
     });
     return NextResponse.json({ ok: true, ignored: true });
   }
@@ -98,10 +108,15 @@ export async function POST(request: Request) {
       chatId,
       text: replyText,
     });
-    void sendResult;
+    console.info("[zalo:webhook] Zalo sendMessage success", {
+      chatId,
+      sendResult,
+    });
   } catch (error) {
     console.error("[zalo:webhook] Failed to process message", {
       chatId,
+      eventName,
+      userText,
       error: error instanceof Error ? error.message : String(error),
     });
     return NextResponse.json(
