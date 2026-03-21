@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import {
   AreaChart,
   Area,
@@ -26,7 +27,6 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import {
   Table,
@@ -79,32 +79,28 @@ function formatDate() {
 // ── Chart configs ─────────────────────────────────────────────────────────────
 
 const trendConfig: ChartConfig = {
-  sessions: { label: "Phiên", color: "#3b82f6" },
-  leads: { label: "Leads", color: "#22c55e" },
+  sessions: { label: "Phiên", color: "var(--chart-1)" },
+  leads: { label: "Leads", color: "var(--chart-2)" },
 };
 
 const examConfig: ChartConfig = {
-  count: { label: "Số phiên", color: "#6366f1" },
+  count: { label: "Số phiên", color: "var(--chart-3)" },
 };
 
 const countryConfig: ChartConfig = {
-  count: { label: "Số lượng", color: "#0ea5e9" },
+  count: { label: "Số lượng", color: "var(--chart-4)" },
 };
 
 const budgetConfig: ChartConfig = {
-  count: { label: "Số leads", color: "#f59e0b" },
+  count: { label: "Số leads", color: "var(--chart-5)" },
 };
 
 const hourConfig: ChartConfig = {
-  count: { label: "Phiên", color: "#8b5cf6" },
-};
-
-const dayConfig: ChartConfig = {
-  count: { label: "Phiên", color: "#ec4899" },
+  count: { label: "Phiên", color: "var(--chart-2)" },
 };
 
 const fieldConfig: ChartConfig = {
-  count: { label: "Số leads", color: "#14b8a6" },
+  count: { label: "Số leads", color: "var(--chart-3)" },
 };
 
 // ── Stat card data ────────────────────────────────────────────────────────────
@@ -120,18 +116,18 @@ interface StatCardProps {
 
 function StatCard({ title, value, sub, icon: Icon, color, iconBg }: StatCardProps) {
   return (
-    <Card size="sm" className="gap-2">
+    <Card size="sm" className="gap-2 bg-card/85 shadow-sm backdrop-blur">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardDescription className="text-xs font-medium">{title}</CardDescription>
-          <div className={`p-2 rounded-lg ${iconBg}`}>
+          <div className={`rounded-2xl p-2 ${iconBg}`}>
             <Icon size={14} className={color} />
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col gap-2">
         <p className="text-3xl font-bold tracking-tight">{value}</p>
-        <p className="text-xs text-muted-foreground mt-1">{sub}</p>
+        <p className="text-xs leading-5 text-muted-foreground">{sub}</p>
       </CardContent>
     </Card>
   );
@@ -220,9 +216,9 @@ export function AnalyticsDashboard({ data }: Props) {
   ];
 
   return (
-    <div className="flex flex-col h-full bg-muted/30 overflow-y-auto">
+    <div className="flex h-full flex-col overflow-y-auto">
       {/* ── Header ─────────────────────────────────────────────────────── */}
-      <div className="shrink-0 border-b bg-background px-6 py-4 flex items-center justify-between">
+      <div className="shrink-0 flex items-center justify-between gap-4 border-b bg-background/70 px-6 py-4 backdrop-blur">
         <div>
           <h1 className="text-base font-semibold">Tổng quan</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -234,20 +230,36 @@ export function AnalyticsDashboard({ data }: Props) {
         </Badge>
       </div>
 
-      <div className="flex-1 px-6 py-5 space-y-6 max-w-7xl">
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-8 px-4 py-6 sm:px-6 lg:px-8">
         {/* ── Stat Cards with Tabs ──────────────────────────────────────── */}
-        <Tabs defaultValue="today">
-          <TabsList className="mb-4">
+        <Tabs defaultValue="today" className="gap-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col gap-3">
+              <Badge variant="outline" className="w-fit">
+                Performance
+              </Badge>
+              <div className="flex max-w-3xl flex-col gap-2">
+                <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Đọc nhanh sức khỏe của kênh tư vấn.
+                </h2>
+                <p className="text-sm leading-6 text-muted-foreground sm:text-base">
+                  Chuyển giữa góc nhìn hôm nay và tích lũy để thấy cả nhịp hiện
+                  tại lẫn chất lượng tổng thể.
+                </p>
+              </div>
+            </div>
+            <TabsList variant="line">
             <TabsTrigger value="today">Hôm nay</TabsTrigger>
             <TabsTrigger value="alltime">Tổng cộng</TabsTrigger>
           </TabsList>
+          </div>
           <TabsContent value="today">
-            <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {todayCards.map((c) => <StatCard key={c.title} {...c} />)}
             </div>
           </TabsContent>
           <TabsContent value="alltime">
-            <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {allTimeCards.map((c) => <StatCard key={c.title} {...c} />)}
             </div>
           </TabsContent>
@@ -256,7 +268,7 @@ export function AnalyticsDashboard({ data }: Props) {
         {/* ── Trend + Funnel ────────────────────────────────────────────── */}
         <div className="grid grid-cols-1 xl:grid-cols-5 gap-4">
           {/* 30-day trend */}
-          <Card className="xl:col-span-3">
+          <Card className="xl:col-span-3 bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <TrendingUp size={15} className="text-muted-foreground" />
@@ -274,12 +286,12 @@ export function AnalyticsDashboard({ data }: Props) {
                 >
                   <defs>
                     <linearGradient id="gSessions" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2} />
-                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                      <stop offset="5%" stopColor="var(--color-sessions)" stopOpacity={0.28} />
+                      <stop offset="95%" stopColor="var(--color-sessions)" stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="gLeads" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#22c55e" stopOpacity={0.2} />
-                      <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
+                      <stop offset="5%" stopColor="var(--color-leads)" stopOpacity={0.22} />
+                      <stop offset="95%" stopColor="var(--color-leads)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" className="stroke-border/40" />
@@ -309,11 +321,11 @@ export function AnalyticsDashboard({ data }: Props) {
               </ChartContainer>
               <div className="flex gap-4 mt-3 pt-3 border-t">
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />
+                  <span className="size-2.5 shrink-0 rounded-full bg-[var(--chart-1)]" />
                   Phiên chat
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500 shrink-0" />
+                  <span className="size-2.5 shrink-0 rounded-full bg-[var(--chart-2)]" />
                   Leads
                 </div>
               </div>
@@ -321,7 +333,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Conversion funnel */}
-          <Card className="xl:col-span-2">
+          <Card className="xl:col-span-2 bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <BarChart2 size={15} className="text-muted-foreground" />
@@ -331,7 +343,7 @@ export function AnalyticsDashboard({ data }: Props) {
                 Tỷ lệ từ phiên chat đến tư vấn
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-5">
+            <CardContent className="flex flex-col gap-5">
               {data.funnel.map((step, i) => (
                 <div key={step.label}>
                   <div className="flex items-center justify-between mb-1.5">
@@ -372,7 +384,7 @@ export function AnalyticsDashboard({ data }: Props) {
         {/* ── Three distribution charts ─────────────────────────────────── */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
           {/* Exam distribution */}
-          <Card>
+          <Card className="bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <BookOpen size={15} className="text-muted-foreground" />
@@ -402,7 +414,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Top countries */}
-          <Card>
+          <Card className="bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Globe size={15} className="text-muted-foreground" />
@@ -432,7 +444,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Budget distribution */}
-          <Card>
+          <Card className="bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Banknote size={15} className="text-muted-foreground" />
@@ -465,7 +477,7 @@ export function AnalyticsDashboard({ data }: Props) {
         {/* ── Activity + Field of study ─────────────────────────────────── */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           {/* Activity by hour */}
-          <Card>
+          <Card className="bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Clock size={15} className="text-muted-foreground" />
@@ -498,7 +510,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Field of study */}
-          <Card>
+          <Card className="bg-card/85 shadow-sm backdrop-blur">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <BookOpen size={15} className="text-muted-foreground" />
@@ -529,7 +541,7 @@ export function AnalyticsDashboard({ data }: Props) {
         </div>
 
         {/* ── Recent Leads table ────────────────────────────────────────── */}
-        <Card>
+        <Card className="bg-card/85 shadow-sm backdrop-blur">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -647,3 +659,4 @@ function EmptyState() {
     </div>
   );
 }
+
