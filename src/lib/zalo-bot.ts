@@ -709,7 +709,7 @@ async function generateZaloReply(params: {
   const { zaloSystemPrompt, systemPrompt } = await getSettings();
   const adminPrompt = (zaloSystemPrompt || systemPrompt).trim();
   const transcript = buildConversationTranscript(history);
-  const compactLead = buildCompactLeadSummary(lead);
+  const compactLead = buildCompactLeadSummary(lead ?? null);
 
   const channelRules = `
 ## Ràng buộc kênh Zalo Bot

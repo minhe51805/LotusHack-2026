@@ -3,16 +3,40 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import type { LucideIcon } from "lucide-react";
 import {
-  Settings,
-  MessageSquare,
-  RefreshCw,
-  GlobeIcon,
   Bell,
   BellOff,
-  X,
+  BookOpen,
+  BotMessageSquare,
+  GlobeIcon,
   LayoutDashboard,
+  MessageSquare,
+  PanelLeft,
+  RefreshCw,
+  Settings,
+  Sparkles,
+  X,
 } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { Separator } from "@/components/ui/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 
 interface SessionSummary {
@@ -24,20 +48,86 @@ interface SessionSummary {
   needsSupport?: boolean;
 }
 
-interface Toast {
+interface ToastItem {
   id: number;
   message: string;
   type: "session" | "lead" | "support";
 }
 
+interface NavigationLink {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+interface AdminSidebarProps {
+  loading: boolean;
+  pathname: string;
+  sessions: SessionSummary[];
+  liveSessions: Set<string>;
+  notificationsOn: boolean;
+  onRefresh: () => void;
+  onToggleNotifications: () => void;
+  onNavigate?: () => void;
+}
+
+const navigationLinks: NavigationLink[] = [
+  { href: "/admin", label: "Tổng quan", icon: LayoutDashboard },
+  { href: "/admin/schools", label: "Trường học", icon: GlobeIcon },
+  { href: "/admin/courses", label: "Khóa học", icon: BookOpen },
+  { href: "/admin/services", label: "Dịch vụ", icon: Sparkles },
+  { href: "/admin/settings", label: "Cài đặt", icon: Settings },
+];
+
 function formatTime(iso: string) {
-  const d = new Date(iso);
+  const date = new Date(iso);
   const now = new Date();
-  const diffMin = Math.floor((now.getTime() - d.getTime()) / 60000);
+  const diffMin = Math.floor((now.getTime() - date.getTime()) / 60000);
+
+  if (diffMin < 1) return "Vừa xong";
   if (diffMin < 60) return `${diffMin} phút trước`;
-  const diffH = Math.floor(diffMin / 60);
-  if (diffH < 24) return `${diffH} giờ trước`;
-  return d.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit" });
+
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours < 24) return `${diffHours} giờ trước`;
+
+  return date.toLocaleDateString("vi-VN", {
+    day: "2-digit",
+    month: "2-digit",
+  });
+}
+
+function isNavigationActive(pathname: string, href: string) {
+  if (href === "/admin") {
+    return pathname === href;
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function getCurrentSectionLabel(pathname: string) {
+  if (pathname === "/admin") {
+    return "Tổng quan";
+  }
+
+  const navigationItem = navigationLinks.find((item) =>
+    item.href === "/admin"
+      ? false
+      : pathname === item.href || pathname.startsWith(`${item.href}/`)
+  );
+
+  if (navigationItem) {
+    return navigationItem.label;
+  }
+
+  if (pathname.startsWith("/admin/")) {
+    return "Chi tiết phiên";
+  }
+
+  return "Admin";
+}
+
+function getSessionLabel(session: SessionSummary) {
+  return session.lead?.full_name?.trim() || `${session.id.slice(0, 12)}…`;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,6 +144,256 @@ function rowToSummary(row: any): SessionSummary {
 
 let toastCounter = 0;
 
+function AdminSidebar({
+  loading,
+  pathname,
+  sessions,
+  liveSessions,
+  notificationsOn,
+  onRefresh,
+  onToggleNotifications,
+  onNavigate,
+}: AdminSidebarProps) {
+  return (
+    <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] border bg-background/85 shadow-xl backdrop-blur">
+      <div className="relative overflow-hidden px-5 pb-5 pt-6">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent" />
+
+        <div className="relative flex flex-col gap-4">
+          <div className="flex items-start justify-between gap-3">
+            <Link
+              href="/admin"
+              onClick={onNavigate}
+              className="flex min-w-0 items-center gap-3"
+            >
+              <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl border bg-background shadow-sm">
+                <BotMessageSquare className="size-5" />
+              </div>
+              <div className="flex min-w-0 flex-col gap-0.5">
+                <span className="truncate text-sm font-semibold">
+                  Study Abroad AI
+                </span>
+                <span className="truncate text-xs text-muted-foreground">
+                  Admin workspace
+                </span>
+              </div>
+            </Link>
+
+            <div className="flex items-center gap-1.5">
+              <Button
+                type="button"
+                variant={notificationsOn ? "secondary" : "outline"}
+                size="icon-sm"
+                onClick={onToggleNotifications}
+                title={notificationsOn ? "Tắt thông báo" : "Bật thông báo"}
+              >
+                {notificationsOn ? <Bell /> : <BellOff />}
+                <span className="sr-only">
+                  {notificationsOn ? "Tắt thông báo" : "Bật thông báo"}
+                </span>
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon-sm"
+                onClick={onRefresh}
+                title="Làm mới dữ liệu"
+              >
+                <RefreshCw />
+                <span className="sr-only">Làm mới dữ liệu</span>
+              </Button>
+            </div>
+          </div>
+
+          <div className="rounded-[1.75rem] border bg-background/90 p-4 shadow-sm">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex flex-col gap-1">
+                <p className="text-sm font-medium">Live inbox</p>
+                <p className="text-xs leading-5 text-muted-foreground">
+                  Theo dõi lead mới, phiên cần hỗ trợ và điều hướng nội dung.
+                </p>
+              </div>
+              <Badge variant={liveSessions.size > 0 ? "default" : "outline"}>
+                {liveSessions.size > 0 ? `${liveSessions.size} trực tiếp` : "Ổn định"}
+              </Badge>
+            </div>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-secondary px-3 py-3">
+                <p className="text-2xl font-semibold tracking-tight">
+                  {sessions.length}
+                </p>
+                <p className="text-xs text-muted-foreground">Tổng phiên đang lưu</p>
+              </div>
+              <div className="rounded-2xl bg-muted px-3 py-3">
+                <p className="text-2xl font-semibold tracking-tight">
+                  {sessions.filter((session) => session.needsSupport).length}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Phiên cần chuyên viên
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-5">
+        <Separator />
+      </div>
+
+      <div className="flex min-h-0 flex-1 flex-col px-3 pb-3 pt-4">
+        <div className="flex items-center justify-between px-2">
+          <div className="flex flex-col gap-1">
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+              Phiên chat
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Danh sách mới nhất, ưu tiên những phiên cần follow-up.
+            </p>
+          </div>
+          <Badge variant="secondary">{sessions.length}</Badge>
+        </div>
+
+        <div className="min-h-0 flex-1 overflow-y-auto px-2 pb-2 pt-4">
+          {loading ? (
+            <div className="flex flex-col gap-2.5">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="rounded-[1.25rem] border bg-background/70 p-3"
+                >
+                  <Skeleton className="h-4 w-2/3" />
+                  <Skeleton className="mt-3 h-3 w-1/2" />
+                  <div className="mt-4 flex gap-2">
+                    <Skeleton className="h-5 w-16 rounded-full" />
+                    <Skeleton className="h-5 w-20 rounded-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : sessions.length === 0 ? (
+            <Empty className="min-h-56 border-border/80 bg-muted/30">
+              <EmptyHeader>
+                <EmptyMedia variant="icon">
+                  <MessageSquare />
+                </EmptyMedia>
+                <EmptyTitle>Chưa có phiên nào</EmptyTitle>
+                <EmptyDescription>
+                  Khi có học viên bắt đầu trò chuyện, phiên mới sẽ xuất hiện ở đây.
+                </EmptyDescription>
+              </EmptyHeader>
+            </Empty>
+          ) : (
+            <div className="flex flex-col gap-2.5">
+              {sessions.map((session) => {
+                const isActive = pathname === `/admin/${session.id}`;
+                const isLive = liveSessions.has(session.id);
+                const messageCount = session.messages?.length ?? 0;
+                const exam = session.lead?.target_exam?.trim();
+
+                return (
+                  <Link
+                    key={session.id}
+                    href={`/admin/${session.id}`}
+                    onClick={onNavigate}
+                    className={cn(
+                      "group flex flex-col gap-3 rounded-[1.35rem] border bg-background/75 p-3 transition-all hover:bg-muted/40",
+                      isActive && "bg-background shadow-sm ring-1 ring-foreground/10",
+                      session.needsSupport &&
+                        !isActive &&
+                        "border-destructive/25 bg-destructive/5"
+                    )}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0 flex flex-col gap-1">
+                        <div className="flex items-center gap-2">
+                          {isLive ? (
+                            <span className="relative flex size-2.5 shrink-0">
+                              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/70" />
+                              <span className="relative inline-flex size-2.5 rounded-full bg-primary" />
+                            </span>
+                          ) : (
+                            <span className="size-2.5 shrink-0 rounded-full bg-muted" />
+                          )}
+                          <p className="truncate text-sm font-medium">
+                            {getSessionLabel(session)}
+                          </p>
+                        </div>
+                        <p className="truncate text-xs text-muted-foreground">
+                          {session.id}
+                        </p>
+                      </div>
+                      <span className="shrink-0 text-[11px] text-muted-foreground">
+                        {formatTime(session.updatedAt)}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant={isActive ? "default" : "outline"}>
+                        {messageCount} tin nhắn
+                      </Badge>
+                      {exam ? <Badge variant="secondary">{exam}</Badge> : null}
+                      {session.lead?.full_name ? (
+                        <Badge variant="outline">Đã có lead</Badge>
+                      ) : null}
+                      {session.needsSupport ? (
+                        <Badge variant="destructive">Cần hỗ trợ</Badge>
+                      ) : null}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        <div className="px-2 pb-3">
+          <Separator />
+        </div>
+
+        <div className="flex flex-col gap-3 px-2">
+          <div className="flex flex-col gap-1">
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+              Điều hướng
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Nội dung, dữ liệu và cấu hình của hệ thống tư vấn.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            {navigationLinks.map(({ href, icon: Icon, label }) => {
+              const active = isNavigationActive(pathname, href);
+
+              return (
+                <Button
+                  key={href}
+                  asChild
+                  variant={active ? "default" : "ghost"}
+                  className="w-full justify-start"
+                >
+                  <Link href={href} onClick={onNavigate}>
+                    <Icon data-icon="inline-start" />
+                    {label}
+                  </Link>
+                </Button>
+              );
+            })}
+          </div>
+
+          <Button asChild variant="outline" className="w-full justify-start">
+            <Link href="/" target="_blank" onClick={onNavigate}>
+              <MessageSquare data-icon="inline-start" />
+              Mở landing page
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminLayout({
   children,
 }: {
@@ -64,58 +404,67 @@ export default function AdminLayout({
   const [loading, setLoading] = useState(true);
   const [liveSessions, setLiveSessions] = useState<Set<string>>(new Set());
   const [notificationsOn, setNotificationsOn] = useState(false);
-  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const notificationsRef = useRef(false);
+  const addToastRef = useRef<
+    (message: string, type: ToastItem["type"]) => void
+  >(() => {});
 
-  // ── Keep ref in sync with state ──────────────────────────────────────────
   useEffect(() => {
     notificationsRef.current = notificationsOn;
   }, [notificationsOn]);
 
-  // ── Load saved notification preference ───────────────────────────────────
   useEffect(() => {
-    const saved = localStorage.getItem("admin-notify") === "true";
-    setNotificationsOn(saved);
-    notificationsRef.current = saved;
+    addToastRef.current = addToast;
+  });
+
+  useEffect(() => {
+    const savedPreference = localStorage.getItem("admin-notify") === "true";
+    setNotificationsOn(savedPreference);
+    notificationsRef.current = savedPreference;
   }, []);
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
-  function addToast(message: string, type: Toast["type"]) {
-    const id = ++toastCounter;
-    setToasts((prev) => [...prev, { id, message, type }]);
-    setTimeout(() => removeToast(id), 5000);
-  }
-
   function removeToast(id: number) {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
+    setToasts((current) => current.filter((toast) => toast.id !== id));
   }
 
-  function fireNativeNotif(title: string, body: string) {
+  function addToast(message: string, type: ToastItem["type"]) {
+    const id = ++toastCounter;
+    setToasts((current) => [...current, { id, message, type }]);
+
+    window.setTimeout(() => {
+      removeToast(id);
+    }, 5000);
+  }
+
+  function fireNativeNotification(title: string, body: string) {
     if (typeof window !== "undefined" && Notification.permission === "granted") {
       new Notification(title, { body });
     }
   }
 
   function markLive(id: string) {
-    setLiveSessions((prev) => new Set([...prev, id]));
-    setTimeout(() => {
-      setLiveSessions((prev) => {
-        const next = new Set(prev);
+    setLiveSessions((current) => new Set([...current, id]));
+
+    window.setTimeout(() => {
+      setLiveSessions((current) => {
+        const next = new Set(current);
         next.delete(id);
         return next;
       });
     }, 5 * 60 * 1000);
   }
 
-  // ── Initial fetch ─────────────────────────────────────────────────────────
   async function fetchSessions() {
     setLoading(true);
+
     try {
-      const res = await fetch("/api/admin/sessions");
-      const data = await res.json();
-      setSessions(data);
+      const response = await fetch("/api/admin/sessions");
+      const data = await response.json();
+      setSessions(Array.isArray(data) ? data : []);
     } catch {
-      // ignore
+      setSessions([]);
     } finally {
       setLoading(false);
     }
@@ -125,7 +474,6 @@ export default function AdminLayout({
     fetchSessions();
   }, []);
 
-  // ── Supabase Realtime subscription ────────────────────────────────────────
   useEffect(() => {
     const supabase = createClient();
 
@@ -136,11 +484,16 @@ export default function AdminLayout({
         { event: "INSERT", schema: "public", table: "sessions" },
         (payload) => {
           const session = rowToSummary(payload.new);
-          setSessions((prev) => [session, ...prev]);
+
+          setSessions((current) => [session, ...current]);
           markLive(session.id);
+
           if (notificationsRef.current) {
-            addToast("Có phiên chat mới", "session");
-            fireNativeNotif("Admin", "Có phiên chat mới");
+            addToastRef.current(
+              "Có phiên chat mới vừa được ghi nhận.",
+              "session"
+            );
+            fireNativeNotification("Admin", "Có phiên chat mới");
           }
         }
       )
@@ -149,36 +502,38 @@ export default function AdminLayout({
         { event: "UPDATE", schema: "public", table: "sessions" },
         (payload) => {
           const session = rowToSummary(payload.new);
-          setSessions((prev) =>
-            prev
-              .map((s) => (s.id === session.id ? session : s))
+
+          setSessions((current) =>
+            current
+              .map((item) => (item.id === session.id ? session : item))
               .sort(
                 (a, b) =>
-                  new Date(b.createdAt).getTime() -
-                  new Date(a.createdAt).getTime()
+                  new Date(b.updatedAt).getTime() -
+                  new Date(a.updatedAt).getTime()
               )
           );
+
           markLive(session.id);
 
-          // Detect when a lead is first captured
           const hadLead = payload.old?.lead;
           const newLead = payload.new?.lead;
+
           if (!hadLead && newLead && notificationsRef.current) {
-            const name = newLead.full_name ?? "Không rõ";
+            const name = newLead.full_name ?? "Khách hàng mới";
             const exam = newLead.target_exam ? ` (${newLead.target_exam})` : "";
-            const msg = `Lead mới: ${name}${exam}`;
-            addToast(msg, "lead");
-            fireNativeNotif("Admin – Lead mới!", msg);
+            const message = `Lead mới: ${name}${exam}`;
+            addToastRef.current(message, "lead");
+            fireNativeNotification("Admin", message);
           }
 
-          // Detect needs_support flip false → true
           const wasSupport = payload.old?.needs_support;
           const nowSupport = payload.new?.needs_support;
+
           if (!wasSupport && nowSupport) {
             const name = payload.new?.lead?.full_name ?? "Khách hàng";
-            const msg = `⚡ ${name} cần tư vấn chuyên sâu!`;
-            addToast(msg, "support");
-            fireNativeNotif("Hỗ trợ ngay!", msg);
+            const message = `${name} đang cần tư vấn chuyên sâu.`;
+            addToastRef.current(message, "support");
+            fireNativeNotification("Hỗ trợ ngay", message);
           }
         }
       )
@@ -189,7 +544,6 @@ export default function AdminLayout({
     };
   }, []);
 
-  // ── Notification toggle ───────────────────────────────────────────────────
   async function toggleNotifications() {
     if (notificationsOn) {
       setNotificationsOn(false);
@@ -197,260 +551,138 @@ export default function AdminLayout({
       return;
     }
 
-    // Request browser permission if needed
     if ("Notification" in window && Notification.permission === "default") {
-      const perm = await Notification.requestPermission();
-      if (perm !== "granted") {
-        // Still enable in-app toasts even if browser denied
-      }
+      await Notification.requestPermission();
     }
 
     setNotificationsOn(true);
     localStorage.setItem("admin-notify", "true");
-    addToast("Đã bật thông báo", "session");
+    addToast("Đã bật thông báo cho khu admin.", "session");
   }
 
-  const isSettings = pathname === "/admin/settings";
+  const orderedSessions = [...sessions].sort((a, b) => {
+    if (a.needsSupport && !b.needsSupport) return -1;
+    if (!a.needsSupport && b.needsSupport) return 1;
+
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
+  const sidebarProps: AdminSidebarProps = {
+    loading,
+    pathname,
+    sessions: orderedSessions,
+    liveSessions,
+    notificationsOn,
+    onRefresh: fetchSessions,
+    onToggleNotifications: toggleNotifications,
+    onNavigate: () => setMobileSidebarOpen(false),
+  };
+
+  const currentSectionLabel = getCurrentSectionLabel(pathname);
 
   return (
-    <div className="flex h-screen bg-gray-100 dark:bg-zinc-950 overflow-hidden">
-      {/* Toast stack */}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 items-end">
-        {toasts.map((t) => (
-          <div
-            key={t.id}
-            className={`flex items-start gap-2 px-3.5 py-2.5 rounded-xl shadow-lg text-sm max-w-xs animate-in slide-in-from-bottom-2 fade-in duration-200 ${
-              t.type === "support"
-                ? "bg-red-600 text-white"
-                : t.type === "lead"
-                ? "bg-green-600 text-white"
-                : "bg-zinc-800 text-white dark:bg-zinc-700"
-            }`}
+    <div className="relative isolate h-screen overflow-hidden bg-background text-foreground">
+      <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
+        <div className="size-[44rem] rounded-full bg-primary/10 blur-3xl" />
+      </div>
+      <div className="pointer-events-none absolute left-0 top-40 size-72 rounded-full bg-secondary blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-[28rem] size-80 rounded-full bg-muted blur-3xl" />
+
+      <div className="flex h-full gap-4 p-4">
+        <aside className="hidden h-full w-[22rem] shrink-0 lg:block">
+          <AdminSidebar {...sidebarProps} />
+        </aside>
+
+        <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
+          <SheetContent
+            side="left"
+            showCloseButton={false}
+            className="w-[min(92vw,22rem)] border-r bg-background/95 p-0 backdrop-blur"
           >
-            <span className="flex-1">{t.message}</span>
-            <button
-              onClick={() => removeToast(t.id)}
-              className="shrink-0 opacity-70 hover:opacity-100 mt-0.5"
+            <SheetHeader className="sr-only">
+              <SheetTitle>Admin navigation</SheetTitle>
+            </SheetHeader>
+            <AdminSidebar {...sidebarProps} />
+          </SheetContent>
+        </Sheet>
+
+        <div className="flex min-w-0 flex-1 flex-col gap-4">
+          <div className="flex items-center justify-between rounded-[1.75rem] border bg-background/75 px-4 py-3 shadow-sm backdrop-blur lg:hidden">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setMobileSidebarOpen(true)}
             >
-              <X size={13} />
-            </button>
+              <PanelLeft data-icon="inline-start" />
+              Menu
+            </Button>
+
+            <div className="min-w-0 text-right">
+              <p className="truncate text-sm font-medium">
+                {currentSectionLabel}
+              </p>
+              <p className="truncate text-xs text-muted-foreground">
+                {liveSessions.size > 0
+                  ? `${liveSessions.size} phiên đang trực tiếp`
+                  : "Admin workspace"}
+              </p>
+            </div>
+          </div>
+
+          <main className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[2rem] border bg-background/80 shadow-xl backdrop-blur">
+            {children}
+          </main>
+        </div>
+      </div>
+
+      <div className="pointer-events-none fixed inset-x-4 top-4 z-50 flex flex-col items-end gap-3 sm:left-auto sm:right-4 sm:w-[24rem]">
+        {toasts.map((toast) => (
+          <div
+            key={toast.id}
+            className={cn(
+              "pointer-events-auto w-full rounded-[1.5rem] border bg-background/92 p-4 shadow-xl backdrop-blur",
+              toast.type === "support" && "border-destructive/30",
+              toast.type === "lead" && "border-border"
+            )}
+          >
+            <div className="flex items-start gap-3">
+              <Badge
+                variant={
+                  toast.type === "support"
+                    ? "destructive"
+                    : toast.type === "lead"
+                      ? "secondary"
+                      : "outline"
+                }
+              >
+                {toast.type === "support"
+                  ? "Ưu tiên"
+                  : toast.type === "lead"
+                    ? "Lead"
+                    : "Mới"}
+              </Badge>
+
+              <div className="flex min-w-0 flex-1 flex-col gap-1">
+                <p className="text-sm font-medium">Admin notification</p>
+                <p className="text-sm leading-6 text-muted-foreground">
+                  {toast.message}
+                </p>
+              </div>
+
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-xs"
+                onClick={() => removeToast(toast.id)}
+              >
+                <X />
+                <span className="sr-only">Đóng thông báo</span>
+              </Button>
+            </div>
           </div>
         ))}
       </div>
-
-      {/* Sidebar */}
-      <aside className="w-72 shrink-0 flex flex-col bg-white dark:bg-zinc-900 border-r border-gray-200 dark:border-zinc-800">
-        {/* Header */}
-        <div className="px-4 py-4 border-b border-gray-200 dark:border-zinc-800 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-              A
-            </div>
-            <span className="font-semibold text-sm text-gray-900 dark:text-white">
-              Admin
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <button
-              onClick={toggleNotifications}
-              title={notificationsOn ? "Tắt thông báo" : "Bật thông báo"}
-              className={`p-1.5 rounded-md transition-colors ${
-                notificationsOn
-                  ? "text-blue-600 bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-950/60"
-                  : "text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800"
-              }`}
-            >
-              {notificationsOn ? <Bell size={14} /> : <BellOff size={14} />}
-            </button>
-            <button
-              onClick={fetchSessions}
-              className="p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
-              title="Làm mới"
-            >
-              <RefreshCw size={14} />
-            </button>
-          </div>
-        </div>
-
-        {/* Sessions label */}
-        <div className="px-4 pt-4 pb-2 flex items-center justify-between">
-          <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider">
-            Phiên ({sessions.length})
-          </p>
-          {liveSessions.size > 0 && (
-            <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              {liveSessions.size} trực tiếp
-            </span>
-          )}
-        </div>
-
-        {/* Session list */}
-        <div className="flex-1 overflow-y-auto">
-          {loading ? (
-            <div className="px-4 py-8 text-center text-sm text-gray-400 dark:text-zinc-500">
-              Đang tải...
-            </div>
-          ) : sessions.length === 0 ? (
-            <div className="px-4 py-8 text-center text-sm text-gray-400 dark:text-zinc-500">
-              Chưa có phiên nào
-            </div>
-          ) : (
-            [...sessions]
-              .sort((a, b) => {
-                if (a.needsSupport && !b.needsSupport) return -1;
-                if (!a.needsSupport && b.needsSupport) return 1;
-                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-              })
-              .map((s) => {
-              const isActive = pathname === `/admin/${s.id}`;
-              const isLive = liveSessions.has(s.id);
-              const msgCount = s.messages?.length ?? 0;
-              const name = s.lead?.full_name;
-              const exam = s.lead?.target_exam;
-
-              return (
-                <Link
-                  key={s.id}
-                  href={`/admin/${s.id}`}
-                  className={`block px-4 py-3 border-b border-gray-100 dark:border-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors ${
-                    isActive
-                      ? "bg-blue-50 dark:bg-blue-950/40 border-l-2 border-l-blue-600"
-                      : s.needsSupport
-                      ? "border-l-2 border-l-red-500 bg-red-50/40 dark:bg-red-950/20"
-                      : ""
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-1.5 min-w-0">
-                      {isLive ? (
-                        <span className="relative flex h-2.5 w-2.5 shrink-0">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
-                        </span>
-                      ) : (
-                        <MessageSquare
-                          size={12}
-                          className={
-                            isActive
-                              ? "text-blue-600 shrink-0"
-                              : "text-gray-400 shrink-0"
-                          }
-                        />
-                      )}
-                      <p
-                        className={`text-xs font-medium truncate ${
-                          isActive
-                            ? "text-blue-700 dark:text-blue-400"
-                            : "text-gray-700 dark:text-zinc-300"
-                        }`}
-                      >
-                        {name ?? s.id.slice(0, 16) + "…"}
-                      </p>
-                    </div>
-                    <span className="text-xs text-gray-400 dark:text-zinc-500 shrink-0">
-                      {formatTime(s.updatedAt)}
-                    </span>
-                  </div>
-                  <div className="mt-1 flex items-center gap-1.5 flex-wrap">
-                    {exam && (
-                      <span className="shrink-0 text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded">
-                        {exam}
-                      </span>
-                    )}
-                    <span className="text-xs text-gray-400 dark:text-zinc-500 shrink-0">
-                      {msgCount} tin nhắn
-                    </span>
-                    {s.lead?.full_name && (
-                      <span className="shrink-0 text-xs text-green-600 dark:text-green-400">
-                        ● Khách hàng
-                      </span>
-                    )}
-                    {s.needsSupport && (
-                      <span className="shrink-0 text-xs bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 px-1.5 py-0.5 rounded font-semibold animate-pulse">
-                        ⚡ Hỗ trợ
-                      </span>
-                    )}
-                  </div>
-                </Link>
-              );
-            })
-          )}
-        </div>
-
-        {/* Analytics nav */}
-        <div className="border-t border-gray-200 dark:border-zinc-800 px-3 pt-3 pb-1">
-          <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider px-2 mb-2">
-            Phân tích
-          </p>
-          <Link
-            href="/admin"
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-              pathname === "/admin"
-                ? "bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white"
-                : "text-gray-600 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white"
-            }`}
-          >
-            <LayoutDashboard size={15} />
-            Tổng quan
-          </Link>
-        </div>
-
-        {/* Content nav */}
-        <div className="border-t border-gray-200 dark:border-zinc-800 px-3 pt-3 pb-1">
-          <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider px-2 mb-2">
-            Nội dung
-          </p>
-          {[
-            { href: "/admin/schools", icon: GlobeIcon, label: "Trường học" },
-          ].map(({ href, icon: Icon, label }) => {
-            const active = pathname === href || pathname.startsWith(href + "/");
-            return (
-              <Link
-                key={href}
-                href={href}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-                  active
-                    ? "bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white"
-                    : "text-gray-600 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white"
-                }`}
-              >
-                <Icon size={15} />
-                {label}
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Footer */}
-        <div className="border-t border-gray-200 dark:border-zinc-800 p-3 space-y-1">
-          <Link
-            href="/admin/settings"
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-              isSettings
-                ? "bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white"
-                : "text-gray-600 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white"
-            }`}
-          >
-            <Settings size={15} />
-            Cài đặt & Prompt
-          </Link>
-          <Link
-            href="/"
-            className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white transition-colors"
-            target="_blank"
-          >
-            <MessageSquare size={15} />
-            Mở Chat ↗
-          </Link>
-        </div>
-      </aside>
-
-      {/* Main content */}
-      <main className="flex-1 overflow-hidden">{children}</main>
     </div>
   );
 }
