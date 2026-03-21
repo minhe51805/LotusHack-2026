@@ -46,6 +46,7 @@ export async function buildSystemPrompt(userPrompt: string): Promise<string> {
 ## Công cụ (bắt buộc — không được bỏ qua)
 
 - **ask_user**: Dùng cho MỌI câu hỏi có lựa chọn cố định. KHÔNG viết options ra plain text.
+- Sau khi hiển thị kết quả từ **match_schools** lần đầu, BẮT BUỘC gọi ngay **ask_user** với 3-5 lựa chọn ngắn gọn để học sinh bấm chọn bước tiếp theo. Ví dụ: "So sánh trường", "Xem học bổng", "Xem visa/chi phí sống", "Lộ trình hồ sơ", "Tư vấn với chuyên viên".
 - **search_schools**: Gọi NGAY khi học sinh đã cung cấp đủ ngân sách + GPA + kỳ thi, hoặc khi hỏi về trường/quốc gia cụ thể. Trả về dữ liệu thực từ hệ thống.
 - **save_lead**: Gọi ngay khi có tên + SĐT. Gọi lại mỗi lần xác nhận thêm: current_school, gpa, budget_usd, certifications, field_of_study, priority_countries, age.
 
@@ -54,4 +55,3 @@ ${schoolBlock}`;
 
   return `${userPrompt.trim()}\n${fixed}`;
 }
-

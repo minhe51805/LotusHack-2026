@@ -11,6 +11,32 @@ interface ActiveToolCall {
   options: string[];
 }
 
+function isAskUserPart(part: unknown): part is {
+  type: string;
+  toolName?: string;
+  toolCallId: string;
+  state: string;
+  input?: {
+    question?: string;
+    type?: "single_select" | "multi_select";
+    options?: string[];
+  };
+} {
+  if (!part || typeof part !== "object") return false;
+  const candidate = part as {
+    type?: string;
+    toolName?: string;
+    toolCallId?: string;
+    state?: string;
+  };
+  return (
+    typeof candidate.toolCallId === "string" &&
+    typeof candidate.state === "string" &&
+    (candidate.type === "tool-ask_user" ||
+      (candidate.type === "dynamic-tool" && candidate.toolName === "ask_user"))
+  );
+}
+
 function findActiveToolCall(messages: ChatMessage[]): ActiveToolCall | null {
   // Walk backwards — last assistant message wins
   for (let i = messages.length - 1; i >= 0; i--) {
@@ -19,11 +45,7 @@ function findActiveToolCall(messages: ChatMessage[]): ActiveToolCall | null {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const parts = msg.parts as any[];
     for (const part of parts) {
-      if (
-        part.type === "tool-ask_user" &&
-        part.state === "input-available" &&
-        part.input
-      ) {
+      if (isAskUserPart(part) && part.state === "input-available" && part.input) {
         return {
           toolCallId: part.toolCallId,
           question: part.input.question ?? "",

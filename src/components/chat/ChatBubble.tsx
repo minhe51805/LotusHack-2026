@@ -10,6 +10,7 @@ export interface ChatPart {
   type: string;
   text?: string;
   toolCallId?: string;
+  toolName?: string;
   state?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   input?: any;
@@ -25,6 +26,13 @@ export interface ChatMessage {
 
 function getParts(raw: unknown[]): ChatPart[] {
   return raw as ChatPart[];
+}
+
+function isAskUserPart(part: ChatPart): boolean {
+  return (
+    part.type === "tool-ask_user" ||
+    (part.type === "dynamic-tool" && part.toolName === "ask_user")
+  );
 }
 
 function formatTime(ts: string | Date | undefined): string | null {
@@ -118,7 +126,7 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
         }
 
         /* ── ask_user ───────────────────────────────── */
-        if (part.type === "tool-ask_user") {
+        if (isAskUserPart(part)) {
           if (mode === "live" && part.state === "input-available") {
             return null;
           }
