@@ -217,22 +217,85 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 OPENROUTER_API_KEY=
+ZALO_BOT_TOKEN=
+ZALO_WEBHOOK_SECRET=
+ZALO_WEBHOOK_BASE_URL=
 ```
+
+## Zalo Bot Tunnel Workflow
+
+Use a public HTTPS tunnel for local webhook testing. Keep the tunnel URL in each developer's own `.env.local`; do not commit it.
+
+```env
+ZALO_BOT_TOKEN=
+ZALO_WEBHOOK_SECRET=
+ZALO_WEBHOOK_BASE_URL=https://your-public-tunnel-url.trycloudflare.com
+```
+
+Recommended local flow with Cloudflare Tunnel:
+
+```bash
+bun run dev
+npx cloudflared tunnel --url http://localhost:3000
+```
+
+Cloudflare will print a public HTTPS URL similar to:
+
+```txt
+https://random-name.trycloudflare.com
+```
+
+Put that URL into `.env.local` as `ZALO_WEBHOOK_BASE_URL`, then register your webhook:
+
+```bash
+bun run zalo:webhook:set
+```
+
+Check the tunnel route in a browser:
+
+```txt
+https://random-name.trycloudflare.com/api/zalo/webhook
+```
+
+Expected response:
+
+```json
+{
+  "ok": true,
+  "route": "/api/zalo/webhook"
+}
+```
+
+Useful commands:
+
+```bash
+bun run zalo:webhook:info
+bun run zalo:bot:me
+bun run zalo:webhook:delete
+```
+
+Important notes:
+
+- Keep both terminals running: `bun run dev` and `cloudflared tunnel`
+- If the tunnel URL changes, update `.env.local` and run `bun run zalo:webhook:set` again
+- One Zalo bot has one active webhook URL. If multiple teammates use the same `ZALO_BOT_TOKEN`, whoever runs `bun run zalo:webhook:set` last will overwrite the webhook URL for everyone else
+- `localhost` alone will not work for Zalo webhook; it must be reachable through a public HTTPS URL
 
 ---
 
 ## Getting Started
 
 ```bash
-npm install
+bun install
 
 # Initialise the database
 # Run supabase/schema.sql then supabase/migration_add_school_fields.sql in the Supabase SQL editor
+# If you already have an existing DB, also run supabase/add_zalo_system_prompt.sql
 
 # Seed the school database (run once after DB is initialised)
-npm run seed:schools
+bun run seed:schools
 
-npm run dev
+bun run dev
 ```
 
 - Student chat: `http://localhost:3000/chat`
