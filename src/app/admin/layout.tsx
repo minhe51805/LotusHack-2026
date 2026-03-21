@@ -11,6 +11,7 @@ import {
   Bell,
   BellOff,
   X,
+  LayoutDashboard,
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
@@ -378,6 +379,24 @@ export default function AdminLayout({
               );
             })
           )}
+        </div>
+
+        {/* Analytics nav */}
+        <div className="border-t border-gray-200 dark:border-zinc-800 px-3 pt-3 pb-1">
+          <p className="text-xs font-medium text-gray-400 dark:text-zinc-500 uppercase tracking-wider px-2 mb-2">
+            Phân tích
+          </p>
+          <Link
+            href="/admin"
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+              pathname === "/admin"
+                ? "bg-gray-100 dark:bg-zinc-800 text-gray-900 dark:text-white"
+                : "text-gray-600 dark:text-zinc-400 hover:bg-gray-50 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white"
+            }`}
+          >
+            <LayoutDashboard size={15} />
+            Tổng quan
+          </Link>
         </div>
 
         {/* Content nav */}
