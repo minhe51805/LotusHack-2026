@@ -49,6 +49,7 @@ export interface ChatSession {
 
 export interface AdminSettings {
   systemPrompt: string;
+  zaloSystemPrompt: string;
 }
 
 export interface SchoolRequirements {
@@ -327,11 +328,29 @@ export async function getSettings(): Promise<AdminSettings> {
   const supabase = await getSupabaseClient();
   const { data, error } = await supabase
     .from("settings")
-    .select("system_prompt")
+    .select("*")
     .eq("id", 1)
     .single();
-  if (error || !data) return { systemPrompt: DEFAULT_PROMPT };
-  return { systemPrompt: data.system_prompt };
+  if (error || !data) {
+    return {
+      systemPrompt: DEFAULT_PROMPT,
+      zaloSystemPrompt: DEFAULT_PROMPT,
+    };
+  }
+
+  const systemPrompt =
+    typeof data.system_prompt === "string" && data.system_prompt.trim()
+      ? data.system_prompt
+      : DEFAULT_PROMPT;
+  const zaloSystemPrompt =
+    typeof data.zalo_system_prompt === "string" && data.zalo_system_prompt.trim()
+      ? data.zalo_system_prompt
+      : systemPrompt;
+
+  return {
+    systemPrompt,
+    zaloSystemPrompt,
+  };
 }
 
 export async function saveSettings(settings: AdminSettings): Promise<void> {
@@ -339,6 +358,7 @@ export async function saveSettings(settings: AdminSettings): Promise<void> {
   const { error } = await supabase.from("settings").upsert({
     id: 1,
     system_prompt: settings.systemPrompt,
+    zalo_system_prompt: settings.zaloSystemPrompt,
     updated_at: new Date().toISOString(),
   });
   if (error) throw error;
