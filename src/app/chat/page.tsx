@@ -101,7 +101,7 @@ export default function Chat() {
   return (
     <div className="flex flex-col h-screen bg-background items-center">
       {/* Header */}
-      <header className="w-full max-w-[420px] shrink-0 border-b bg-background px-4 py-3 flex items-center gap-3">
+      <header className="w-full max-w-[680px] shrink-0 border-b bg-background px-4 py-3 flex items-center gap-3">
         <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold shrink-0">
           AI
         </div>
@@ -122,7 +122,7 @@ export default function Chat() {
 
       {/* Support CTA — shown after first exchange */}
       {chatStarted && (
-        <div className="w-full max-w-[420px] shrink-0 px-4 pt-2">
+        <div className="w-full max-w-[680px] shrink-0 px-4 pt-2">
           {supportRequested ? (
             <div className="w-full py-2 px-4 rounded-xl text-xs text-center bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-400">
               ⚡ Yêu cầu đã gửi — tư vấn viên sẽ liên hệ bạn sớm nhất!
@@ -184,7 +184,7 @@ export default function Chat() {
       )}
 
       {/* Chat / Form area */}
-      <div className="w-full max-w-[420px] flex-1 overflow-hidden">
+      <div className="w-full max-w-[680px] flex-1 overflow-hidden">
         {!chatStarted ? (
           <PreChatForm onSubmit={handleFormSubmit} />
         ) : (

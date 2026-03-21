@@ -154,8 +154,8 @@ export default function AdminLayout({
               .map((s) => (s.id === session.id ? session : s))
               .sort(
                 (a, b) =>
-                  new Date(b.updatedAt).getTime() -
-                  new Date(a.updatedAt).getTime()
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
               )
           );
           markLive(session.id);
@@ -303,7 +303,7 @@ export default function AdminLayout({
               .sort((a, b) => {
                 if (a.needsSupport && !b.needsSupport) return -1;
                 if (!a.needsSupport && b.needsSupport) return 1;
-                return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
               })
               .map((s) => {
               const isActive = pathname === `/admin/${s.id}`;

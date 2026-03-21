@@ -23,29 +23,22 @@ interface SchoolMatchCardsProps {
   total_schools: number;
 }
 
-function MatchBadge({ percent }: { percent: number }) {
-  const color =
-    percent >= 70
-      ? "bg-emerald-500"
-      : percent >= 45
-        ? "bg-amber-500"
-        : "bg-gray-400";
-
-  // Circumference of r=14 circle ≈ 87.96
+function MatchBadge({ percent, overlay = false }: { percent: number; overlay?: boolean }) {
   const circumference = 2 * Math.PI * 14;
   const dashOffset = circumference * (1 - percent / 100);
 
   return (
-    <div className="relative w-12 h-12 shrink-0">
-      <svg className="w-12 h-12 -rotate-90" viewBox="0 0 32 32">
-        {/* Track */}
+    <div className={`relative w-12 h-12 shrink-0 ${overlay ? "drop-shadow" : ""}`}>
+      {overlay && (
+        <div className="absolute inset-0 rounded-full bg-black/30 backdrop-blur-sm" />
+      )}
+      <svg className="w-12 h-12 -rotate-90 relative" viewBox="0 0 32 32">
         <circle
           cx="16" cy="16" r="14"
           fill="none"
           strokeWidth="3"
-          className="stroke-gray-200 dark:stroke-zinc-700"
+          className={overlay ? "stroke-white/20" : "stroke-gray-200 dark:stroke-zinc-700"}
         />
-        {/* Progress */}
         <circle
           cx="16" cy="16" r="14"
           fill="none"
@@ -53,9 +46,9 @@ function MatchBadge({ percent }: { percent: number }) {
           strokeLinecap="round"
           className={`transition-all duration-700 ${
             percent >= 70
-              ? "stroke-emerald-500"
+              ? "stroke-emerald-400"
               : percent >= 45
-                ? "stroke-amber-500"
+                ? "stroke-amber-400"
                 : "stroke-gray-400"
           }`}
           strokeDasharray={circumference}
@@ -64,17 +57,17 @@ function MatchBadge({ percent }: { percent: number }) {
       </svg>
       <span
         className={`absolute inset-0 flex items-center justify-center text-[10px] font-bold ${
-          percent >= 70
-            ? "text-emerald-600 dark:text-emerald-400"
-            : percent >= 45
-              ? "text-amber-600 dark:text-amber-400"
-              : "text-gray-500 dark:text-zinc-400"
+          overlay
+            ? "text-white"
+            : percent >= 70
+              ? "text-emerald-600 dark:text-emerald-400"
+              : percent >= 45
+                ? "text-amber-600 dark:text-amber-400"
+                : "text-gray-500 dark:text-zinc-400"
         }`}
       >
         {percent}%
       </span>
-      {/* invisible — only used for conditional class reference */}
-      <span className="hidden">{color}</span>
     </div>
   );
 }
@@ -110,10 +103,12 @@ export function SchoolMatchCards({ matched, total_schools }: SchoolMatchCardsPro
         </span>
       </div>
 
-      {/* Cards */}
-      {matched.map((school, i) => (
-        <SchoolCard key={i} school={school} rank={i + 1} />
-      ))}
+      {/* Cards — 2-col grid */}
+      <div className="grid grid-cols-2 gap-2.5">
+        {matched.map((school, i) => (
+          <SchoolCard key={i} school={school} rank={i + 1} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -121,42 +116,85 @@ export function SchoolMatchCards({ matched, total_schools }: SchoolMatchCardsPro
 function SchoolCard({ school, rank }: { school: MatchedSchool; rank: number }) {
   return (
     <div className="relative rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm overflow-hidden">
-      {/* Top accent bar based on match % */}
-      <div
-        className={`h-0.5 w-full ${
-          school.match_percent >= 70
-            ? "bg-emerald-400"
-            : school.match_percent >= 45
-              ? "bg-amber-400"
-              : "bg-gray-300 dark:bg-zinc-600"
-        }`}
-      />
-
-      <div className="p-3.5">
-        {/* Row 1: rank, name, match badge */}
-        <div className="flex items-start gap-3">
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="text-[10px] font-bold text-gray-400 dark:text-zinc-500 shrink-0">
-                #{rank}
-              </span>
+      {/* Cover image */}
+      {school.image_url ? (
+        <div className="relative h-32 w-full overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={school.image_url}
+            alt={school.name}
+            className="w-full h-full object-cover"
+          />
+          {/* gradient overlay so text is legible */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          {/* rank + match badge pinned over image */}
+          <div className="absolute top-2 left-3 flex items-center gap-1.5">
+            <span className="text-[10px] font-bold text-white/80 bg-black/30 backdrop-blur-sm px-1.5 py-0.5 rounded-full">
+              #{rank}
+            </span>
+          </div>
+          <div className="absolute top-2 right-2">
+            <MatchBadge percent={school.match_percent} overlay />
+          </div>
+          {/* school name pinned at bottom of image */}
+          <div className="absolute bottom-2.5 left-3 right-14">
+            <div className="flex items-center gap-1 mb-0.5">
               <CountryFlag country={school.country} />
-              <span className="text-[10px] text-gray-400 dark:text-zinc-500 truncate">
-                {school.country}
-              </span>
+              <span className="text-[10px] text-white/80 truncate">{school.country}</span>
               {school.scholarship && (
-                <span className="shrink-0 flex items-center gap-0.5 text-[9px] font-semibold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 px-1.5 py-0.5 rounded-full">
+                <span className="shrink-0 flex items-center gap-0.5 text-[9px] font-semibold text-amber-300 bg-amber-900/60 border border-amber-700/50 px-1.5 py-0.5 rounded-full">
                   <Award size={9} />
                   HB
                 </span>
               )}
             </div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-zinc-100 leading-tight line-clamp-2">
+            <h3 className="text-sm font-semibold text-white leading-tight line-clamp-2 drop-shadow">
               {school.name}
             </h3>
           </div>
-          <MatchBadge percent={school.match_percent} />
         </div>
+      ) : (
+        <>
+          {/* Top accent bar based on match % — shown only when no image */}
+          <div
+            className={`h-0.5 w-full ${
+              school.match_percent >= 70
+                ? "bg-emerald-400"
+                : school.match_percent >= 45
+                  ? "bg-amber-400"
+                  : "bg-gray-300 dark:bg-zinc-600"
+            }`}
+          />
+        </>
+      )}
+
+      <div className="p-3.5">
+        {/* Row 1 — only shown when there is no cover image */}
+        {!school.image_url && (
+          <div className="flex items-start gap-3 mb-0">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <span className="text-[10px] font-bold text-gray-400 dark:text-zinc-500 shrink-0">
+                  #{rank}
+                </span>
+                <CountryFlag country={school.country} />
+                <span className="text-[10px] text-gray-400 dark:text-zinc-500 truncate">
+                  {school.country}
+                </span>
+                {school.scholarship && (
+                  <span className="shrink-0 flex items-center gap-0.5 text-[9px] font-semibold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 px-1.5 py-0.5 rounded-full">
+                    <Award size={9} />
+                    HB
+                  </span>
+                )}
+              </div>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-zinc-100 leading-tight line-clamp-2">
+                {school.name}
+              </h3>
+            </div>
+            <MatchBadge percent={school.match_percent} />
+          </div>
+        )}
 
         {/* Row 2: location + tuition */}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">

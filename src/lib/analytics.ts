@@ -22,6 +22,37 @@ export interface FunnelStep {
   pct: number;
 }
 
+export interface BudgetBucket {
+  range: string;
+  count: number;
+}
+
+export interface HourActivity {
+  label: string;
+  count: number;
+}
+
+export interface DayActivity {
+  day: string;
+  count: number;
+}
+
+export interface FieldCount {
+  field: string;
+  count: number;
+}
+
+export interface RecentLead {
+  id: string;
+  name: string;
+  exam: string;
+  countries: string[];
+  budget?: number;
+  field?: string;
+  time: string;
+  needsSupport: boolean;
+}
+
 export interface TodayStats {
   sessions: number;
   leads: number;
@@ -43,6 +74,11 @@ export interface AnalyticsPayload {
   examDist: ExamCount[];
   topCountries: CountryCount[];
   funnel: FunnelStep[];
+  budgetDist: BudgetBucket[];
+  activityByHour: HourActivity[];
+  activityByDay: DayActivity[];
+  fieldDist: FieldCount[];
+  recentLeads: RecentLead[];
 }
 
 export function computeAnalytics(sessions: ChatSession[]): AnalyticsPayload {
@@ -98,7 +134,7 @@ export function computeAnalytics(sessions: ChatSession[]): AnalyticsPayload {
     ([date, v]) => ({ date, ...v })
   );
 
-  // Exam distribution (only sessions that have a lead)
+  // Exam distribution (only sessions with lead)
   const examMap: Record<string, number> = {};
   for (const s of sessions) {
     if (s.lead == null) continue;
@@ -140,5 +176,88 @@ export function computeAnalytics(sessions: ChatSession[]): AnalyticsPayload {
     },
   ];
 
-  return { today, allTime, trend30, examDist, topCountries, funnel };
+  // Budget distribution (only sessions with lead)
+  const budgetDist: BudgetBucket[] = [
+    { range: "Không rõ", count: 0 },
+    { range: "< $10k", count: 0 },
+    { range: "$10k–$20k", count: 0 },
+    { range: "$20k–$30k", count: 0 },
+    { range: "> $30k", count: 0 },
+  ];
+  for (const s of sessions) {
+    if (s.lead == null) continue;
+    const b = s.lead.budget_usd;
+    if (b == null) budgetDist[0].count++;
+    else if (b < 10000) budgetDist[1].count++;
+    else if (b < 20000) budgetDist[2].count++;
+    else if (b < 30000) budgetDist[3].count++;
+    else budgetDist[4].count++;
+  }
+
+  // Activity by hour (0–23, shown as groups)
+  const hourCounts: number[] = Array(24).fill(0);
+  for (const s of sessions) {
+    const h = new Date(s.createdAt).getHours();
+    hourCounts[h]++;
+  }
+  const activityByHour: HourActivity[] = hourCounts.map((count, h) => ({
+    label: `${h}h`,
+    count,
+  }));
+
+  // Activity by day of week
+  const dayNames = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+  const dayCounts: number[] = Array(7).fill(0);
+  for (const s of sessions) {
+    const d = new Date(s.createdAt).getDay();
+    dayCounts[d]++;
+  }
+  const activityByDay: DayActivity[] = dayNames.map((day, i) => ({
+    day,
+    count: dayCounts[i],
+  }));
+
+  // Field of study distribution
+  const fieldMap: Record<string, number> = {};
+  for (const s of sessions) {
+    const f = s.lead?.field_of_study?.trim();
+    if (f) fieldMap[f] = (fieldMap[f] ?? 0) + 1;
+  }
+  const fieldDist: FieldCount[] = Object.entries(fieldMap)
+    .map(([field, count]) => ({ field, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 8);
+
+  // Recent leads (last 10 with lead data)
+  const recentLeads: RecentLead[] = sessions
+    .filter((s) => s.lead != null)
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+    )
+    .slice(0, 10)
+    .map((s) => ({
+      id: s.id,
+      name: s.lead!.full_name || "Ẩn danh",
+      exam: s.lead!.target_exam || "",
+      countries: s.lead!.priority_countries ?? [],
+      budget: s.lead!.budget_usd,
+      field: s.lead!.field_of_study || "",
+      time: s.updatedAt,
+      needsSupport: s.needsSupport ?? false,
+    }));
+
+  return {
+    today,
+    allTime,
+    trend30,
+    examDist,
+    topCountries,
+    funnel,
+    budgetDist,
+    activityByHour,
+    activityByDay,
+    fieldDist,
+    recentLeads,
+  };
 }
