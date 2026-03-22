@@ -17,7 +17,7 @@ const openrouter = createOpenRouter({
 });
 
 const DEFAULT_MODEL =
-  process.env.ZALO_BOT_MODEL ?? "google/gemini-3.1-pro-preview";
+  process.env.ZALO_BOT_MODEL ?? "google/gemini-3.1-flash-lite-preview";
 const MAX_SESSION_MESSAGES = 40;
 const MAX_REPLY_LENGTH = 2000;
 const MAX_PROMPT_MESSAGES = 6;
