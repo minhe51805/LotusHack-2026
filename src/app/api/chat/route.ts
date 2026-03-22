@@ -375,7 +375,7 @@ export async function POST(req: Request) {
   const fullPrompt = await buildSystemPrompt(systemPrompt);
 
   const result = streamText({
-    model: openrouter("google/gemini-3.1-flash-lite-preview"),
+    model: openrouter("google/gemini-3.1-pro-preview"),
     system: fullPrompt,
     messages: await convertToModelMessages(messages),
     tools: {
