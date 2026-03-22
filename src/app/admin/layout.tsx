@@ -7,7 +7,6 @@ import type { LucideIcon } from "lucide-react";
 import {
   Bell,
   BellOff,
-  BookOpen,
   BotMessageSquare,
   GlobeIcon,
   LayoutDashboard,
@@ -15,7 +14,6 @@ import {
   PanelLeft,
   RefreshCw,
   Settings,
-  Sparkles,
   X,
 } from "lucide-react";
 
@@ -74,8 +72,6 @@ interface AdminSidebarProps {
 const navigationLinks: NavigationLink[] = [
   { href: "/admin", label: "Tổng quan", icon: LayoutDashboard },
   { href: "/admin/schools", label: "Trường học", icon: GlobeIcon },
-  { href: "/admin/courses", label: "Khóa học", icon: BookOpen },
-  { href: "/admin/services", label: "Dịch vụ", icon: Sparkles },
   { href: "/admin/settings", label: "Cài đặt", icon: Settings },
 ];
 
@@ -205,36 +201,6 @@ function AdminSidebar({
             </div>
           </div>
 
-          <div className="rounded-[1.75rem] border bg-background/90 p-4 shadow-sm">
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex flex-col gap-1">
-                <p className="text-sm font-medium">Live inbox</p>
-                <p className="text-xs leading-5 text-muted-foreground">
-                  Theo dõi lead mới, phiên cần hỗ trợ và điều hướng nội dung.
-                </p>
-              </div>
-              <Badge variant={liveSessions.size > 0 ? "default" : "outline"}>
-                {liveSessions.size > 0 ? `${liveSessions.size} trực tiếp` : "Ổn định"}
-              </Badge>
-            </div>
-
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl bg-secondary px-3 py-3">
-                <p className="text-2xl font-semibold tracking-tight">
-                  {sessions.length}
-                </p>
-                <p className="text-xs text-muted-foreground">Tổng phiên đang lưu</p>
-              </div>
-              <div className="rounded-2xl bg-muted px-3 py-3">
-                <p className="text-2xl font-semibold tracking-tight">
-                  {sessions.filter((session) => session.needsSupport).length}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Phiên cần chuyên viên
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -255,7 +221,7 @@ function AdminSidebar({
           <Badge variant="secondary">{sessions.length}</Badge>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-2 pb-2 pt-4">
+        <div className="min-h-0 flex-1 overflow-y-auto px-2 pb-6 pt-4">
           {loading ? (
             <div className="flex flex-col gap-2.5">
               {Array.from({ length: 5 }).map((_, index) => (

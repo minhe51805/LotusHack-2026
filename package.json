@@ -15,7 +15,8 @@
     "crawl:courses": "node scripts/crawl-etest-courses.mjs",
     "clean:courses": "node scripts/build-clean-etest-courses.mjs",
     "crawl:courses:clean": "node scripts/crawl-etest-courses.mjs && node scripts/build-clean-etest-courses.mjs",
-    "seed:schools": "node scripts/seed-schools.mjs"
+    "seed:schools": "node scripts/seed-schools.mjs",
+    "seed:sessions": "node scripts/seed-sessions.mjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.41",

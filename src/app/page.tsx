@@ -6,11 +6,10 @@ import {
   BrainCircuit,
   ChartColumnIncreasing,
   Clock3,
-  Globe2,
+  Database,
   GraduationCap,
   Handshake,
   MessageCircleMore,
-  MicOff,
   NotebookPen,
   PhoneCall,
   ScanSearch,
@@ -32,68 +31,68 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
-  title: "Study Abroad AI Assistant",
+  title: "EduPath — AI Study Abroad Counselor",
   description:
-    "An AI-first landing page for study abroad guidance, readiness checks, and faster mentor handoff.",
+    "An AI counselor that's transparent by design. Every answer grounded in real school data — no invented facts, no pressure.",
 };
 
 const navItems = [
   { label: "How it works", href: "#how-it-works" },
   { label: "What it solves", href: "#what-it-solves" },
-  { label: "Mentor handoff", href: "#mentor-handoff" },
+  { label: "For centers", href: "#for-centers" },
   { label: "FAQ", href: "#faq" },
 ];
 
 const proofStats = [
   {
     value: "24/7",
-    label: "AI-first intake",
-    detail: "Students can start anytime, not only during office hours.",
+    label: "Always-on intake",
+    detail: "No office hours. Students get real answers at midnight or midday.",
   },
   {
     value: "132",
-    label: "Schools in the matching layer",
-    detail: "Structured data keeps the conversation practical from the start.",
+    label: "Schools in the database",
+    detail: "Every answer is grounded in live tuition, visa, and scholarship data.",
   },
   {
-    value: "1-click",
-    label: "Support request flow",
-    detail: "When a student needs a real person, the handoff is instant.",
+    value: "Zero",
+    label: "AI-invented facts",
+    detail: "The model only answers after fetching real context. No tool call, no answer.",
   },
   {
     value: "Full",
-    label: "Conversation context saved",
-    detail: "Mentors receive the profile, chat history, and urgency signal.",
+    label: "Lead profile captured in chat",
+    detail: "Name, GPA, budget, English level — collected naturally, no extra forms.",
   },
 ];
 
 const solutionCards = [
   {
+    icon: Database,
+    title: "Data-grounded answers",
+    description:
+      "Every school fact — tuition, visa rules, scholarships — is pulled live from the database before the AI responds. No guessing, no fluff.",
+    footer: "The kind of specificity that turns skeptics into believers.",
+  },
+  {
     icon: ScanSearch,
-    title: "Readiness mapping",
+    title: "Automatic lead capture",
     description:
-      "Turn goals, grades, budget, and timing into a usable student profile.",
-    footer: "For students who need a clear starting point.",
+      "EduPath collects name, phone, GPA, budget, and English level naturally over conversation — without feeling like an interrogation.",
+    footer: "Qualified leads land in the database mid-conversation.",
   },
   {
-    icon: Globe2,
-    title: "School and pathway matching",
+    icon: BrainCircuit,
+    title: "Interactive chat components",
     description:
-      "Guide users toward countries, schools, and routes that make sense now.",
-    footer: "Less random research, more direction.",
-  },
-  {
-    icon: MicOff,
-    title: "Low-pressure communication",
-    description:
-      "A guided chat feels easier than jumping straight into a live consultation.",
-    footer: "Good for shy, busy, or hesitant users.",
+      "Rather than dumping walls of text, the AI surfaces selection forms and school cards directly in the chat.",
+    footer: "Smooth, intentional, not a chatbot wall of options.",
   },
   {
     icon: Handshake,
-    title: "Human mentor handoff",
+    title: "Trust-first design",
     description:
-      "When intent is real, mentors step in with the full conversation summary.",
+      "The AI earns trust before asking for contact details — counselors step in with the full conversation summary when intent is real.",
     footer: "AI supports the team, not replaces it.",
   },
 ];
@@ -102,69 +101,69 @@ const workflowSteps = [
   {
     step: "01",
     icon: MessageCircleMore,
-    title: "Start with uncertainty",
+    title: "Student starts the conversation",
     description:
-      "Students can begin with rough goals, doubts, or missing scores.",
+      "At any hour, in English or Vietnamese. Rough goals, doubts, and missing scores are all a valid starting point.",
   },
   {
     step: "02",
-    icon: BrainCircuit,
-    title: "Get guided and evaluated",
+    icon: Database,
+    title: "AI fetches real data, then answers",
     description:
-      "The assistant asks follow-up questions and turns the details into direction.",
+      "The model queries live school data before responding. No school question gets answered without a real database lookup.",
   },
   {
     step: "03",
     icon: PhoneCall,
-    title: "Escalate at the right moment",
+    title: "Lead saved, counselor alerted",
     description:
-      "When deeper advice is needed, mentors step in with context.",
+      "A qualified lead profile lands in Supabase. When a student flags they need deeper support, the team is notified instantly.",
   },
 ];
 
-const studentNeeds = [
+const centerBenefits = [
   {
     icon: Clock3,
-    title: "Busy students",
+    title: "Stop burning staff hours on bad leads",
     description:
-      "Students who want direction without spending nights comparing schools.",
+      "EduPath handles early-stage conversations automatically, so counselors spend time on students who are actually ready.",
   },
   {
     icon: GraduationCap,
-    title: "Students unsure of their level",
+    title: "Context before the first call",
     description:
-      "Students unsure whether their GPA, English, budget, or timeline is enough.",
+      "When a student requests support, counselors see the full chat history and lead profile — the first real conversation goes straight to substance.",
   },
   {
     icon: Users,
-    title: "Users who avoid sales pressure",
+    title: "Students who distrust the industry",
     description:
-      "Students and parents who want clarity first, then a better human call.",
+      "Inflated promises and surprise fees have made families wary. EduPath wins trust with specificity, not sales pressure.",
   },
 ];
 
-const mentorSignals = [
-  "Student profile, goals, and constraints captured in chat",
-  "Key indicators like GPA, exams, and budget already organized",
-  "Full conversation history ready for counselor review",
-  "Instant support-needed status for urgent leads",
+const leadSignals = [
+  "Name, phone, GPA, budget, and English level collected automatically",
+  "Full conversation history ready when the counselor calls",
+  "Zero fabricated facts — every school detail fetched from your database",
+  "Real-time alert the moment a student requests deeper support",
 ];
 
 const faqs = [
   {
-    question: "Is this replacing human counselors?",
+    question: "Can the AI make up scholarship amounts?",
     answer:
-      "No. It handles the first layer of discovery so counselors can focus on deeper advice.",
+      "No. The model is only allowed to answer school-related questions after calling the search_schools tool. No tool call, no answer. Hallucination-free by architecture.",
   },
   {
-    question: "Who is this best for?",
+    question: "Does it work in Vietnamese?",
     answer:
-      "Students who feel short on time, unsure of their level, or not ready for a live consultation yet.",
+      "Yes. The AI reasons in both English and Vietnamese. The default system prompt and conversation flow are tuned for Vietnamese consulting centers.",
   },
   {
-    question: "What happens after a student asks for deeper support?",
+    question: "What happens when a student asks for deeper support?",
     answer:
-      "The request is flagged instantly, and mentors can review the context before reaching out.",
+      "The session is flagged instantly and counselors get an in-app notification with the student's name, phone, and full chat context — ready to call.",
   },
 ];
 
@@ -184,9 +183,9 @@ export default function Home() {
               <BotMessageSquare className="size-5" />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-semibold">Study Abroad AI</span>
+              <span className="text-sm font-semibold">EduPath</span>
               <span className="text-xs text-muted-foreground">
-                AI-guided intake for counseling teams
+                AI counselor for study abroad centers
               </span>
             </div>
           </Link>
@@ -213,16 +212,16 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-5">
                 <Badge variant="outline" className="w-fit">
-                  AI-first study abroad guidance
+                  Built at LotusHack 2026
                 </Badge>
                 <div className="flex flex-col gap-4">
                   <h1 className="max-w-3xl text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                    From uncertainty to a clear study abroad plan.
+                    The AI counselor that earns trust before asking for a name.
                   </h1>
                   <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                    A simple first step for students who need clarity fast.
-                    Answer the right questions, sort the basics, and connect
-                    with mentors when deeper support matters.
+                    EduPath turns skeptical students into qualified leads — every
+                    answer grounded in real school data, no invented facts, no
+                    sales pressure.
                   </p>
                 </div>
               </div>
@@ -230,7 +229,7 @@ export default function Home() {
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="sm:w-auto">
                   <Link href="/chat">
-                    Start a planning chat
+                    Try the counselor
                     <ArrowRight data-icon="inline-end" />
                   </Link>
                 </Button>
@@ -241,21 +240,21 @@ export default function Home() {
 
               <div className="grid gap-3 sm:grid-cols-3">
                 <div className="flex h-full flex-col gap-1.5 rounded-2xl border bg-card/80 px-4 py-3 shadow-sm backdrop-blur">
-                  <p className="text-sm font-medium">Calm contact</p>
+                  <p className="text-sm font-medium">No hallucinations</p>
                   <p className="text-sm text-muted-foreground">
-                    Less pressure up front.
+                    Real data before every answer.
                   </p>
                 </div>
                 <div className="flex h-full flex-col gap-1.5 rounded-2xl border bg-card/80 px-4 py-3 shadow-sm backdrop-blur">
-                  <p className="text-sm font-medium">Clear qualification</p>
+                  <p className="text-sm font-medium">Auto lead capture</p>
                   <p className="text-sm text-muted-foreground">
-                    Turns interest into context.
+                    Profile built inside the chat.
                   </p>
                 </div>
                 <div className="flex h-full flex-col gap-1.5 rounded-2xl border bg-card/80 px-4 py-3 shadow-sm backdrop-blur">
-                  <p className="text-sm font-medium">Fast handoff</p>
+                  <p className="text-sm font-medium">Instant handoff</p>
                   <p className="text-sm text-muted-foreground">
-                    Mentors step in with context.
+                    Counselors step in with full context.
                   </p>
                 </div>
               </div>
@@ -268,9 +267,9 @@ export default function Home() {
                     <ChartColumnIncreasing className="size-5" />
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <p className="text-sm font-medium">Better lead quality</p>
+                    <p className="text-sm font-medium">Higher lead quality</p>
                     <p className="text-xs text-muted-foreground">
-                      Qualify intent before the first call.
+                      Pre-qualified before the first call.
                     </p>
                   </div>
                 </div>
@@ -284,9 +283,9 @@ export default function Home() {
                         <Sparkles className="size-5" />
                       </div>
                       <div className="flex flex-col gap-1">
-                        <CardTitle>AI Planning Assistant</CardTitle>
+                        <CardTitle>EduPath Counselor</CardTitle>
                         <CardDescription>
-                          Guided chat for fit, readiness, and next steps
+                          Real data. No invented facts. No pressure.
                         </CardDescription>
                       </div>
                     </div>
@@ -296,40 +295,40 @@ export default function Home() {
                 <CardContent className="flex flex-col gap-4">
                   <div className="hero-bubble-1 mr-10 rounded-3xl bg-muted px-4 py-3">
                     <p className="text-sm text-muted-foreground">
-                      Tell me your target country, budget, current level, or
-                      what feels unclear right now.
+                      What&apos;s the tuition at Murdoch Australia and do they
+                      offer scholarships for a 7.5 GPA?
                     </p>
                   </div>
                   <div className="hero-bubble-2 ml-10 rounded-3xl bg-primary px-4 py-3 text-primary-foreground">
                     <p className="text-sm">
-                      I want to study abroad, but I have not taken IELTS yet and
-                      I do not know which schools fit me.
+                      Let me pull the exact figures from our database right now.
                     </p>
                   </div>
                   <div className="hero-bubble-3 mr-12 rounded-3xl bg-muted px-4 py-3">
                     <p className="text-sm text-muted-foreground">
-                      That is enough. I can map your readiness, narrow the
-                      options, and connect you to a mentor.
+                      Murdoch AU: AUD 28,000/yr tuition. With a 7.5 GPA you
+                      qualify for the Vice-Chancellor&apos;s Scholarship — up to
+                      25% off. No invented numbers, pulled live.
                     </p>
                   </div>
 
                   <div className="hero-bubble-4 flex flex-wrap gap-2">
-                    <Badge variant="secondary">School fit</Badge>
-                    <Badge variant="secondary">Budget planning</Badge>
-                    <Badge variant="secondary">Exam roadmap</Badge>
-                    <Badge variant="secondary">Mentor handoff</Badge>
+                    <Badge variant="secondary">Live school data</Badge>
+                    <Badge variant="secondary">132 schools</Badge>
+                    <Badge variant="secondary">EN + VI</Badge>
+                    <Badge variant="secondary">Zero hallucinations</Badge>
                   </div>
                 </CardContent>
                 <CardFooter className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">
                     <ShieldCheck className="size-4 text-muted-foreground" />
                     <p className="text-sm text-muted-foreground">
-                      Context is captured before a human reaches out.
+                      Every answer verified against the database.
                     </p>
                   </div>
                   <Button asChild size="sm">
                     <Link href="/chat">
-                      Try the chat
+                      Try it now
                       <ArrowRight data-icon="inline-end" />
                     </Link>
                   </Button>
@@ -342,9 +341,9 @@ export default function Home() {
                     <PhoneCall className="size-5" />
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <p className="text-sm font-medium">Human follow-up</p>
+                    <p className="text-sm font-medium">Counselor notified</p>
                     <p className="text-xs text-muted-foreground">
-                      Mentors receive the brief instantly.
+                      Full context ready before the call.
                     </p>
                   </div>
                 </div>
@@ -375,10 +374,10 @@ export default function Home() {
             What it solves
           </Badge>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            A better first step for students who want help, not pressure.
+            Fix both sides of the trust problem.
           </h2>
           <p className="text-base leading-7 text-muted-foreground">
-            Built to turn curiosity into a guided, high-context conversation.
+            Centers waste hours on bad leads. Students come in skeptical. EduPath fixes both.
           </p>
         </div>
 
@@ -418,10 +417,10 @@ export default function Home() {
             How it works
           </Badge>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Three simple steps from first message to real advisor support.
+            From first message to qualified lead in one conversation.
           </h2>
           <p className="text-base leading-7 text-muted-foreground">
-            Comfortable for students, useful for the counseling team.
+            No separate forms, no follow-up emails. The profile builds itself.
           </p>
         </div>
 
@@ -445,7 +444,7 @@ export default function Home() {
                 </CardHeader>
                 <CardFooter className="mt-auto">
                   <p className="text-sm text-muted-foreground">
-                    Calm, structured, and ready for follow-up.
+                    Structured, verifiable, ready for counselor review.
                   </p>
                 </CardFooter>
               </Card>
@@ -455,7 +454,7 @@ export default function Home() {
       </section>
 
       <section
-        id="mentor-handoff"
+        id="for-centers"
         className="mx-auto grid w-full max-w-6xl items-start gap-6 px-4 py-20 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8"
       >
         <div className="flex flex-col gap-4 self-start">
@@ -463,21 +462,21 @@ export default function Home() {
             <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/10 to-transparent" />
             <CardHeader className="relative flex flex-col gap-4 p-6 sm:p-8">
               <Badge variant="outline" className="w-fit bg-background/80">
-                Built for real people
+                For consulting centers
               </Badge>
               <div className="flex flex-col gap-3">
                 <CardTitle className="max-w-xl text-3xl sm:text-4xl">
-                  A calmer start for students not ready for a live pitch.
+                  Stop guessing who&apos;s serious. Start with context.
                 </CardTitle>
                 <CardDescription className="max-w-xl text-base leading-7">
-                  Let them think and respond first. The human conversation comes
-                  later, with context.
+                  EduPath handles the expensive guessing game — so your team
+                  spends time on students who are already warmed up.
                 </CardDescription>
               </div>
             </CardHeader>
           </Card>
 
-          {studentNeeds.map((item) => {
+          {centerBenefits.map((item) => {
             const Icon = item.icon;
 
             return (
@@ -502,7 +501,7 @@ export default function Home() {
               <div className="flex items-start gap-3">
                 <ShieldCheck className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
                 <p className="text-sm leading-6 text-muted-foreground">
-                  A warmer first touch and a better chance of ongoing engagement.
+                  A warmer first touch and a better chance of lasting engagement.
                 </p>
               </div>
             </CardContent>
@@ -512,21 +511,21 @@ export default function Home() {
         <div className="flex flex-col gap-4 self-start">
           <Card className="border shadow-sm">
             <CardHeader className="flex flex-col gap-4 p-6 sm:p-8">
-              <Badge className="w-fit">Mentor handoff</Badge>
+              <Badge className="w-fit">What counselors receive</Badge>
               <div className="flex flex-col gap-3">
                 <CardTitle className="max-w-2xl text-3xl sm:text-4xl">
-                  Experts see the context before they reach out.
+                  Every counselor call starts with a full brief.
                 </CardTitle>
                 <CardDescription className="max-w-2xl text-base leading-7">
-                  Once support is requested, the next conversation starts with
-                  clarity, not guesswork.
+                  When a student requests support, the conversation — and
+                  everything extracted from it — is already waiting.
                 </CardDescription>
               </div>
             </CardHeader>
           </Card>
 
           <div className="grid gap-4">
-            {mentorSignals.map((item, index) => (
+            {leadSignals.map((item, index) => (
               <Card key={item} className="border shadow-sm">
                 <CardContent className="grid gap-4 p-4 sm:grid-cols-[auto_1fr] sm:p-5">
                   <div className="flex items-center gap-3">
@@ -555,7 +554,7 @@ export default function Home() {
               </div>
               <Button asChild size="sm" variant="secondary">
                 <Link href="/chat">
-                  Experience the flow
+                  See it in action
                   <ArrowRight data-icon="inline-end" />
                 </Link>
               </Button>
@@ -599,34 +598,34 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="flex max-w-3xl flex-col gap-4">
               <Badge variant="outline" className="w-fit">
-                Ready to launch
+                Try it now
               </Badge>
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Give first-time visitors a better way to ask for help.
+                Give students a counselor they can actually trust.
               </h2>
               <p className="text-base leading-7 text-muted-foreground">
-                Let AI guide the first conversation, reduce hesitation, and
-                connect students to mentors while intent is still warm.
+                Real data. No pressure. Full context for your team before they
+                say hello.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <Link href="/chat">
-                  Start a planning chat
+                  Start a conversation
                   <ArrowRight data-icon="inline-end" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="#what-it-solves">Review the benefits</Link>
+                <Link href="#what-it-solves">See what it solves</Link>
               </Button>
             </div>
           </div>
         </div>
 
         <footer className="flex flex-col gap-3 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>Study Abroad AI Assistant</p>
-          <p>From visitor to qualified conversation, without the friction.</p>
+          <p>EduPath — Built at LotusHack 2026</p>
+          <p>From skeptical visitor to qualified lead, without the friction.</p>
         </footer>
       </section>
     </main>
