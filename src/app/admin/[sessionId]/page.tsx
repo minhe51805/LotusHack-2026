@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { use } from "react";
+import { use, useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import {
   User,
@@ -19,6 +18,7 @@ import {
   Award,
   PanelRightClose,
   PanelRightOpen,
+  Siren,
 } from "lucide-react";
 import Link from "next/link";
 import { ChatView } from "@/components/chat/ChatView";
@@ -92,14 +92,12 @@ export default function SessionPage(props: {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [panelOpen, setPanelOpen] = useState(true);
-  const sessionIdRef = useRef(sessionId);
-  sessionIdRef.current = sessionId;
 
-  async function fetchSession(id: string) {
+  const fetchSession = useCallback(async (id: string) => {
     const r = await fetch(`/api/admin/sessions/${id}`);
     const data = r.ok ? await r.json() : null;
     return data as Session | null;
-  }
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -107,7 +105,7 @@ export default function SessionPage(props: {
       .then((data) => setSession(data))
       .catch(() => setSession(null))
       .finally(() => setLoading(false));
-  }, [sessionId]);
+  }, [fetchSession, sessionId]);
 
   // Real-time updates via Supabase
   useEffect(() => {
@@ -123,7 +121,7 @@ export default function SessionPage(props: {
           filter: `id=eq.${sessionId}`,
         },
         async () => {
-          const updated = await fetchSession(sessionIdRef.current);
+          const updated = await fetchSession(sessionId);
           if (updated) setSession(updated);
         }
       )
@@ -132,7 +130,7 @@ export default function SessionPage(props: {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [sessionId]);
+  }, [fetchSession, sessionId]);
 
   if (loading) {
     return (
@@ -218,11 +216,11 @@ export default function SessionPage(props: {
     : [];
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
+    <div className="saas-shell flex h-full flex-col overflow-hidden">
       {/* ── Needs Support Banner ─────────────────────────────── */}
       {session.needsSupport && (
-        <div className="shrink-0 flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white text-sm font-semibold">
-          <span className="text-base">⚡</span>
+        <div className="shrink-0 mx-4 mt-4 rounded-xl border border-red-300/60 bg-red-500 px-4 py-2.5 text-white text-sm font-semibold flex items-center gap-2">
+          <Siren size={16} className="shrink-0" />
           <span>Khách hàng yêu cầu tư vấn chuyên sâu — Liên hệ ngay</span>
           <span className="ml-auto text-xs font-normal opacity-80">
             {lead?.phone ?? lead?.full_name ?? session.id.slice(0, 8)}
@@ -232,9 +230,10 @@ export default function SessionPage(props: {
 
       <div className="flex flex-1 overflow-hidden">
         {/* ── Chat panel ─────────────────────────────────────── */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-gray-50 dark:bg-zinc-950">
-          {/* Header */}
-          <div className="shrink-0 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-5 py-3.5 flex items-center justify-between gap-3">
+        <div className="flex-1 flex flex-col overflow-hidden px-4 pb-4">
+          <div className="saas-panel rounded-2xl h-full overflow-hidden flex flex-col">
+            {/* Header */}
+            <div className="shrink-0 border-b border-border/70 px-5 py-3.5 flex items-center justify-between gap-3 bg-card/70">
             <div className="min-w-0">
               <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
                 {lead?.full_name ?? "Khách hàng"}
@@ -244,6 +243,7 @@ export default function SessionPage(props: {
               </p>
             </div>
             <button
+              type="button"
               onClick={() => setPanelOpen((v) => !v)}
               title={panelOpen ? "Ẩn thông tin" : "Hiện thông tin"}
               className="shrink-0 p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
@@ -252,16 +252,17 @@ export default function SessionPage(props: {
             </button>
           </div>
 
-          {/* Messages — shared ChatView in readonly mode */}
-          <ChatView
-            messages={session.messages}
-            mode="readonly"
-            emptyState={
-              <p className="text-center text-gray-400 dark:text-zinc-500 text-sm mt-16">
-                Không có tin nhắn trong phiên này.
-              </p>
-            }
-          />
+            {/* Messages — shared ChatView in readonly mode */}
+            <ChatView
+              messages={session.messages}
+              mode="readonly"
+              emptyState={
+                <p className="text-center text-muted-foreground text-sm mt-16">
+                  Không có tin nhắn trong phiên này.
+                </p>
+              }
+            />
+          </div>
         </div>
 
         {/* ── Metadata panel ─────────────────────────────────── */}
@@ -314,7 +315,7 @@ export default function SessionPage(props: {
                     <Icon size={13} className="text-gray-400 mt-0.5 shrink-0" />
                     <div className="min-w-0">
                       <p className="text-xs text-gray-400 dark:text-zinc-500">{label}</p>
-                      <p className="text-xs font-medium text-gray-700 dark:text-zinc-300 break-words">
+                      <p className="text-xs font-medium text-gray-700 dark:text-zinc-300 wrap-break-word">
                         {value}
                       </p>
                     </div>

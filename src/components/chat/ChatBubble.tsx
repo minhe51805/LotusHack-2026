@@ -1,8 +1,9 @@
-import { Bot, User } from "lucide-react";
-import { SchoolMatchCards, type MatchedSchool } from "./SchoolMatchCards";
+import { Bot, DatabaseZap, Search, User } from "lucide-react";
 import { Streamdown } from "streamdown";
 import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
+
+import { SchoolMatchCards, type MatchedSchool } from "./SchoolMatchCards";
 
 const streamdownPlugins = { cjk, code };
 
@@ -37,38 +38,51 @@ function isAskUserPart(part: ChatPart): boolean {
 
 function formatTime(ts: string | Date | undefined): string | null {
   if (!ts) return null;
-  const d = typeof ts === "string" ? new Date(ts) : ts;
-  if (isNaN(d.getTime())) return null;
-  return d.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" });
+  const date = typeof ts === "string" ? new Date(ts) : ts;
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" });
+}
+
+function isBotLabelPart(part: ChatPart, mode: "live" | "readonly"): boolean {
+  if (part.type === "text" && part.text?.trim()) return true;
+
+  if (isAskUserPart(part)) {
+    if (mode === "live" && part.state === "input-available") return false;
+    return part.state === "input-streaming" || part.state === "output-available";
+  }
+
+  return (
+    part.type === "tool-match_schools" &&
+    (part.state === "input-streaming" || part.state === "output-available")
+  );
 }
 
 function BotLabel({ time }: { time: string | null }) {
   return (
-    <div className="flex items-center gap-1.5 mb-0.5">
-      <Bot size={12} className="text-gray-400" />
-      <span className="text-xs text-gray-400 dark:text-zinc-500">AI Tư vấn</span>
-      {time && (
-        <span className="text-[10px] text-gray-300 dark:text-zinc-600">{time}</span>
-      )}
+    <div className="mb-1 flex items-center gap-2 text-xs text-muted-foreground">
+      <div className="flex size-6 items-center justify-center rounded-full border border-border/80 bg-secondary/70">
+        <Bot className="size-3 text-primary" />
+      </div>
+      <span className="font-medium text-foreground/80">Lotus AI</span>
+      {time ? <span>{time}</span> : null}
     </div>
   );
 }
 
 function UserLabel({ time }: { time?: string | null }) {
   return (
-    <div className="flex items-center gap-1.5 mb-0.5">
-      <span className="text-xs text-gray-400 dark:text-zinc-500">Bạn</span>
-      <User size={12} className="text-gray-400" />
-      {time && (
-        <span className="text-[10px] text-gray-300 dark:text-zinc-600">{time}</span>
-      )}
+    <div className="mb-1 flex items-center justify-end gap-2 text-xs text-muted-foreground">
+      {time ? <span>{time}</span> : null}
+      <span className="font-medium text-foreground/80">Bạn</span>
+      <div className="flex size-6 items-center justify-center rounded-full border border-border/80 bg-secondary/70">
+        <User className="size-3 text-primary" />
+      </div>
     </div>
   );
 }
 
 interface ChatBubbleProps {
   message: ChatMessage;
-  /** In live mode the input-available state is handled by AskUserModal, not inline */
   mode?: "live" | "readonly";
 }
 
@@ -77,47 +91,41 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
   const parts = getParts(message.parts);
   const timeLabel = formatTime(message.createdAt);
 
-  /* ── User message ──────────────────────────────────────────── */
   if (isUser) {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[80%] flex flex-col items-end gap-1.5">
+        <div className="max-w-[86%] sm:max-w-[78%]">
           <UserLabel time={timeLabel} />
-          {parts.map((part, i) => {
-            if (part.type === "text" && part.text?.trim()) {
-              return (
-                <div
-                  key={i}
-                  className="px-3.5 py-2.5 rounded-2xl rounded-br-sm text-sm leading-relaxed whitespace-pre-wrap bg-blue-600 text-white"
-                >
-                  {part.text}
-                </div>
-              );
-            }
-            return null;
+          {parts.map((part, index) => {
+            if (part.type !== "text" || !part.text?.trim()) return null;
+
+            return (
+              <div
+                key={index}
+                className="gradient-btn rounded-[1.35rem] rounded-br-sm px-4 py-3 text-sm leading-7 text-primary-foreground shadow-[0_24px_48px_-32px_rgb(15_23_42/0.48)]"
+              >
+                {part.text}
+              </div>
+            );
           })}
         </div>
       </div>
     );
   }
 
-  /* ── Assistant message ─────────────────────────────────────── */
-  // Each part is rendered as its own full-width row so that ask_user answers
-  // can appear right-aligned at the correct position in the parts sequence.
-  let labelShown = false;
+  const firstBotLabelIndex = parts.findIndex((part) => isBotLabelPart(part, mode));
 
   return (
-    <div className="flex flex-col gap-3">
-      {parts.map((part, i) => {
-        /* ── Text ───────────────────────────────────── */
+    <div className="flex flex-col gap-4">
+      {parts.map((part, index) => {
         if (part.type === "text" && part.text?.trim()) {
-          const showLabel = !labelShown;
-          labelShown = true;
+          const showLabel = index === firstBotLabelIndex;
+
           return (
-            <div key={i} className="flex justify-start">
-              <div className="max-w-[80%] flex flex-col items-start gap-1.5">
-                {showLabel && <BotLabel time={timeLabel} />}
-                <div className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm text-sm leading-relaxed bg-white dark:bg-zinc-800 text-gray-800 dark:text-zinc-100 shadow-sm border border-gray-100 dark:border-zinc-700 [&_ul]:pl-5 [&_ol]:pl-5 [&_li]:my-0.5">
+            <div key={index} className="flex justify-start">
+              <div className="max-w-[92%] sm:max-w-[86%]">
+                {showLabel ? <BotLabel time={timeLabel} /> : null}
+                <div className="glass-card rounded-[1.45rem] rounded-bl-sm px-4 py-3 text-sm leading-7 text-foreground [&_ul]:pl-5 [&_ol]:pl-5 [&_li]:my-0.5">
                   <Streamdown plugins={streamdownPlugins}>{part.text}</Streamdown>
                 </div>
               </div>
@@ -125,25 +133,24 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
           );
         }
 
-        /* ── ask_user ───────────────────────────────── */
         if (isAskUserPart(part)) {
           if (mode === "live" && part.state === "input-available") {
             return null;
           }
 
           if (part.state === "input-streaming") {
-            const showLabel = !labelShown;
-            labelShown = true;
+            const showLabel = index === firstBotLabelIndex;
+
             return (
-              <div key={i} className="flex justify-start">
-                <div className="max-w-[80%] flex flex-col items-start gap-1.5">
-                  {showLabel && <BotLabel time={timeLabel} />}
-                  <div className="flex gap-1 px-3.5 py-2.5 rounded-2xl rounded-bl-sm bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 shadow-sm">
-                    {[0, 1, 2].map((d) => (
+              <div key={index} className="flex justify-start">
+                <div className="max-w-[92%] sm:max-w-[86%]">
+                  {showLabel ? <BotLabel time={timeLabel} /> : null}
+                  <div className="saas-card flex w-fit items-center gap-2 px-4 py-3">
+                    {[0, 1, 2].map((dotIndex) => (
                       <span
-                        key={d}
-                        className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-zinc-500 animate-bounce"
-                        style={{ animationDelay: `${d * 150}ms` }}
+                        key={dotIndex}
+                        className="size-2 rounded-full bg-primary/70 animate-bounce"
+                        style={{ animationDelay: `${dotIndex * 120}ms` }}
                       />
                     ))}
                   </div>
@@ -156,30 +163,29 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
             const question = part.input?.question as string | undefined;
             const answer = String(part.output ?? "");
             const isSkipped = answer === "Bỏ qua";
-            const showLabel = !labelShown;
-            labelShown = true;
+            const showLabel = index === firstBotLabelIndex;
+
             return (
-              <div key={i} className="flex flex-col gap-3">
-                {/* Question — left side (bot) */}
-                {question && (
+              <div key={index} className="flex flex-col gap-4">
+                {question ? (
                   <div className="flex justify-start">
-                    <div className="max-w-[80%] flex flex-col items-start gap-1.5">
-                      {showLabel && <BotLabel time={timeLabel} />}
-                      <div className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm text-sm bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 shadow-sm text-gray-700 dark:text-zinc-300">
+                    <div className="max-w-[92%] sm:max-w-[86%]">
+                      {showLabel ? <BotLabel time={timeLabel} /> : null}
+                      <div className="glass-card rounded-[1.35rem] rounded-bl-sm px-4 py-3 text-sm leading-7 text-foreground">
                         {question}
                       </div>
                     </div>
                   </div>
-                )}
-                {/* Answer — right side (user), inline at the correct position */}
+                ) : null}
+
                 <div className="flex justify-end">
-                  <div className="max-w-[80%] flex flex-col items-end gap-1.5">
+                  <div className="max-w-[86%] sm:max-w-[78%]">
                     <UserLabel />
                     <div
-                      className={`px-3.5 py-2 rounded-2xl rounded-br-sm text-sm ${
+                      className={`rounded-[1.35rem] rounded-br-sm px-4 py-3 text-sm leading-7 ${
                         isSkipped
-                          ? "bg-gray-200 dark:bg-zinc-700 text-gray-500 dark:text-zinc-400 italic"
-                          : "bg-blue-600 text-white"
+                          ? "border border-border bg-secondary/40 text-muted-foreground"
+                          : "gradient-btn text-primary-foreground"
                       }`}
                     >
                       {answer}
@@ -193,46 +199,40 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
           return null;
         }
 
-        /* ── save_lead ──────────────────────────────── */
         if (part.type === "tool-save_lead" && part.state === "output-available") {
           return (
-            <div key={i} className="flex justify-start">
-              <div className="px-3.5 py-2 rounded-xl text-xs bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 flex items-center gap-1.5">
-                <span className="text-green-500">✓</span> Đã lưu khách hàng
+            <div key={index} className="flex justify-start">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
+                <DatabaseZap className="size-3.5 text-primary" />
+                Lead đã được lưu vào workspace.
               </div>
             </div>
           );
         }
 
-        /* ── search_schools ─────────────────────────── */
         if (part.type === "tool-search_schools" && part.state === "output-available") {
           return (
-            <div key={i} className="flex justify-start">
-              <div className="px-3.5 py-2 rounded-xl text-xs bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-400 flex items-center gap-1.5">
-                <span>🔍</span> Đã tìm kiếm trường
+            <div key={index} className="flex justify-start">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
+                <Search className="size-3.5 text-primary" />
+                Đã truy vấn dữ liệu trường học.
               </div>
             </div>
           );
         }
 
-        /* ── match_schools (streaming) ──────────────── */
         if (part.type === "tool-match_schools" && part.state === "input-streaming") {
-          const showLabel = !labelShown;
-          labelShown = true;
+          const showLabel = index === firstBotLabelIndex;
+
           return (
-            <div key={i} className="flex justify-start w-full">
-              <div className="w-full flex flex-col items-start gap-1.5">
-                {showLabel && <BotLabel time={timeLabel} />}
-                <div className="w-full space-y-2.5">
-                  <div className="flex items-center gap-2 px-0.5">
-                    <span className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wide">
-                      Đang tìm trường phù hợp…
-                    </span>
-                  </div>
-                  {[0, 1, 2].map((j) => (
+            <div key={index} className="flex justify-start">
+              <div className="w-full max-w-4xl">
+                {showLabel ? <BotLabel time={timeLabel} /> : null}
+                <div className="grid gap-3 lg:grid-cols-2">
+                  {[0, 1].map((item) => (
                     <div
-                      key={j}
-                      className="rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 h-24 animate-pulse"
+                      key={item}
+                      className="h-40 rounded-[1.45rem] border border-border/80 bg-secondary/35 animate-pulse"
                     />
                   ))}
                 </div>
@@ -241,18 +241,17 @@ export function ChatBubble({ message, mode = "readonly" }: ChatBubbleProps) {
           );
         }
 
-        /* ── match_schools (result) ─────────────────── */
         if (part.type === "tool-match_schools" && part.state === "output-available") {
           const output = part.output as {
             matched?: MatchedSchool[];
             total_schools?: number;
           } | null;
-          const showLabel = !labelShown;
-          labelShown = true;
+          const showLabel = index === firstBotLabelIndex;
+
           return (
-            <div key={i} className="flex justify-start w-full">
-              <div className="w-full flex flex-col items-start gap-1.5">
-                {showLabel && <BotLabel time={timeLabel} />}
+            <div key={index} className="flex justify-start">
+              <div className="w-full max-w-4xl">
+                {showLabel ? <BotLabel time={timeLabel} /> : null}
                 <SchoolMatchCards
                   matched={output?.matched ?? []}
                   total_schools={output?.total_schools ?? 0}

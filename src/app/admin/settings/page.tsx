@@ -52,30 +52,31 @@ export default function SettingsPage() {
   const isDirty = prompt !== original || zaloPrompt !== originalZaloPrompt;
 
   return (
-    <div className="flex flex-col h-full bg-gray-50 dark:bg-zinc-950 overflow-hidden">
-      {/* Header */}
-      <div className="shrink-0 border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-6 py-4">
-        <div className="flex items-center justify-between">
+    <div className="saas-shell flex flex-col h-full overflow-hidden">
+      <div className="shrink-0 px-6 py-4">
+        <div className="saas-panel rounded-2xl px-5 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-base font-semibold text-gray-900 dark:text-white">
+            <h1 className="text-base font-semibold text-foreground">
               Cài đặt & Prompt
             </h1>
-            <p className="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">
+            <p className="text-xs text-muted-foreground mt-0.5">
               Cấu hình prompt riêng cho web và Zalo
             </p>
           </div>
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={() => setPrompt(DEFAULT_USER_PROMPT)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-gray-600 dark:text-zinc-400 border border-gray-200 dark:border-zinc-700 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
+              className="rounded-xl border border-border bg-background px-3.5 py-2 text-xs text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <RotateCcw size={12} />
               Reset prompt web
             </button>
             <button
+              type="button"
               onClick={handleSave}
               disabled={saving || !isDirty}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-40 transition-colors"
+              className="gradient-btn flex items-center gap-1.5 px-3.5 py-2 text-xs text-primary-foreground rounded-xl disabled:opacity-40 transition-all cursor-pointer"
             >
               {saved ? (
                 <>

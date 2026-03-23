@@ -131,32 +131,34 @@ export default function SchoolsPage() {
   }
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
-      {/* Header */}
-      <div className="shrink-0 border-b bg-background px-6 py-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-base font-semibold">Trường học</h1>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Lọc trường từ dữ liệu crawl hoặc quản lý hồ sơ trường nội bộ
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <Link
-            href="/data/etest-school-directory.csv"
-            className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors"
-          >
-            Tải CSV
-          </Link>
-          <button
-            onClick={openAdd}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
-          >
-            <PlusIcon size={14} /> Thêm trường
-          </button>
+    <div className="saas-shell flex flex-col h-full overflow-hidden">
+      <div className="shrink-0 px-6 py-4">
+        <div className="saas-panel rounded-2xl px-5 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-base font-semibold text-foreground">Trường học</h1>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Lọc trường từ dữ liệu crawl hoặc quản lý hồ sơ trường nội bộ
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/data/etest-school-directory.csv"
+              className="rounded-xl border border-border bg-background px-3.5 py-2 text-sm text-foreground hover:bg-muted/60 transition-colors"
+            >
+              Tải CSV
+            </Link>
+            <button
+              type="button"
+              onClick={openAdd}
+              className="gradient-btn flex items-center gap-1.5 px-3.5 py-2 text-sm text-primary-foreground rounded-xl transition-all cursor-pointer"
+            >
+              <PlusIcon size={14} /> Thêm trường
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto px-6 pb-6">
         <Tabs defaultValue="directory" className="space-y-6">
           <TabsList>
             <TabsTrigger value="directory">
@@ -189,12 +191,12 @@ export default function SchoolsPage() {
             ) : items.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-48 text-muted-foreground text-sm gap-2">
                 <GlobeIcon size={32} className="opacity-30" />
-                Chưa có trường nào. Nhấn "Thêm trường" để bắt đầu.
+                Chưa có trường nào. Nhấn &quot;Thêm trường&quot; để bắt đầu.
               </div>
             ) : (
               <div className="space-y-3">
                 {items.map((school) => (
-                  <div key={school.id} className="rounded-xl border bg-card p-4 flex gap-4 items-start group">
+                  <div key={school.id} className="saas-card rounded-2xl p-4 flex gap-4 items-start group card-lift">
                     <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-blue-100 dark:bg-blue-950/40 flex items-center justify-center">
                       {school.image_url ? (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -239,10 +241,10 @@ export default function SchoolsPage() {
                       </div>
                     </div>
                     <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button onClick={() => openEdit(school)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
+                      <button type="button" onClick={() => openEdit(school)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
                         <PencilIcon size={14} className="text-muted-foreground" />
                       </button>
-                      <button onClick={() => setDeleteId(school.id)} className="p-1.5 rounded-md hover:bg-destructive/10 transition-colors">
+                      <button type="button" onClick={() => setDeleteId(school.id)} className="p-1.5 rounded-md hover:bg-destructive/10 transition-colors">
                         <Trash2Icon size={14} className="text-destructive" />
                       </button>
                     </div>
@@ -261,8 +263,8 @@ export default function SchoolsPage() {
             <p className="font-medium text-sm mb-1">Xoá trường?</p>
             <p className="text-xs text-muted-foreground mb-4">Hành động này không thể hoàn tác.</p>
             <div className="flex gap-2 justify-end">
-              <button onClick={() => setDeleteId(null)} className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors">Huỷ</button>
-              <button onClick={() => handleDelete(deleteId)} className="px-3 py-1.5 text-sm rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity">Xoá</button>
+              <button type="button" onClick={() => setDeleteId(null)} className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors">Huỷ</button>
+              <button type="button" onClick={() => handleDelete(deleteId)} className="px-3 py-1.5 text-sm rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity">Xoá</button>
             </div>
           </div>
         </div>
@@ -373,8 +375,8 @@ export default function SchoolsPage() {
           </div>
 
           <SheetFooter>
-            <button onClick={() => setOpen(false)} className="px-4 py-2 text-sm rounded-lg border hover:bg-muted transition-colors">Huỷ</button>
-            <button onClick={handleSave} disabled={saving || !form.name.trim()} className="px-4 py-2 text-sm rounded-lg bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40 transition-opacity">
+            <button type="button" onClick={() => setOpen(false)} className="px-4 py-2 text-sm rounded-lg border hover:bg-muted transition-colors">Huỷ</button>
+            <button type="button" onClick={handleSave} disabled={saving || !form.name.trim()} className="px-4 py-2 text-sm rounded-lg bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40 transition-opacity">
               {saving ? "Đang lưu…" : editing ? "Lưu thay đổi" : "Thêm trường"}
             </button>
           </SheetFooter>

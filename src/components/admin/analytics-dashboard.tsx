@@ -135,8 +135,8 @@ function StatCard({ title, value, sub, icon: Icon, color, iconBg }: StatCardProp
 
 // ── Funnel with progress bars ─────────────────────────────────────────────────
 
-const FUNNEL_COLORS = ["bg-blue-500", "bg-green-500", "bg-red-500"];
-const FUNNEL_TEXT = ["text-blue-600 dark:text-blue-400", "text-green-600 dark:text-green-400", "text-red-600 dark:text-red-400"];
+const FUNNEL_COLORS = ["bg-primary", "bg-[oklch(0.65_0.17_175)]", "bg-destructive"];
+const FUNNEL_TEXT = ["text-primary", "text-[oklch(0.65_0.17_175)]", "text-destructive"];
 
 // ── Main dashboard ────────────────────────────────────────────────────────────
 
@@ -151,32 +151,32 @@ export function AnalyticsDashboard({ data }: Props) {
       value: data.today.sessions,
       sub: `${data.allTime.sessions} tổng • ${data.allTime.sessions > 0 ? Math.round((data.today.sessions / data.allTime.sessions) * 100) : 0}% so với tổng`,
       icon: MessageSquare,
-      color: "text-blue-600",
-      iconBg: "bg-blue-100 dark:bg-blue-950/50",
+      color: "text-primary",
+      iconBg: "bg-gradient-to-br from-primary/15 to-primary/5",
     },
     {
       title: "Leads hôm nay",
       value: data.today.leads,
       sub: `${data.allTime.leads} tổng • tỷ lệ ${data.allTime.sessions > 0 ? Math.round((data.allTime.leads / data.allTime.sessions) * 100) : 0}%`,
       icon: UserCheck,
-      color: "text-green-600",
-      iconBg: "bg-green-100 dark:bg-green-950/50",
+      color: "text-[oklch(0.65_0.17_175)]",
+      iconBg: "bg-gradient-to-br from-[oklch(0.65_0.17_175/0.15)] to-[oklch(0.65_0.17_175/0.05)]",
     },
     {
       title: "Cần hỗ trợ",
       value: data.today.support,
       sub: `${data.allTime.support} tổng • ${data.allTime.leads > 0 ? Math.round((data.allTime.support / data.allTime.leads) * 100) : 0}% của leads`,
       icon: Headphones,
-      color: "text-red-600",
-      iconBg: "bg-red-100 dark:bg-red-950/50",
+      color: "text-destructive",
+      iconBg: "bg-gradient-to-br from-destructive/15 to-destructive/5",
     },
     {
       title: "TB tin nhắn / phiên",
       value: data.today.avgMessages,
       sub: `${data.allTime.avgMessages} tổng thể • tổng ${data.allTime.sessions} phiên`,
       icon: BarChart2,
-      color: "text-violet-600",
-      iconBg: "bg-violet-100 dark:bg-violet-950/50",
+      color: "text-[oklch(0.62_0.22_300)]",
+      iconBg: "bg-gradient-to-br from-[oklch(0.62_0.22_300/0.15)] to-[oklch(0.62_0.22_300/0.05)]",
     },
   ];
 
@@ -186,39 +186,39 @@ export function AnalyticsDashboard({ data }: Props) {
       value: data.allTime.sessions,
       sub: `${data.today.sessions} hôm nay`,
       icon: MessageSquare,
-      color: "text-blue-600",
-      iconBg: "bg-blue-100 dark:bg-blue-950/50",
+      color: "text-primary",
+      iconBg: "bg-gradient-to-br from-primary/15 to-primary/5",
     },
     {
       title: "Tổng leads",
       value: data.allTime.leads,
       sub: `${data.allTime.sessions > 0 ? Math.round((data.allTime.leads / data.allTime.sessions) * 100) : 0}% tỷ lệ chuyển đổi`,
       icon: UserCheck,
-      color: "text-green-600",
-      iconBg: "bg-green-100 dark:bg-green-950/50",
+      color: "text-[oklch(0.65_0.17_175)]",
+      iconBg: "bg-gradient-to-br from-[oklch(0.65_0.17_175/0.15)] to-[oklch(0.65_0.17_175/0.05)]",
     },
     {
       title: "Yêu cầu hỗ trợ",
       value: data.allTime.support,
       sub: `${data.allTime.leads > 0 ? Math.round((data.allTime.support / data.allTime.leads) * 100) : 0}% của tổng leads`,
       icon: Headphones,
-      color: "text-red-600",
-      iconBg: "bg-red-100 dark:bg-red-950/50",
+      color: "text-destructive",
+      iconBg: "bg-gradient-to-br from-destructive/15 to-destructive/5",
     },
     {
       title: "TB tin nhắn / phiên",
       value: data.allTime.avgMessages,
       sub: `tổng ${data.allTime.sessions} phiên`,
       icon: BarChart2,
-      color: "text-violet-600",
-      iconBg: "bg-violet-100 dark:bg-violet-950/50",
+      color: "text-[oklch(0.62_0.22_300)]",
+      iconBg: "bg-gradient-to-br from-[oklch(0.62_0.22_300/0.15)] to-[oklch(0.62_0.22_300/0.05)]",
     },
   ];
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto">
+    <div className="saas-shell flex h-full flex-col overflow-y-auto">
       {/* ── Header ─────────────────────────────────────────────────────── */}
-      <div className="shrink-0 flex items-center justify-between gap-4 border-b bg-background/70 px-6 py-4 backdrop-blur">
+      <div className="saas-card mx-4 mt-4 shrink-0 flex items-center justify-between gap-4 px-6 py-4">
         <div>
           <h1 className="text-base font-semibold">Tổng quan</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -384,7 +384,7 @@ export function AnalyticsDashboard({ data }: Props) {
         {/* ── Three distribution charts ─────────────────────────────────── */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
           {/* Exam distribution */}
-          <Card className="bg-card/85 shadow-sm backdrop-blur">
+          <Card className="saas-card">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <BookOpen size={15} className="text-muted-foreground" />
@@ -414,7 +414,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Top countries */}
-          <Card className="bg-card/85 shadow-sm backdrop-blur">
+          <Card className="saas-card">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Globe size={15} className="text-muted-foreground" />
@@ -444,7 +444,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Budget distribution */}
-          <Card className="bg-card/85 shadow-sm backdrop-blur">
+          <Card className="saas-card">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Banknote size={15} className="text-muted-foreground" />
@@ -477,7 +477,7 @@ export function AnalyticsDashboard({ data }: Props) {
         {/* ── Activity + Field of study ─────────────────────────────────── */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           {/* Activity by hour */}
-          <Card className="bg-card/85 shadow-sm backdrop-blur">
+          <Card className="saas-card">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <Clock size={15} className="text-muted-foreground" />
@@ -500,7 +500,7 @@ export function AnalyticsDashboard({ data }: Props) {
                       const h = i;
                       const isActive = h >= 8 && h <= 22;
                       return (
-                        <Cell key={i} fill={isActive ? "#8b5cf6" : "#8b5cf640"} />
+                        <Cell key={i} fill={isActive ? "oklch(0.55 0.22 275)" : "oklch(0.55 0.22 275 / 0.25)"} />
                       );
                     })}
                   </Bar>
@@ -510,7 +510,7 @@ export function AnalyticsDashboard({ data }: Props) {
           </Card>
 
           {/* Field of study */}
-          <Card className="bg-card/85 shadow-sm backdrop-blur">
+          <Card className="saas-card">
             <CardHeader>
               <div className="flex items-center gap-2">
                 <BookOpen size={15} className="text-muted-foreground" />
@@ -541,7 +541,7 @@ export function AnalyticsDashboard({ data }: Props) {
         </div>
 
         {/* ── Recent Leads table ────────────────────────────────────────── */}
-        <Card className="bg-card/85 shadow-sm backdrop-blur">
+        <Card className="saas-card">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">

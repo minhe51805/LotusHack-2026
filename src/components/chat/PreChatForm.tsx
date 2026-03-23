@@ -1,11 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, X, ChevronRight } from "lucide-react";
-import type { LeadData, Certification } from "@/lib/data";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Globe2,
+  Plus,
+  School,
+  Sparkles,
+  WalletCards,
+  X,
+} from "lucide-react";
 
-const CERT_TYPES = ["IELTS", "SAT", "ACT", "PTE", "TOEFL", "TOEIC", "GRE", "GMAT"] as const;
-const COUNTRIES = ["Úc", "Canada", "Anh", "Mỹ", "New Zealand", "Singapore", "Nhật Bản", "Châu Âu", "Khác"] as const;
+import { Button } from "@/components/ui/button";
+import type { Certification, LeadData } from "@/lib/data";
+
+const CERT_TYPES = [
+  "IELTS",
+  "SAT",
+  "ACT",
+  "PTE",
+  "TOEFL",
+  "TOEIC",
+  "GRE",
+  "GMAT",
+] as const;
+const COUNTRIES = [
+  "Úc",
+  "Canada",
+  "Anh",
+  "Mỹ",
+  "New Zealand",
+  "Singapore",
+  "Nhật Bản",
+  "Châu Âu",
+  "Khác",
+] as const;
 const BUDGET_OPTIONS = [
   { label: "< $20,000/năm", value: 15000 },
   { label: "$20,000 – $30,000/năm", value: 25000 },
@@ -13,8 +43,8 @@ const BUDGET_OPTIONS = [
   { label: "> $50,000/năm", value: 55000 },
 ];
 
-const MONTHS = ["01","02","03","04","05","06","07","08","09","10","11","12"];
-const YEARS = Array.from({ length: 8 }, (_, i) => String(2020 + i));
+const MONTHS = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+const YEARS = Array.from({ length: 8 }, (_, index) => String(2020 + index));
 
 interface PreChatFormProps {
   onSubmit: (messageSummary: string, lead: Partial<LeadData>) => void;
@@ -40,8 +70,8 @@ function buildSummary(
 
   if (certs.length) {
     const certStr = certs
-      .filter((c) => c.type && c.score)
-      .map((c) => `${c.type} ${c.score}${c.date ? ` (${c.date})` : ""}`)
+      .filter((cert) => cert.type && cert.score)
+      .map((cert) => `${cert.type} ${cert.score}${cert.date ? ` (${cert.date})` : ""}`)
       .join(", ");
     if (certStr) lines.push(`• Chứng chỉ: ${certStr}`);
   }
@@ -49,8 +79,8 @@ function buildSummary(
   if (fieldOfStudy) lines.push(`• Ngành mục tiêu: ${fieldOfStudy}`);
   if (countries.length) lines.push(`• Quốc gia ưu tiên: ${countries.join(", ")}`);
   if (budgetValue) {
-    const opt = BUDGET_OPTIONS.find((o) => o.value === budgetValue);
-    lines.push(`• Ngân sách: ~${opt?.label ?? `$${budgetValue.toLocaleString()}/năm`}`);
+    const option = BUDGET_OPTIONS.find((item) => item.value === budgetValue);
+    lines.push(`• Ngân sách: ~${option?.label ?? `$${budgetValue.toLocaleString()}/năm`}`);
   }
 
   lines.push("");
@@ -71,33 +101,44 @@ export function PreChatForm({ onSubmit }: PreChatFormProps) {
     setCerts((prev) => [...prev, { type: "", score: "", date: "" }]);
   }
 
-  function removeCert(i: number) {
-    setCerts((prev) => prev.filter((_, idx) => idx !== i));
+  function removeCert(index: number) {
+    setCerts((prev) => prev.filter((_, certIndex) => certIndex !== index));
   }
 
-  function updateCert(i: number, field: keyof Certification, value: string) {
+  function updateCert(index: number, field: keyof Certification, value: string) {
     setCerts((prev) =>
-      prev.map((c, idx) => (idx === i ? { ...c, [field]: value } : c))
+      prev.map((cert, certIndex) =>
+        certIndex === index ? { ...cert, [field]: value } : cert,
+      ),
     );
   }
 
-  function toggleCountry(c: string) {
+  function toggleCountry(country: string) {
     setSelectedCountries((prev) =>
-      prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]
+      prev.includes(country)
+        ? prev.filter((entry) => entry !== country)
+        : [...prev, country],
     );
   }
 
   function handleSubmit() {
     const summary = buildSummary(
-      age, school, gpa, certs, fieldOfStudy, selectedCountries, budgetValue
+      age,
+      school,
+      gpa,
+      certs,
+      fieldOfStudy,
+      selectedCountries,
+      budgetValue,
     );
 
     const lead: Partial<LeadData> = {};
     if (age) lead.age = Number(age);
     if (school) lead.current_school = school;
     if (gpa) lead.gpa = gpa;
-    if (certs.filter((c) => c.type && c.score).length)
-      lead.certifications = certs.filter((c) => c.type && c.score);
+    if (certs.filter((cert) => cert.type && cert.score).length) {
+      lead.certifications = certs.filter((cert) => cert.type && cert.score);
+    }
     if (fieldOfStudy) lead.field_of_study = fieldOfStudy;
     if (selectedCountries.length) lead.priority_countries = selectedCountries;
     if (budgetValue) lead.budget_usd = budgetValue;
@@ -106,236 +147,317 @@ export function PreChatForm({ onSubmit }: PreChatFormProps) {
   }
 
   const hasAnyData =
-    age || school || gpa || certs.some((c) => c.type) ||
-    fieldOfStudy || selectedCountries.length || budgetValue;
+    age ||
+    school ||
+    gpa ||
+    certs.some((cert) => cert.type || cert.score) ||
+    fieldOfStudy ||
+    selectedCountries.length ||
+    budgetValue;
 
   return (
-    <div className="h-full overflow-y-auto px-4 py-5 space-y-6">
-      {/* Header */}
-      <div className="text-center pt-2">
-        <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl font-bold mx-auto mb-3">
-          E
-        </div>
-        <h2 className="text-base font-semibold text-gray-900 dark:text-white">
-          Bắt đầu tư vấn du học
-        </h2>
-        <p className="text-xs text-gray-400 dark:text-zinc-500 mt-1">
-          Cho chúng tôi biết thêm về bạn để AI gợi ý chính xác hơn.
-          <br />Tất cả các trường đều không bắt buộc.
-        </p>
-      </div>
+    <div className="h-full overflow-y-auto px-4 py-4 sm:px-5 sm:py-5">
+      <div className="grid gap-4">
+        <section className="saas-card overflow-hidden p-5 sm:p-6">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div className="space-y-4">
+              <div className="section-kicker">Warm start</div>
+              <div className="space-y-3">
+                <h2 className="text-3xl leading-tight font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
+                  Cho AI một chút context để gợi ý trường chính xác hơn ngay từ câu đầu.
+                </h2>
+                <p className="text-sm leading-6 text-muted-foreground">
+                  Bạn không cần điền hết. Chỉ một vài tín hiệu như GPA, ngành, quốc gia
+                  hoặc ngân sách cũng đủ để hệ thống bắt đầu gợi ý.
+                </p>
+              </div>
+            </div>
 
-      {/* Basic Info */}
-      <section>
-        <h3 className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wide mb-3">
-          Thông tin cơ bản
-        </h3>
-        <div className="space-y-3">
-          <div className="flex gap-3">
-            <div className="w-24 shrink-0">
-              <label className="text-xs text-gray-500 dark:text-zinc-400 mb-1 block">Tuổi</label>
+            <div className="rounded-[1.25rem] border border-border/80 bg-secondary/40 px-4 py-3">
+              <div className="flex items-center gap-3">
+                <Sparkles className="size-4 text-primary" />
+                <p className="text-sm text-muted-foreground">
+                  Toàn bộ dữ liệu này sẽ đi kèm session để counselor xem lại khi cần.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="saas-card p-5 sm:p-6">
+          <div className="flex items-center gap-3">
+            <div className="flex size-10 items-center justify-center rounded-full border border-border/80 bg-secondary/70">
+              <School className="size-4 text-primary" />
+            </div>
+            <div>
+              <p className="text-lg font-semibold tracking-[-0.02em] text-foreground">
+                Thông tin cơ bản
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Đây là những tín hiệu giúp AI định vị mặt bằng hồ sơ của bạn.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-[120px_minmax(0,1fr)]">
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-foreground">Tuổi</span>
               <input
                 type="number"
                 min={10}
                 max={60}
                 value={age}
-                onChange={(e) => setAge(e.target.value)}
+                onChange={(event) => setAge(event.target.value)}
                 placeholder="17"
-                className="w-full rounded-xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm px-3 py-2 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="saas-input"
               />
-            </div>
-            <div className="flex-1">
-              <label className="text-xs text-gray-500 dark:text-zinc-400 mb-1 block">Trường hiện tại</label>
+            </label>
+
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-foreground">Trường hiện tại</span>
               <input
                 type="text"
                 value={school}
-                onChange={(e) => setSchool(e.target.value)}
-                placeholder="THPT Nguyễn Du, ĐH Bách Khoa…"
-                className="w-full rounded-xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm px-3 py-2 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(event) => setSchool(event.target.value)}
+                placeholder="THPT Nguyễn Du, ĐH Bách Khoa..."
+                className="saas-input"
               />
-            </div>
+            </label>
           </div>
-          <div>
-            <label className="text-xs text-gray-500 dark:text-zinc-400 mb-1 block">GPA</label>
+
+          <label className="mt-4 block space-y-2">
+            <span className="text-sm font-medium text-foreground">GPA</span>
             <input
               type="text"
               value={gpa}
-              onChange={(e) => setGpa(e.target.value)}
+              onChange={(event) => setGpa(event.target.value)}
               placeholder="8.5/10 hoặc 3.7/4.0"
-              className="w-full rounded-xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm px-3 py-2 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="saas-input"
             />
-          </div>
-        </div>
-      </section>
+          </label>
+        </section>
 
-      {/* Certifications */}
-      <section>
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wide">
-            Chứng chỉ đã có
-          </h3>
-          <button
-            onClick={addCert}
-            className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            <Plus size={12} /> Thêm chứng chỉ
-          </button>
-        </div>
-
-        {certs.length === 0 && (
-          <p className="text-xs text-gray-400 dark:text-zinc-500 italic">
-            Chưa có chứng chỉ — nhấn "Thêm chứng chỉ" nếu có.
-          </p>
-        )}
-
-        <div className="space-y-3">
-          {certs.map((cert, i) => (
-            <div
-              key={i}
-              className="bg-gray-50 dark:bg-zinc-800/60 rounded-xl p-3 border border-gray-200 dark:border-zinc-700"
-            >
-              {/* Type pills */}
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {CERT_TYPES.map((t) => (
-                  <button
-                    key={t}
-                    onClick={() => updateCert(i, "type", t)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
-                      cert.type === t
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white dark:bg-zinc-700 text-gray-600 dark:text-zinc-300 border-gray-200 dark:border-zinc-600 hover:border-blue-400"
-                    }`}
-                  >
-                    {t}
-                  </button>
-                ))}
+        <section className="saas-card p-5 sm:p-6">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="flex size-10 items-center justify-center rounded-full border border-border/80 bg-secondary/70">
+                <BadgeCheck className="size-4 text-primary" />
               </div>
-              <div className="flex gap-2 items-end">
-                <div className="flex-1">
-                  <label className="text-xs text-gray-400 dark:text-zinc-500 mb-1 block">Điểm</label>
-                  <input
-                    type="text"
-                    value={cert.score}
-                    onChange={(e) => updateCert(i, "score", e.target.value)}
-                    placeholder={cert.type === "IELTS" ? "6.5" : cert.type === "SAT" ? "1350" : "Điểm"}
-                    className="w-full rounded-lg border border-gray-200 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-sm px-3 py-1.5 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="flex gap-1">
-                  <div>
-                    <label className="text-xs text-gray-400 dark:text-zinc-500 mb-1 block">Tháng</label>
-                    <select
-                      value={cert.date.split("/")[0] ?? ""}
-                      onChange={(e) => {
-                        const yr = cert.date.split("/")[1] ?? "";
-                        updateCert(i, "date", `${e.target.value}/${yr}`);
-                      }}
-                      className="rounded-lg border border-gray-200 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-sm px-2 py-1.5 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">MM</option>
-                      {MONTHS.map((m) => <option key={m} value={m}>{m}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-xs text-gray-400 dark:text-zinc-500 mb-1 block">Năm</label>
-                    <select
-                      value={cert.date.split("/")[1] ?? ""}
-                      onChange={(e) => {
-                        const mo = cert.date.split("/")[0] ?? "";
-                        updateCert(i, "date", `${mo}/${e.target.value}`);
-                      }}
-                      className="rounded-lg border border-gray-200 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-sm px-2 py-1.5 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">YYYY</option>
-                      {YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
-                    </select>
-                  </div>
-                </div>
-                <button
-                  onClick={() => removeCert(i)}
-                  className="mb-0.5 p-1.5 rounded-full text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-                >
-                  <X size={14} />
-                </button>
+              <div>
+                <p className="text-lg font-semibold tracking-[-0.02em] text-foreground">
+                  Chứng chỉ đã có
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Có thể bỏ qua hoàn toàn nếu bạn chưa thi.
+                </p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Aspirations */}
-      <section>
-        <h3 className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wide mb-3">
-          Định hướng
-        </h3>
-        <div className="space-y-3">
-          <div>
-            <label className="text-xs text-gray-500 dark:text-zinc-400 mb-1 block">Ngành học mục tiêu</label>
+            <Button type="button" variant="outline" onClick={addCert}>
+              <Plus data-icon="inline-start" />
+              Thêm chứng chỉ
+            </Button>
+          </div>
+
+          {certs.length === 0 ? (
+            <div className="mt-5 rounded-[1.2rem] border border-dashed border-border bg-secondary/20 px-4 py-5 text-sm text-muted-foreground">
+              Chưa có chứng chỉ nào. Bạn vẫn có thể bắt đầu tư vấn ngay.
+            </div>
+          ) : (
+            <div className="mt-5 grid gap-4">
+              {certs.map((cert, index) => (
+                <div
+                  key={`${index}-${cert.type}-${cert.score}`}
+                  className="rounded-[1.4rem] border border-border/80 bg-secondary/25 p-4"
+                >
+                  <div className="flex flex-wrap gap-2">
+                    {CERT_TYPES.map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => updateCert(index, "type", type)}
+                        className={`saas-chip ${cert.type === type ? "saas-chip-active" : ""}`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto_auto_auto]">
+                    <label className="space-y-2">
+                      <span className="text-sm font-medium text-foreground">Điểm</span>
+                      <input
+                        type="text"
+                        value={cert.score}
+                        onChange={(event) => updateCert(index, "score", event.target.value)}
+                        placeholder={
+                          cert.type === "IELTS"
+                            ? "6.5"
+                            : cert.type === "SAT"
+                              ? "1350"
+                              : "Điểm"
+                        }
+                        className="saas-input"
+                      />
+                    </label>
+
+                    <label className="space-y-2">
+                      <span className="text-sm font-medium text-foreground">Tháng</span>
+                      <select
+                        value={cert.date.split("/")[0] ?? ""}
+                        onChange={(event) => {
+                          const year = cert.date.split("/")[1] ?? "";
+                          updateCert(index, "date", `${event.target.value}/${year}`);
+                        }}
+                        className="saas-input h-full"
+                      >
+                        <option value="">MM</option>
+                        {MONTHS.map((month) => (
+                          <option key={month} value={month}>
+                            {month}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+
+                    <label className="space-y-2">
+                      <span className="text-sm font-medium text-foreground">Năm</span>
+                      <select
+                        value={cert.date.split("/")[1] ?? ""}
+                        onChange={(event) => {
+                          const month = cert.date.split("/")[0] ?? "";
+                          updateCert(index, "date", `${month}/${event.target.value}`);
+                        }}
+                        className="saas-input h-full"
+                      >
+                        <option value="">YYYY</option>
+                        {YEARS.map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+
+                    <div className="flex items-end">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon-sm"
+                        onClick={() => removeCert(index)}
+                      >
+                        <X />
+                        <span className="sr-only">Xoá chứng chỉ</span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <section className="saas-card p-5 sm:p-6">
+          <div className="flex items-center gap-3">
+            <div className="flex size-10 items-center justify-center rounded-full border border-border/80 bg-secondary/70">
+              <Globe2 className="size-4 text-primary" />
+            </div>
+            <div>
+              <p className="text-lg font-semibold tracking-[-0.02em] text-foreground">
+                Định hướng học tập
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Càng rõ ngành và quốc gia, kết quả càng gần nhu cầu của bạn.
+              </p>
+            </div>
+          </div>
+
+          <label className="mt-5 block space-y-2">
+            <span className="text-sm font-medium text-foreground">Ngành học mục tiêu</span>
             <input
               type="text"
               value={fieldOfStudy}
-              onChange={(e) => setFieldOfStudy(e.target.value)}
-              placeholder="Computer Science, Business, Kiến trúc…"
-              className="w-full rounded-xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm px-3 py-2 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(event) => setFieldOfStudy(event.target.value)}
+              placeholder="Computer Science, Business, Architecture..."
+              className="saas-input"
             />
-          </div>
-          <div>
-            <label className="text-xs text-gray-500 dark:text-zinc-400 mb-2 block">Quốc gia ưu tiên</label>
-            <div className="flex flex-wrap gap-2">
-              {COUNTRIES.map((c) => (
+          </label>
+
+          <div className="mt-5">
+            <p className="text-sm font-medium text-foreground">Quốc gia ưu tiên</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {COUNTRIES.map((country) => (
                 <button
-                  key={c}
-                  onClick={() => toggleCountry(c)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-                    selectedCountries.includes(c)
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-white dark:bg-zinc-800 text-gray-600 dark:text-zinc-300 border-gray-200 dark:border-zinc-700 hover:border-blue-400"
+                  key={country}
+                  type="button"
+                  onClick={() => toggleCountry(country)}
+                  className={`saas-chip ${
+                    selectedCountries.includes(country) ? "saas-chip-active" : ""
                   }`}
                 >
-                  {c}
+                  {country}
                 </button>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Budget */}
-      <section>
-        <h3 className="text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wide mb-3">
-          Ngân sách dự kiến
-        </h3>
-        <div className="grid grid-cols-2 gap-2">
-          {BUDGET_OPTIONS.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => setBudgetValue(budgetValue === opt.value ? null : opt.value)}
-              className={`px-3 py-2.5 rounded-xl text-xs font-medium border text-left transition-all ${
-                budgetValue === opt.value
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white dark:bg-zinc-800 text-gray-600 dark:text-zinc-300 border-gray-200 dark:border-zinc-700 hover:border-blue-400"
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-      </section>
+        <section className="saas-card p-5 sm:p-6">
+          <div className="flex items-center gap-3">
+            <div className="flex size-10 items-center justify-center rounded-full border border-border/80 bg-secondary/70">
+              <WalletCards className="size-4 text-primary" />
+            </div>
+            <div>
+              <p className="text-lg font-semibold tracking-[-0.02em] text-foreground">
+                Ngân sách dự kiến
+              </p>
+              <p className="text-sm text-muted-foreground">
+                AI sẽ dùng mức ngân sách này để lọc trường và gợi ý học bổng sát hơn.
+              </p>
+            </div>
+          </div>
 
-      {/* Submit */}
-      <div className="pb-4">
-        <button
-          onClick={handleSubmit}
-          className="w-full py-3 rounded-2xl text-sm font-semibold bg-blue-600 hover:bg-blue-700 active:scale-95 text-white transition-all flex items-center justify-center gap-2"
-        >
-          {hasAnyData ? "Bắt đầu tư vấn" : "Bắt đầu không cần hồ sơ"}
-          <ChevronRight size={16} />
-        </button>
-        {!hasAnyData && (
-          <p className="text-center text-xs text-gray-400 dark:text-zinc-500 mt-2">
-            Bạn có thể cung cấp thông tin trong lúc trò chuyện.
-          </p>
-        )}
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {BUDGET_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() =>
+                  setBudgetValue((current) =>
+                    current === option.value ? null : option.value,
+                  )
+                }
+                className={`rounded-[1.15rem] border px-4 py-4 text-left text-sm transition ${
+                  budgetValue === option.value
+                    ? "border-primary bg-primary text-primary-foreground shadow-[0_18px_34px_-22px_rgb(15_23_42/0.45)]"
+                    : "border-border bg-background/90 text-muted-foreground hover:border-primary/35 hover:text-foreground"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="saas-card p-5 sm:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xl font-semibold tracking-[-0.03em] text-foreground">
+                {hasAnyData
+                  ? "Hồ sơ đủ để AI bắt đầu gợi ý."
+                  : "Bạn có thể bắt đầu ngay cả khi chưa điền gì."}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Mọi thông tin còn thiếu đều có thể được hỏi tiếp trong lúc chat.
+              </p>
+            </div>
+
+            <Button type="button" className="gradient-btn border-0" onClick={handleSubmit}>
+              {hasAnyData ? "Bắt đầu tư vấn" : "Bắt đầu không cần hồ sơ"}
+              <ArrowRight data-icon="inline-end" />
+            </Button>
+          </div>
+        </section>
       </div>
     </div>
   );

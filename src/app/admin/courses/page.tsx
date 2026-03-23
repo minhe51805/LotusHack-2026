@@ -107,18 +107,20 @@ export default function CoursesPage() {
   }
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
-      <div className="shrink-0 border-b bg-background px-6 py-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-base font-semibold">Courses</h1>
-          <p className="text-xs text-muted-foreground mt-0.5">Study-abroad prep courses</p>
+    <div className="saas-shell flex flex-col h-full overflow-hidden">
+      <div className="shrink-0 px-6 py-4">
+        <div className="saas-panel rounded-2xl px-5 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-base font-semibold text-foreground">Courses</h1>
+            <p className="text-xs text-muted-foreground mt-0.5">Study-abroad prep courses</p>
+          </div>
+          <button type="button" onClick={openAdd} className="gradient-btn flex items-center gap-1.5 px-3.5 py-2 text-sm text-primary-foreground rounded-xl transition-all cursor-pointer">
+            <PlusIcon size={14} /> Add Course
+          </button>
         </div>
-        <button onClick={openAdd} className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity">
-          <PlusIcon size={14} /> Add Course
-        </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto px-6 pb-6">
         {loading ? (
           <div className="space-y-3">{[1,2,3,4].map(i => <div key={i} className="h-24 rounded-xl bg-muted animate-pulse" />)}</div>
         ) : items.length === 0 ? (
@@ -129,7 +131,7 @@ export default function CoursesPage() {
         ) : (
           <div className="space-y-3">
             {items.map((c) => (
-              <div key={c.id} className="rounded-xl border bg-card p-4 flex gap-4 items-start group">
+              <div key={c.id} className="saas-card rounded-2xl p-4 flex gap-4 items-start group card-lift">
                 <div className="w-10 h-10 rounded-lg bg-violet-100 dark:bg-violet-950/40 flex items-center justify-center shrink-0">
                   <BookOpenIcon size={18} className="text-violet-600 dark:text-violet-400" />
                 </div>
@@ -157,10 +159,10 @@ export default function CoursesPage() {
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(c)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
+                  <button type="button" onClick={() => openEdit(c)} className="p-1.5 rounded-md hover:bg-muted transition-colors">
                     <PencilIcon size={14} className="text-muted-foreground" />
                   </button>
-                  <button onClick={() => setDeleteId(c.id)} className="p-1.5 rounded-md hover:bg-destructive/10 transition-colors">
+                  <button type="button" onClick={() => setDeleteId(c.id)} className="p-1.5 rounded-md hover:bg-destructive/10 transition-colors">
                     <Trash2Icon size={14} className="text-destructive" />
                   </button>
                 </div>
@@ -176,8 +178,8 @@ export default function CoursesPage() {
             <p className="font-medium text-sm mb-1">Delete course?</p>
             <p className="text-xs text-muted-foreground mb-4">This action cannot be undone.</p>
             <div className="flex gap-2 justify-end">
-              <button onClick={() => setDeleteId(null)} className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors">Cancel</button>
-              <button onClick={() => handleDelete(deleteId)} className="px-3 py-1.5 text-sm rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity">Delete</button>
+              <button type="button" onClick={() => setDeleteId(null)} className="px-3 py-1.5 text-sm rounded-lg border hover:bg-muted transition-colors">Cancel</button>
+              <button type="button" onClick={() => handleDelete(deleteId)} className="px-3 py-1.5 text-sm rounded-lg bg-destructive text-destructive-foreground hover:opacity-90 transition-opacity">Delete</button>
             </div>
           </div>
         </div>
@@ -228,8 +230,8 @@ export default function CoursesPage() {
           </div>
 
           <SheetFooter>
-            <button onClick={() => setOpen(false)} className="px-4 py-2 text-sm rounded-lg border hover:bg-muted transition-colors">Cancel</button>
-            <button onClick={handleSave} disabled={saving || !form.name.trim()} className="px-4 py-2 text-sm rounded-lg bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40 transition-opacity">
+            <button type="button" onClick={() => setOpen(false)} className="px-4 py-2 text-sm rounded-lg border hover:bg-muted transition-colors">Cancel</button>
+            <button type="button" onClick={handleSave} disabled={saving || !form.name.trim()} className="px-4 py-2 text-sm rounded-lg bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40 transition-opacity">
               {saving ? "Saving…" : editing ? "Save changes" : "Add course"}
             </button>
           </SheetFooter>
